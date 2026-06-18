@@ -223,6 +223,25 @@ button { font: inherit; cursor: pointer; border: none; background: none; }
 }
 .hero__headline-accent { color: var(--accent-deep); }
 
+.hero__meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: clamp(18px, 3vw, 26px);
+}
+.hero__meta-item {
+  display: inline-flex;
+  align-items: center;
+  padding: 9px 18px;
+  border: 1px solid var(--line);
+  border-radius: 100px;
+  font-size: 0.92rem;
+  font-weight: 600;
+  color: var(--ink-soft);
+  background: var(--bg-card);
+}
+.hero__meta-item--accent { background: var(--dark); color: var(--bg); border-color: var(--dark); }
+
 .hero__name {
   font-family: "Manrope", system-ui, sans-serif;
   font-size: clamp(1.4rem, 3vw, 1.9rem);
@@ -262,8 +281,8 @@ button { font: inherit; cursor: pointer; border: none; background: none; }
 
 .hero__inner {
   display: grid;
-  grid-template-columns: 1fr minmax(240px, 320px);
-  gap: clamp(32px, 5vw, 64px);
+  grid-template-columns: 1fr minmax(200px, 260px);
+  gap: clamp(32px, 5vw, 60px);
   align-items: center;
 }
 .hero__title {
@@ -315,7 +334,7 @@ button { font: inherit; cursor: pointer; border: none; background: none; }
 .hero__actions { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 30px; }
 
 /* Hero photo */
-.hero__visual { position: relative; width: 100%; max-width: 320px; margin-left: auto; }
+.hero__visual { position: relative; width: 100%; max-width: 260px; margin-left: auto; }
 .hero__photo {
   border-radius: var(--radius);
   overflow: hidden;
@@ -536,7 +555,7 @@ button { font: inherit; cursor: pointer; border: none; background: none; }
   .about-course__grid,
   .results__grid,
   .signup__grid { grid-template-columns: 1fr; }
-  .hero__visual { max-width: 260px; margin-inline: auto; }
+  .hero__visual { max-width: 220px; margin-inline: auto; }
   .program__grid { grid-template-columns: repeat(2, 1fr); }
   .format__grid { grid-template-columns: 1fr; }
   .format__card--price { grid-column: span 1; grid-template-columns: 1fr; align-items: flex-start; }
@@ -603,6 +622,11 @@ button { font: inherit; cursor: pointer; border: none; background: none; }
     <section class="hero section" id="hero">
       <div class="container hero__top">
         <h1 class="hero__headline">Практикум для начинающих дизайнеров</h1>
+        <div class="hero__meta">
+          <span class="hero__meta-item">Офлайн</span>
+          <span class="hero__meta-item">Алматы</span>
+          <span class="hero__meta-item hero__meta-item--accent">Старт 15 июля</span>
+        </div>
       </div>
       <div class="container hero__inner">
         <div class="hero__content reveal" id="about">
