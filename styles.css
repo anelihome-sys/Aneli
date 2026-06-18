@@ -195,6 +195,26 @@ button { font: inherit; cursor: pointer; border: none; background: none; }
     radial-gradient(circle at 88% 12%, rgba(176, 139, 99, 0.14), transparent 42%),
     var(--bg);
 }
+.hero__top { margin-bottom: clamp(30px, 5vw, 52px); }
+.hero__headline {
+  font-family: "Cormorant Garamond", serif;
+  font-weight: 700;
+  font-size: clamp(2.6rem, 6.4vw, 5.2rem);
+  line-height: 1.02;
+  letter-spacing: -0.02em;
+  margin-top: clamp(18px, 3vw, 26px);
+  max-width: 18ch;
+}
+.hero__headline-accent { color: var(--accent-deep); font-style: italic; }
+
+.hero__name {
+  font-family: "Cormorant Garamond", serif;
+  font-size: clamp(1.5rem, 3vw, 2.1rem);
+  font-weight: 600;
+  line-height: 1.1;
+  margin-bottom: 6px;
+}
+
 .hero__kicker {
   display: inline-flex;
   align-items: center;
