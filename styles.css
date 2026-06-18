@@ -263,11 +263,11 @@ button { font: inherit; cursor: pointer; border: none; background: none; }
 }
 
 .hero__inner {
-  display: grid;
-  grid-template-columns: 1fr minmax(150px, 190px);
-  gap: clamp(24px, 4vw, 48px);
-  align-items: start;
+  display: flex;
+  align-items: flex-start;
+  gap: clamp(20px, 4vw, 48px);
 }
+.hero__content { flex: 1 1 auto; min-width: 0; }
 .hero__title {
   font-family: "Manrope", system-ui, sans-serif;
   font-weight: 700;
@@ -317,7 +317,7 @@ button { font: inherit; cursor: pointer; border: none; background: none; }
 .hero__actions { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 30px; }
 
 /* Hero photo */
-.hero__visual { position: relative; width: 100%; max-width: 190px; margin-left: auto; }
+.hero__visual { position: relative; flex: 0 0 clamp(130px, 26vw, 210px); width: clamp(130px, 26vw, 210px); }
 .hero__photo {
   border-radius: var(--radius);
   overflow: hidden;
@@ -537,8 +537,6 @@ button { font: inherit; cursor: pointer; border: none; background: none; }
   .about-course__grid,
   .results__grid,
   .signup__grid { grid-template-columns: 1fr; }
-  .hero__inner { grid-template-columns: 1fr 130px; gap: 20px; }
-  .hero__visual { max-width: 130px; margin-left: auto; }
   .program__grid { grid-template-columns: repeat(2, 1fr); }
   .format__grid { grid-template-columns: 1fr; }
   .format__card--price { grid-column: span 1; grid-template-columns: 1fr; align-items: flex-start; }
@@ -568,8 +566,6 @@ button { font: inherit; cursor: pointer; border: none; background: none; }
   .strip__item:nth-child(3) { border-left: none; }
   .program__grid { grid-template-columns: 1fr; }
   .form__row { grid-template-columns: 1fr; }
-  .hero__inner { grid-template-columns: 1fr 104px; gap: 16px; }
-  .hero__visual { max-width: 104px; }
   .signup__contacts li { grid-template-columns: 1fr; gap: 2px; }
 }
 
