@@ -46,6 +46,11 @@
     revealEls.forEach(function (el) { el.classList.add("is-visible"); });
   }
 
+  /* Safety net: ensure everything is visible even if observer never fires */
+  window.setTimeout(function () {
+    revealEls.forEach(function (el) { el.classList.add("is-visible"); });
+  }, 1200);
+
   /* Current year */
   var yearEl = document.getElementById("year");
   if (yearEl) yearEl.textContent = new Date().getFullYear();

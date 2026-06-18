@@ -480,8 +480,8 @@ button { font: inherit; cursor: pointer; border: none; background: none; }
 .footer__copy { font-size: 0.84rem; color: rgba(243, 236, 225, 0.5); width: 100%; text-align: center; padding-top: 22px; border-top: 1px solid rgba(243, 236, 225, 0.1); margin-top: 4px; }
 
 /* ===== Reveal ===== */
-.reveal { opacity: 0; transform: translateY(26px); transition: opacity 0.8s var(--ease), transform 0.8s var(--ease); }
-.reveal.is-visible { opacity: 1; transform: none; }
+.js .reveal { opacity: 0; transform: translateY(26px); transition: opacity 0.8s var(--ease), transform 0.8s var(--ease); }
+.js .reveal.is-visible { opacity: 1; transform: none; }
 
 /* ===== Responsive ===== */
 @media (max-width: 920px) {
@@ -532,6 +532,7 @@ button { font: inherit; cursor: pointer; border: none; background: none; }
 }
 
 </style>
+  <script>document.documentElement.classList.add('js');</script>
 </head>
 <body>
   <!-- Header -->
@@ -828,6 +829,11 @@ button { font: inherit; cursor: pointer; border: none; background: none; }
   } else {
     revealEls.forEach(function (el) { el.classList.add("is-visible"); });
   }
+
+  /* Safety net: ensure everything is visible even if observer never fires */
+  window.setTimeout(function () {
+    revealEls.forEach(function (el) { el.classList.add("is-visible"); });
+  }, 1200);
 
   /* Current year */
   var yearEl = document.getElementById("year");
