@@ -195,6 +195,34 @@ button { font: inherit; cursor: pointer; border: none; background: none; }
     radial-gradient(circle at 88% 12%, rgba(176, 139, 99, 0.14), transparent 42%),
     var(--bg);
 }
+.hero__kicker {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: clamp(22px, 4vw, 34px);
+  padding: 11px 22px;
+  background: var(--dark);
+  color: var(--bg);
+  border-radius: 100px;
+  font-weight: 600;
+  font-size: clamp(0.85rem, 2vw, 1rem);
+  letter-spacing: 0.01em;
+  box-shadow: var(--shadow-soft);
+}
+.hero__kicker-dot {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: var(--accent);
+  flex-shrink: 0;
+  box-shadow: 0 0 0 0 rgba(176, 139, 99, 0.6);
+  animation: kickerPulse 2s ease-out infinite;
+}
+@keyframes kickerPulse {
+  0% { box-shadow: 0 0 0 0 rgba(176, 139, 99, 0.55); }
+  100% { box-shadow: 0 0 0 10px rgba(176, 139, 99, 0); }
+}
+
 .hero__inner {
   display: grid;
   grid-template-columns: 1.1fr 0.9fr;
