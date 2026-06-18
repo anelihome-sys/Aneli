@@ -57,11 +57,11 @@ button { font: inherit; cursor: pointer; border: none; background: none; }
 .eyebrow--light { color: #d6b88f; }
 
 .section__title {
-  font-family: "Cormorant Garamond", Georgia, serif;
-  font-weight: 600;
-  font-size: clamp(1.9rem, 4vw, 3.1rem);
-  line-height: 1.1;
-  letter-spacing: -0.01em;
+  font-family: "Manrope", system-ui, sans-serif;
+  font-weight: 700;
+  font-size: clamp(1.8rem, 3.6vw, 2.8rem);
+  line-height: 1.12;
+  letter-spacing: -0.02em;
 }
 .section__title--light { color: var(--bg); }
 
@@ -147,7 +147,7 @@ button { font: inherit; cursor: pointer; border: none; background: none; }
   height: 72px;
 }
 .logo {
-  font-family: "Cormorant Garamond", serif;
+  font-family: "Manrope", system-ui, sans-serif;
   font-size: 1.7rem;
   font-weight: 700;
   letter-spacing: 0.02em;
@@ -197,21 +197,21 @@ button { font: inherit; cursor: pointer; border: none; background: none; }
 }
 .hero__top { margin-bottom: clamp(30px, 5vw, 52px); }
 .hero__headline {
-  font-family: "Cormorant Garamond", serif;
-  font-weight: 700;
-  font-size: clamp(2.6rem, 6.4vw, 5.2rem);
-  line-height: 1.02;
-  letter-spacing: -0.02em;
-  margin-top: clamp(18px, 3vw, 26px);
-  max-width: 18ch;
+  font-family: "Manrope", system-ui, sans-serif;
+  font-weight: 800;
+  font-size: clamp(2.4rem, 6vw, 4.6rem);
+  line-height: 1.04;
+  letter-spacing: -0.03em;
+  max-width: 16ch;
 }
-.hero__headline-accent { color: var(--accent-deep); font-style: italic; }
+.hero__headline-accent { color: var(--accent-deep); }
 
 .hero__name {
-  font-family: "Cormorant Garamond", serif;
-  font-size: clamp(1.5rem, 3vw, 2.1rem);
-  font-weight: 600;
-  line-height: 1.1;
+  font-family: "Manrope", system-ui, sans-serif;
+  font-size: clamp(1.4rem, 3vw, 1.9rem);
+  font-weight: 700;
+  line-height: 1.15;
+  letter-spacing: -0.01em;
   margin-bottom: 6px;
 }
 
@@ -250,7 +250,7 @@ button { font: inherit; cursor: pointer; border: none; background: none; }
   align-items: center;
 }
 .hero__title {
-  font-family: "Cormorant Garamond", serif;
+  font-family: "Manrope", system-ui, sans-serif;
   font-weight: 700;
   font-size: clamp(2.4rem, 5.4vw, 4.4rem);
   line-height: 1.04;
@@ -272,7 +272,7 @@ button { font: inherit; cursor: pointer; border: none; background: none; }
   box-shadow: var(--shadow-soft);
 }
 .hero__author-name {
-  font-family: "Cormorant Garamond", serif;
+  font-family: "Manrope", system-ui, sans-serif;
   font-size: 1.7rem;
   font-weight: 600;
 }
@@ -316,7 +316,7 @@ button { font: inherit; cursor: pointer; border: none; background: none; }
   flex-direction: column;
   line-height: 1.1;
 }
-.hero__chip-num { font-family: "Cormorant Garamond", serif; font-size: 1.6rem; font-weight: 700; color: var(--accent-deep); }
+.hero__chip-num { font-family: "Manrope", system-ui, sans-serif; font-size: 1.6rem; font-weight: 700; color: var(--accent-deep); }
 .hero__chip-text { font-size: 0.78rem; color: var(--ink-soft); }
 .hero__chip--1 { left: -18px; top: 30px; animation: float 6s ease-in-out infinite; }
 .hero__chip--2 { right: -16px; bottom: 40px; animation: float 6s ease-in-out infinite 1s; }
@@ -334,7 +334,7 @@ button { font: inherit; cursor: pointer; border: none; background: none; }
 }
 .strip__item { display: flex; flex-direction: column; gap: 4px; }
 .strip__item + .strip__item { border-left: 1px solid rgba(243, 236, 225, 0.15); }
-.strip__num { font-family: "Cormorant Garamond", serif; font-size: 2.2rem; font-weight: 700; color: #e3c8a4; line-height: 1; }
+.strip__num { font-family: "Manrope", system-ui, sans-serif; font-size: 2.2rem; font-weight: 700; color: #e3c8a4; line-height: 1; }
 .strip__label { font-size: 0.85rem; color: rgba(243, 236, 225, 0.72); }
 
 /* ===== About course ===== */
@@ -360,7 +360,7 @@ button { font: inherit; cursor: pointer; border: none; background: none; }
   transition: transform 0.4s var(--ease), box-shadow 0.4s var(--ease), border-color 0.4s var(--ease);
 }
 .card:hover { transform: translateY(-6px); box-shadow: var(--shadow); border-color: transparent; }
-.card__no { font-family: "Cormorant Garamond", serif; font-size: 1.6rem; font-weight: 700; color: var(--accent); opacity: 0.7; display: block; margin-bottom: 12px; }
+.card__no { font-family: "Manrope", system-ui, sans-serif; font-size: 1.6rem; font-weight: 700; color: var(--accent); opacity: 0.7; display: block; margin-bottom: 12px; }
 .card h3 { font-size: 1.12rem; font-weight: 600; margin-bottom: 8px; }
 .card p { color: var(--ink-soft); font-size: 0.93rem; }
 
@@ -408,7 +408,7 @@ button { font: inherit; cursor: pointer; border: none; background: none; }
   box-shadow: var(--shadow-soft);
 }
 .bonus__icon { font-size: 2.6rem; flex-shrink: 0; }
-.bonus__title { font-family: "Cormorant Garamond", serif; font-size: clamp(1.5rem, 3vw, 2.1rem); font-weight: 600; margin-bottom: 8px; }
+.bonus__title { font-family: "Manrope", system-ui, sans-serif; font-size: clamp(1.5rem, 3vw, 2.1rem); font-weight: 600; margin-bottom: 8px; }
 .bonus__text { color: var(--ink-soft); max-width: 70ch; }
 
 /* ===== Format ===== */
@@ -426,7 +426,7 @@ button { font: inherit; cursor: pointer; border: none; background: none; }
   flex-direction: column;
 }
 .format__label { font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.12em; color: var(--ink-soft); margin-bottom: 10px; }
-.format__value { font-family: "Cormorant Garamond", serif; font-size: 1.7rem; font-weight: 600; line-height: 1.1; }
+.format__value { font-family: "Manrope", system-ui, sans-serif; font-size: 1.5rem; font-weight: 700; line-height: 1.15; letter-spacing: -0.01em; }
 .format__value--big { font-size: 2.6rem; color: var(--accent-deep); }
 .format__desc { color: var(--ink-soft); font-size: 0.95rem; margin-top: 12px; }
 .format__card--price {
