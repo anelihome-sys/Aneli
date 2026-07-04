@@ -170,6 +170,30 @@ ul, ol { list-style: none; padding: 0; }
 .kv dt { color: var(--ink-mute); }
 .kv dd { font-weight: 700; text-align: right; color: var(--ink); }
 
+/* ---------- Offer / price ---------- */
+.offer {
+  background: #faf5ec;
+  border: 1.5px solid var(--gold-soft);
+  border-radius: 16px;
+  padding: 20px 22px;
+  margin-bottom: 22px;
+  text-align: center;
+}
+.offer__tag {
+  display: inline-block;
+  background: var(--gold);
+  color: #fff;
+  font-weight: 700;
+  font-size: 0.82em;
+  padding: 6px 15px;
+  border-radius: 100px;
+  margin-bottom: 14px;
+}
+.offer__price { display: flex; align-items: baseline; justify-content: center; gap: 12px; }
+.offer__price s { color: var(--ink-mute); font-size: 1.15em; }
+.offer__price b { color: var(--accent); font-size: 2.1em; font-weight: 800; letter-spacing: -0.01em; }
+.offer__note { color: var(--ink-soft); font-size: 0.92em; margin-top: 10px; }
+
 .card--cta { border-color: var(--gold-soft); }
 .card--cta .kv { margin-top: 22px; }
 
@@ -225,7 +249,7 @@ ul, ol { list-style: none; padding: 0; }
       <div class="meta">
         <span class="meta__item">Офлайн</span>
         <span class="meta__item">Алматы</span>
-        <span class="meta__item meta__item--gold">Старт 15 июля</span>
+        <span class="meta__item meta__item--gold">Старт 20 июля</span>
       </div>
 
       <a href="#signup" class="btn">Записаться на практикум</a>
@@ -267,15 +291,20 @@ ul, ol { list-style: none; padding: 0; }
 
     <!-- Format -->
     <section class="card" id="format">
-      <h2 class="h">Формат</h2>
+      <h2 class="h">Формат и стоимость</h2>
+      <div class="offer">
+        <span class="offer__tag">Для первого потока · первых 7 учеников</span>
+        <div class="offer__price"><s>490 000 ₸</s><b>350 000 ₸</b></div>
+        <p class="offer__note">Специальная цена для моих первых учеников. Оплату можно разделить на 3 этапа.</p>
+      </div>
       <dl class="kv">
         <div><dt>Длительность</dt><dd>6 недель</dd></div>
         <div><dt>Занятия</dt><dd>3 встречи в неделю по 2,5–3 часа</dd></div>
         <div><dt>Группа</dt><dd>до 7 человек</dd></div>
         <div><dt>Место</dt><dd>Алматы · только офлайн</dd></div>
-        <div><dt>Старт</dt><dd>15 июля</dd></div>
-        <div><dt>Стоимость</dt><dd>490 000 ₸</dd></div>
-        <div><dt>Бронирование</dt><dd>предоплата 50%</dd></div>
+        <div><dt>Старт</dt><dd>20 июля</dd></div>
+        <div><dt>Оплата</dt><dd>можно разделить на 3 этапа</dd></div>
+        <div><dt>Бронирование места</dt><dd>предоплата 100 000 ₸</dd></div>
       </dl>
     </section>
 
