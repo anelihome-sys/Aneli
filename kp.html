@@ -23,7 +23,7 @@
       --brass: #8c6f42;
       --brass-soft: #b79a63;
       --wash: #faf8f4;
-      --maxw: 860px;
+      --maxw: 840px;
     }
 
     *, *::before, *::after { box-sizing: border-box; }
@@ -33,13 +33,13 @@
 
     body {
       font-family: "Inter", system-ui, -apple-system, sans-serif;
-      font-size: 15.5px;
-      line-height: 1.65;
+      font-size: 14.5px;
+      line-height: 1.6;
       color: var(--ink);
       background: var(--floor);
       -webkit-font-smoothing: antialiased;
       -moz-osx-font-smoothing: grayscale;
-      padding: clamp(0px, 4vw, 40px) 0 60px;
+      padding: clamp(0px, 4vw, 36px) 0 60px;
     }
 
     img { max-width: 100%; display: block; }
@@ -52,7 +52,7 @@
       margin-inline: auto;
       background: var(--paper);
       box-shadow: 0 1px 3px rgba(27, 36, 48, 0.06), 0 24px 60px -30px rgba(27, 36, 48, 0.22);
-      padding: clamp(28px, 6vw, 64px);
+      padding: clamp(26px, 5.5vw, 58px);
     }
 
     /* ---------- Letterhead ---------- */
@@ -61,32 +61,32 @@
       align-items: flex-start;
       justify-content: space-between;
       gap: 20px;
-      padding-bottom: 22px;
+      padding-bottom: 20px;
     }
     .letterhead__brand {
       display: flex;
       align-items: center;
-      gap: 14px;
+      gap: 13px;
     }
     .letterhead__mark {
-      width: 44px; height: 44px;
+      width: 40px; height: 40px;
       border: 1px solid var(--ink);
       display: grid; place-items: center;
       font-family: "Playfair Display", serif;
       font-weight: 600;
-      font-size: 1.05em;
+      font-size: 1em;
       letter-spacing: 0.02em;
       flex-shrink: 0;
     }
     .letterhead__name {
       font-family: "Playfair Display", serif;
       font-weight: 600;
-      font-size: 1.28em;
+      font-size: 1.22em;
       letter-spacing: 0.03em;
     }
     .letterhead__tag {
       color: var(--ink-mute);
-      font-size: 0.76em;
+      font-size: 0.74em;
       letter-spacing: 0.04em;
       text-transform: uppercase;
       margin-top: 3px;
@@ -94,101 +94,103 @@
     .letterhead__contacts {
       text-align: right;
       color: var(--ink-soft);
-      font-size: 0.82em;
-      line-height: 1.7;
+      font-size: 0.8em;
+      line-height: 1.65;
       white-space: nowrap;
     }
 
     .hr-gold { height: 2px; background: linear-gradient(90deg, var(--brass) 0%, var(--brass-soft) 45%, transparent 100%); }
-    .hr { height: 1px; background: var(--line); }
 
     /* ---------- Doc meta ---------- */
-    .doc-head { padding-top: 34px; }
+    .doc-head { padding-top: 28px; }
     .eyebrow {
       display: inline-block;
-      font-size: 0.76em;
+      font-size: 0.74em;
       font-weight: 600;
-      letter-spacing: 0.14em;
+      letter-spacing: 0.13em;
       text-transform: uppercase;
       color: var(--brass);
       padding-bottom: 6px;
       border-bottom: 1px solid var(--brass-soft);
-      margin-bottom: 14px;
+      margin-bottom: 13px;
     }
     h1.doc-title {
       font-family: "Playfair Display", serif;
       font-weight: 600;
-      font-size: clamp(1.5rem, 3.6vw, 2rem);
+      font-size: clamp(1.4rem, 3.2vw, 1.85rem);
       line-height: 1.3;
       letter-spacing: -0.005em;
-      max-width: 34ch;
+      max-width: 36ch;
     }
 
-    .meta-table { margin-top: 26px; }
+    .meta-table { margin-top: 22px; }
     .meta-table tr { border-top: 1px solid var(--line-soft); }
     .meta-table tr:first-child { border-top: none; }
-    .meta-table th, .meta-table td { padding: 9px 0; font-weight: 400; text-align: left; vertical-align: top; }
+    .meta-table th, .meta-table td { padding: 8px 0; font-weight: 400; text-align: left; vertical-align: top; }
     .meta-table th {
-      width: 220px;
+      width: 210px;
       color: var(--ink-mute);
-      font-size: 0.86em;
+      font-size: 0.84em;
       font-weight: 500;
     }
-    .meta-table td { color: var(--ink); font-weight: 500; }
+    .meta-table td { color: var(--ink); font-weight: 500; font-size: 0.94em; }
 
     .intro {
       color: var(--ink-soft);
-      margin-top: 28px;
-      padding-top: 24px;
+      font-size: 0.94em;
+      margin-top: 24px;
+      padding-top: 20px;
       border-top: 1px solid var(--line-soft);
     }
 
     /* ---------- Sections ---------- */
     .sec {
       display: grid;
-      grid-template-columns: 64px 1fr;
-      gap: 4px 20px;
-      margin-top: 46px;
-      padding-top: 30px;
+      grid-template-columns: 56px 1fr;
+      gap: 4px 18px;
+      margin-top: 36px;
+      padding-top: 26px;
       border-top: 1px solid var(--line-soft);
+      break-inside: avoid;
     }
     .sec__num {
       font-family: "Playfair Display", serif;
       font-weight: 600;
-      font-size: 1.9em;
+      font-size: 1.55em;
       color: var(--brass-soft);
       line-height: 1;
     }
     .sec__body h2 {
       font-family: "Playfair Display", serif;
       font-weight: 600;
-      font-size: 1.28em;
-      margin-bottom: 16px;
+      font-size: 1.2em;
+      margin-bottom: 14px;
     }
     .sec__body h3 {
-      font-size: 0.86em;
+      font-size: 0.8em;
       font-weight: 700;
       letter-spacing: 0.06em;
       text-transform: uppercase;
       color: var(--ink-mute);
-      margin-top: 26px;
-      margin-bottom: 10px;
+      margin-top: 22px;
+      margin-bottom: 8px;
     }
     .sec__body h3:first-of-type { margin-top: 0; }
     .sec__body > p { color: var(--ink-soft); }
 
     .info-table tr { border-top: 1px solid var(--line-soft); }
     .info-table tr:first-child { border-top: none; }
-    .info-table th, .info-table td { padding: 11px 0; text-align: left; vertical-align: top; }
-    .info-table th { width: 200px; color: var(--ink-mute); font-weight: 500; font-size: 0.9em; }
+    .info-table th, .info-table td { padding: 10px 0; text-align: left; vertical-align: top; font-size: 0.94em; }
+    .info-table th { width: 190px; color: var(--ink-mute); font-weight: 500; }
     .info-table td { font-weight: 600; }
 
     .item-list li {
       display: flex;
-      gap: 14px;
-      padding: 11px 0;
+      gap: 12px;
+      padding: 9px 0;
       border-top: 1px solid var(--line-soft);
       color: var(--ink-soft);
+      font-size: 0.95em;
     }
     .item-list li:first-child { border-top: none; padding-top: 2px; }
     .item-list b { color: var(--ink); font-weight: 600; }
@@ -196,33 +198,36 @@
       font-variant-numeric: tabular-nums;
       color: var(--brass);
       font-weight: 600;
-      font-size: 0.9em;
-      min-width: 20px;
+      font-size: 0.88em;
+      min-width: 18px;
     }
 
     .note {
-      margin-top: 24px;
-      padding: 18px 22px;
+      margin-top: 20px;
+      padding: 16px 20px;
       background: var(--wash);
       border-left: 3px solid var(--brass);
+      break-inside: avoid;
     }
+    .note--muted { border-left-color: var(--ink-mute); }
     .note__label {
-      font-size: 0.76em;
+      font-size: 0.74em;
       font-weight: 700;
       letter-spacing: 0.08em;
       text-transform: uppercase;
       color: var(--brass);
-      margin-bottom: 6px;
+      margin-bottom: 5px;
     }
-    .note p { color: var(--ink-soft); }
+    .note--muted .note__label { color: var(--ink-mute); }
+    .note p { color: var(--ink-soft); font-size: 0.94em; }
 
     .stage-list { counter-reset: stage; }
     .stage-list li {
       counter-increment: stage;
       display: grid;
-      grid-template-columns: 28px 1fr;
-      gap: 14px;
-      padding: 14px 0;
+      grid-template-columns: 24px 1fr;
+      gap: 12px;
+      padding: 11px 0;
       border-top: 1px solid var(--line-soft);
     }
     .stage-list li:first-child { border-top: none; padding-top: 2px; }
@@ -231,94 +236,99 @@
       font-family: "Playfair Display", serif;
       font-weight: 600;
       color: var(--brass);
+      font-size: 0.95em;
     }
-    .stage-list__t { font-weight: 600; color: var(--ink); }
-    .stage-list__d { color: var(--ink-soft); font-size: 0.94em; margin-top: 2px; }
+    .stage-list__t { font-weight: 600; color: var(--ink); font-size: 0.95em; }
+    .stage-list__d { color: var(--ink-soft); font-size: 0.88em; margin-top: 2px; }
 
-    .price-table { margin-top: 4px; }
+    .price-table { margin-top: 2px; break-inside: avoid; }
     .price-table thead th {
       text-align: left;
-      font-size: 0.76em;
+      font-size: 0.74em;
       font-weight: 700;
       letter-spacing: 0.06em;
       text-transform: uppercase;
       color: var(--ink-mute);
-      padding-bottom: 10px;
+      padding-bottom: 9px;
       border-bottom: 1px solid var(--ink);
     }
     .price-table thead th:last-child, .price-table tbody td:last-child, .price-table tfoot th:last-child { text-align: right; }
-    .price-table tbody td { padding: 14px 0; border-bottom: 1px solid var(--line-soft); vertical-align: top; }
+    .price-table tbody td { padding: 13px 0; border-bottom: 1px solid var(--line-soft); vertical-align: top; font-size: 0.95em; }
     .price-table tfoot th, .price-table tfoot td {
-      padding-top: 16px;
+      padding-top: 14px;
       font-family: "Playfair Display", serif;
-      font-size: 1.15em;
+      font-size: 1.1em;
       font-weight: 600;
+      text-align: left;
     }
     .price-table tfoot td { text-align: right; color: var(--brass); }
 
-    .terms-table { margin-top: 30px; }
+    .terms-table { margin-top: 22px; break-inside: avoid; }
     .terms-table tr { border-top: 1px solid var(--line-soft); }
     .terms-table tr:first-child { border-top: none; }
-    .terms-table th, .terms-table td { padding: 11px 0; text-align: left; }
-    .terms-table th { width: 260px; color: var(--ink-mute); font-weight: 500; font-size: 0.9em; }
+    .terms-table th, .terms-table td { padding: 10px 0; text-align: left; font-size: 0.94em; }
+    .terms-table th { width: 280px; color: var(--ink-mute); font-weight: 500; }
     .terms-table td { font-weight: 600; }
 
-    .note-inline { color: var(--ink-mute); font-size: 0.88em; margin-top: 16px; }
+    .note-inline { color: var(--ink-mute); font-size: 0.84em; margin-top: 14px; }
 
     /* ---------- Signatures ---------- */
     .sign {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 40px;
-      margin-top: 50px;
-      padding-top: 30px;
+      gap: 36px;
+      margin-top: 40px;
+      padding-top: 26px;
       border-top: 1px solid var(--line-soft);
+      break-inside: avoid;
     }
     .sign__role {
-      font-size: 0.76em;
+      font-size: 0.74em;
       font-weight: 700;
       letter-spacing: 0.08em;
       text-transform: uppercase;
       color: var(--ink-mute);
-      margin-bottom: 34px;
+      margin-bottom: 30px;
     }
     .sign__line { border-top: 1px solid var(--ink); margin-top: 4px; padding-top: 8px; }
-    .sign__name { font-weight: 600; }
-    .sign__sub { color: var(--ink-mute); font-size: 0.86em; margin-top: 2px; }
+    .sign__name { font-weight: 600; font-size: 0.95em; }
+    .sign__sub { color: var(--ink-mute); font-size: 0.84em; margin-top: 2px; }
 
     /* ---------- Footer ---------- */
     .doc-footer {
-      margin-top: 40px;
-      padding-top: 20px;
+      margin-top: 32px;
+      padding-top: 18px;
       border-top: 1px solid var(--line-soft);
     }
     .doc-footer__contacts {
       display: flex;
       flex-wrap: wrap;
-      gap: 6px 18px;
+      gap: 6px 16px;
       color: var(--ink-mute);
-      font-size: 0.84em;
+      font-size: 0.82em;
     }
     .fine {
       color: var(--ink-mute);
-      font-size: 0.74em;
-      line-height: 1.55;
-      margin-top: 16px;
+      font-size: 0.72em;
+      line-height: 1.5;
+      margin-top: 14px;
     }
 
     @media (max-width: 640px) {
       .letterhead { flex-direction: column; }
       .letterhead__contacts { text-align: left; }
       .sec { grid-template-columns: 1fr; }
-      .sec__num { font-size: 1.1em; }
+      .sec__num { font-size: 1.05em; }
       .meta-table th, .info-table th, .terms-table th { width: 46%; }
-      .sign { grid-template-columns: 1fr; gap: 30px; }
+      .sign { grid-template-columns: 1fr; gap: 26px; }
     }
 
+    @page { size: A4; margin: 16mm 14mm; }
+
     @media print {
-      body { background: #fff; padding: 0; }
-      .page { box-shadow: none; max-width: none; }
-      .sec { break-inside: avoid; }
+      body { background: #fff; padding: 0; font-size: 12.5px; }
+      .page { box-shadow: none; max-width: none; padding: 0; }
+      .sec, .note, .price-table, .terms-table, .sign { break-inside: avoid; }
     }
   </style>
 </head>
@@ -350,7 +360,7 @@
         <tr><th>Объект</th><td>Жилой дом, мкр. Ерменсай, г. Алматы</td></tr>
       </table>
 
-      <p class="intro">Настоящее коммерческое предложение подготовлено дизайн-бюро Aneli&nbsp;Interiors на разработку полного дизайн-проекта интерьера указанного объекта, включая комплект рабочей документации, необходимый для проведения строительно-отделочных работ.</p>
+      <p class="intro">Настоящее коммерческое предложение подготовлено дизайн-бюро Aneli&nbsp;Interiors на разработку дизайн-проекта интерьера указанного объекта, включая комплект рабочей документации, необходимый для проведения строительно-отделочных работ.</p>
     </section>
 
     <section class="sec">
@@ -388,6 +398,11 @@
           <div class="note__label">Дополнительно включено</div>
           <p>Подбор всех необходимых материалов — отделочные материалы, мебель, освещение, сантехника — с учётом бюджета заказчика.</p>
         </div>
+
+        <div class="note note--muted">
+          <div class="note__label">Не входит в стоимость</div>
+          <p>Услуги авторского надзора и контроля строительных работ. Настоящее предложение распространяется исключительно на разработку дизайн-проекта и подбор материалов.</p>
+        </div>
       </div>
     </section>
 
@@ -398,10 +413,10 @@
         <ol class="stage-list">
           <li><div><div class="stage-list__t">Заключение договора и предоплата</div><div class="stage-list__d">Старт работ после внесения предоплаты в размере 50% от стоимости проекта</div></div></li>
           <li><div><div class="stage-list__t">Планировочное решение и расстановка мебели</div><div class="stage-list__d">Согласование с заказчиком базовой планировки объекта</div></div></li>
-          <li><div><div class="stage-list__t">3D-визуализация интерьера</div><div class="stage-list__d">Разработка фотореалистичных визуализаций всех помещений</div></div></li>
+          <li><div><div class="stage-list__t">3D-визуализация интерьера</div><div class="stage-list__d">Разработка и согласование фотореалистичных визуализаций всех помещений. Оплата 30% после утверждения визуализаций заказчиком</div></div></li>
           <li><div><div class="stage-list__t">Разработка рабочей документации</div><div class="stage-list__d">Подготовка полного комплекта чертежей для строителей</div></div></li>
           <li><div><div class="stage-list__t">Подбор материалов</div><div class="stage-list__d">Формирование спецификации материалов и мебели под бюджет заказчика</div></div></li>
-          <li><div><div class="stage-list__t">Передача проекта</div><div class="stage-list__d">Передача заказчику полного пакета дизайн-проекта</div></div></li>
+          <li><div><div class="stage-list__t">Передача проекта</div><div class="stage-list__d">Передача заказчику полного пакета дизайн-проекта. Оплата 20% по завершении проекта</div></div></li>
         </ol>
       </div>
     </section>
@@ -409,7 +424,9 @@
     <section class="sec">
       <div class="sec__num">04</div>
       <div class="sec__body">
-        <h2>Стоимость</h2>
+        <h2>Стоимость и условия оплаты</h2>
+
+        <h3>Стоимость</h3>
         <table class="price-table">
           <thead>
             <tr><th>Наименование услуги</th><th>Площадь</th><th>Цена за м²</th><th>Стоимость</th></tr>
@@ -423,13 +440,15 @@
             </tr>
           </tbody>
           <tfoot>
-            <tr><th colspan="3">Итого</th><td style="text-align: right; color: var(--brass); font-family: 'Playfair Display', serif; font-size: 1.15em; font-weight: 600;">3 316 500 ₸</td></tr>
+            <tr><th colspan="3">Итого</th><td style="text-align: right; color: var(--brass); font-family: 'Playfair Display', serif; font-size: 1.1em; font-weight: 600;">3 316 500 ₸</td></tr>
           </tfoot>
         </table>
 
+        <h3>Условия оплаты</h3>
         <table class="terms-table">
           <tr><th>Предоплата для начала работ</th><td>50% — 1 658 250 ₸</td></tr>
-          <tr><th>Оставшаяся часть</th><td>50% — 1 658 250 ₸, по завершении проекта</td></tr>
+          <tr><th>После утверждения 3D-визуализаций</th><td>30% — 994 950 ₸</td></tr>
+          <tr><th>После завершения дизайн-проекта</th><td>20% — 663 300 ₸</td></tr>
           <tr><th>Срок выполнения проекта</th><td>30–35 рабочих дней</td></tr>
         </table>
         <p class="note-inline">Срок выполнения зависит от оперативности согласования проекта заказчиком на каждом этапе.</p>
