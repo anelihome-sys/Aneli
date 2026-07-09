@@ -33,8 +33,8 @@
 
     body {
       font-family: "Inter", system-ui, -apple-system, sans-serif;
-      font-size: 13.5px;
-      line-height: 1.5;
+      font-size: 15.5px;
+      line-height: 1.55;
       color: var(--ink);
       background: var(--floor);
       -webkit-font-smoothing: antialiased;
@@ -51,7 +51,7 @@
       margin-inline: auto;
       background: var(--paper);
       box-shadow: 0 1px 3px rgba(27, 36, 48, 0.06), 0 24px 60px -30px rgba(27, 36, 48, 0.22);
-      padding: clamp(26px, 4vw, 46px) clamp(26px, 5vw, 52px);
+      padding: clamp(34px, 5vw, 60px) clamp(34px, 6vw, 68px);
     }
 
     /* ---------- Letterhead ---------- */
@@ -60,45 +60,46 @@
       align-items: center;
       justify-content: space-between;
       gap: 20px;
-      padding-bottom: 16px;
+      padding-bottom: 22px;
     }
-    .letterhead__brand { display: flex; align-items: center; gap: 12px; }
+    .letterhead__brand { display: flex; align-items: center; gap: 14px; }
     .letterhead__mark {
-      width: 36px; height: 36px;
+      width: 42px; height: 42px;
       border: 1.5px solid var(--ink);
       display: grid; place-items: center;
       font-family: "Playfair Display", serif;
       font-weight: 700;
-      font-size: 0.95em;
+      font-size: 1.05em;
       flex-shrink: 0;
     }
-    .letterhead__name { font-family: "Playfair Display", serif; font-weight: 700; font-size: 1.15em; letter-spacing: 0.02em; }
-    .letterhead__tag { color: var(--ink-mute); font-size: 0.7em; letter-spacing: 0.04em; text-transform: uppercase; margin-top: 2px; }
-    .letterhead__contacts { text-align: right; color: var(--ink-soft); font-size: 0.78em; line-height: 1.55; }
+    .letterhead__name { font-family: "Playfair Display", serif; font-weight: 700; font-size: 1.3em; letter-spacing: 0.02em; }
+    .letterhead__tag { color: var(--ink-mute); font-size: 0.75em; letter-spacing: 0.04em; text-transform: uppercase; margin-top: 3px; }
+    .letterhead__contacts { text-align: right; color: var(--ink-soft); font-size: 0.86em; line-height: 1.6; }
 
     .hr-gold { height: 2px; background: linear-gradient(90deg, var(--brass) 0%, var(--brass-soft) 55%, transparent 100%); }
 
     /* ---------- Title ---------- */
-    .doc-head { padding-top: 20px; padding-bottom: 20px; border-bottom: 1px solid var(--line); }
+    .doc-head { padding-top: 28px; padding-bottom: 28px; border-bottom: 1px solid var(--line); }
     .eyebrow {
       display: inline-block;
-      font-size: 0.7em; font-weight: 700; letter-spacing: 0.13em; text-transform: uppercase;
-      color: var(--brass); margin-bottom: 8px;
+      font-size: 0.76em; font-weight: 700; letter-spacing: 0.13em; text-transform: uppercase;
+      color: var(--brass); margin-bottom: 10px;
     }
     h1.doc-title {
       font-family: "Playfair Display", serif;
       font-weight: 700;
-      font-size: 1.55rem;
+      font-size: 1.9rem;
       line-height: 1.25;
       letter-spacing: -0.005em;
     }
     .doc-meta-line {
-      margin-top: 8px;
+      margin-top: 12px;
       color: var(--ink-soft);
-      font-size: 0.86em;
+      font-size: 0.94em;
     }
     .doc-meta-line b { color: var(--ink); font-weight: 600; }
     .doc-meta-line .sep { color: var(--line); margin: 0 8px; }
+    .doc-meta-line--sub { margin-top: 4px; color: var(--ink-mute); font-size: 0.86em; }
 
     /* ---------- Price banner ---------- */
     .price-banner {
@@ -106,66 +107,56 @@
       align-items: center;
       justify-content: space-between;
       flex-wrap: wrap;
-      gap: 10px 20px;
-      margin-top: 20px;
-      padding: 18px 22px;
+      gap: 12px 24px;
+      margin-top: 28px;
+      padding: 24px 28px;
       background: var(--wash);
       border: 1px solid var(--brass-soft);
     }
-    .price-banner__label { font-size: 0.72em; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-soft); }
-    .price-banner__calc { font-size: 0.78em; color: var(--ink-mute); margin-top: 4px; }
-    .price-banner__total { font-family: "Playfair Display", serif; font-weight: 700; font-size: 1.9em; color: var(--brass); letter-spacing: -0.01em; }
+    .price-banner__label { font-size: 0.78em; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-soft); }
+    .price-banner__calc { font-size: 0.86em; color: var(--ink-mute); margin-top: 5px; }
+    .price-banner__total { font-family: "Playfair Display", serif; font-weight: 700; font-size: 2.3em; color: var(--brass); letter-spacing: -0.01em; }
 
     /* ---------- Two-column grid ---------- */
-    .grid { display: grid; grid-template-columns: 290px 1fr; gap: 20px; margin-top: 20px; }
-    .box { border: 1px solid var(--line); padding: 18px 20px; }
+    .grid { display: grid; grid-template-columns: 300px 1fr; gap: 28px; margin-top: 28px; }
+    .box { border: 1px solid var(--line); padding: 26px 28px; }
     .box__label {
-      font-size: 0.7em; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase;
-      color: var(--brass); margin-bottom: 10px;
+      font-size: 0.76em; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase;
+      color: var(--brass); margin-bottom: 14px;
     }
-    .box__label:not(:first-child) { margin-top: 16px; }
+    .box__label:not(:first-child) { margin-top: 24px; }
 
-    .fact-table td { padding: 5px 0; vertical-align: top; }
-    .fact-table td:first-child { color: var(--ink-mute); width: 78px; font-size: 0.88em; }
-    .fact-table td:last-child { color: var(--ink); font-weight: 600; font-size: 0.9em; }
+    .fact-table td { padding: 8px 0; vertical-align: top; }
+    .fact-table td:first-child { color: var(--ink-mute); width: 84px; font-size: 0.92em; }
+    .fact-table td:last-child { color: var(--ink); font-weight: 600; font-size: 0.94em; }
 
-    .pay-table td { padding: 6px 0; border-top: 1px solid var(--line-soft); font-size: 0.87em; }
+    .pay-table td { padding: 9px 0; border-top: 1px solid var(--line-soft); font-size: 0.9em; }
     .pay-table tr:first-child td { border-top: none; padding-top: 0; }
     .pay-table td:first-child { color: var(--ink-soft); white-space: nowrap; padding-right: 12px; }
     .pay-table td:last-child { color: var(--ink); font-weight: 700; text-align: right; white-space: nowrap; }
-    .pay-table tr.term td { color: var(--ink-mute); font-size: 0.84em; padding-top: 8px; }
+    .pay-table tr.term td { color: var(--ink-mute); font-size: 0.86em; padding-top: 11px; }
     .pay-table tr.term td:last-child { color: var(--ink); font-weight: 600; }
 
-    .scope-h { font-size: 0.7em; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-mute); margin-bottom: 6px; }
-    .scope-h:not(:first-child) { margin-top: 14px; }
-    .scope-list li { display: flex; gap: 8px; padding: 4px 0; color: var(--ink-soft); font-size: 0.92em; }
+    .scope-h { font-size: 0.76em; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-mute); margin-bottom: 9px; }
+    .scope-h:not(:first-child) { margin-top: 20px; }
+    .scope-list li { display: flex; gap: 9px; padding: 6px 0; color: var(--ink-soft); font-size: 0.96em; }
     .scope-list li b { color: var(--ink); font-weight: 600; }
     .scope-list li::before { content: "—"; color: var(--brass); flex-shrink: 0; }
 
-    .note-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-top: 16px; }
-    .note { padding: 10px 14px; background: var(--wash); border-left: 3px solid var(--brass); }
+    .note-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; margin-top: 24px; }
+    .note { padding: 14px 18px; background: var(--wash); border-left: 3px solid var(--brass); }
     .note.muted { border-left-color: var(--ink-mute); }
-    .note__label { font-size: 0.68em; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: var(--brass); margin-bottom: 3px; }
+    .note__label { font-size: 0.72em; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: var(--brass); margin-bottom: 5px; }
     .note.muted .note__label { color: var(--ink-mute); }
-    .note p { color: var(--ink-soft); font-size: 0.82em; line-height: 1.4; }
+    .note p { color: var(--ink-soft); font-size: 0.86em; line-height: 1.45; }
 
-    /* ---------- Signatures ---------- */
-    .sign { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin-top: 24px; padding-top: 18px; border-top: 1px solid var(--line); }
-    .sign__role { font-size: 0.68em; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-mute); margin-bottom: 20px; }
-    .sign__line { border-top: 1px solid var(--ink); margin-top: 2px; padding-top: 6px; }
-    .sign__name { font-weight: 700; font-size: 0.88em; }
-    .sign__sub { color: var(--ink-mute); font-size: 0.8em; margin-top: 1px; }
-
-    /* ---------- Footer ---------- */
-    .doc-footer { margin-top: 16px; padding-top: 12px; border-top: 1px solid var(--line-soft); display: flex; justify-content: space-between; flex-wrap: wrap; gap: 6px 16px; }
-    .doc-footer__contacts { color: var(--ink-mute); font-size: 0.76em; }
-    .fine { color: var(--ink-mute); font-size: 0.7em; }
+    /* ---------- Footnote ---------- */
+    .fine { color: var(--ink-mute); font-size: 0.76em; margin-top: 26px; }
 
     @media (max-width: 680px) {
       .letterhead { flex-direction: column; align-items: flex-start; gap: 10px; }
       .letterhead__contacts { text-align: left; }
       .grid { grid-template-columns: 1fr; }
-      .sign { grid-template-columns: 1fr; }
       .note-grid { grid-template-columns: 1fr; }
     }
 
@@ -174,7 +165,7 @@
     @media print {
       body { background: #fff; padding: 0; font-size: 12px; }
       .page { box-shadow: none; max-width: none; padding: 0; }
-      .grid, .box, .price-banner, .note, .sign { break-inside: avoid; }
+      .grid, .box, .price-banner, .note { break-inside: avoid; }
     }
   </style>
 </head>
@@ -198,10 +189,8 @@
     <section class="doc-head">
       <span class="eyebrow">Коммерческое предложение</span>
       <h1 class="doc-title">Разработка дизайн-проекта интерьера жилого дома</h1>
-      <p class="doc-meta-line">
-        <b>г. Алматы, Бостандыкский р-н, мкр. Ерменсай, ул. Николай Пальгов, уч. 5</b>
-        <span class="sep">·</span>09.07.2026<span class="sep">·</span>действительно до 08.08.2026
-      </p>
+      <p class="doc-meta-line"><b>г. Алматы, Бостандыкский р-н, мкр. Ерменсай, ул. Николай Пальгов, уч. 5</b></p>
+      <p class="doc-meta-line doc-meta-line--sub">09.07.2026<span class="sep">·</span>действительно до 08.08.2026</p>
     </section>
 
     <div class="price-banner">
@@ -234,16 +223,16 @@
 
         <div class="scope-h">Визуализация</div>
         <ul class="scope-list">
-          <li><b>Фотореалистичные 3D-визуализации</b> всех помещений</li>
+          <li><span><b>Фотореалистичные 3D-визуализации</b> всех помещений</span></li>
         </ul>
 
         <div class="scope-h">Рабочая документация для строителей</div>
         <ul class="scope-list">
-          <li><b>Планировка</b> с расстановкой мебели</li>
-          <li><b>План освещения</b></li>
-          <li><b>План розеток</b> и выключателей</li>
-          <li><b>План полов</b></li>
-          <li><b>Развёртки стен</b></li>
+          <li><span><b>Планировка</b> с расстановкой мебели</span></li>
+          <li><span><b>План освещения</b></span></li>
+          <li><span><b>План розеток</b> и выключателей</span></li>
+          <li><span><b>План полов</b></span></li>
+          <li><span><b>Развёртки стен</b></span></li>
         </ul>
 
         <div class="note-grid">
@@ -259,26 +248,7 @@
       </div>
     </div>
 
-    <section class="sign">
-      <div>
-        <div class="sign__role">Исполнитель</div>
-        <div class="sign__line">
-          <div class="sign__name">Aneli Interiors</div>
-          <div class="sign__sub">Анели Ташбаева</div>
-        </div>
-      </div>
-      <div>
-        <div class="sign__role">Заказчик</div>
-        <div class="sign__line">
-          <div class="sign__sub">Ф.И.О., подпись</div>
-        </div>
-      </div>
-    </section>
-
-    <footer class="doc-footer">
-      <span class="doc-footer__contacts">Aneli Interiors · г. Алматы · +7 707 332 30 71 · aneli.home@gmail.com</span>
-      <span class="fine">* Стоимость приблизительная, уточняется по ТЗ.</span>
-    </footer>
+    <p class="fine">* Стоимость приблизительная, уточняется по техническому заданию.</p>
   </div>
 </body>
 </html>
