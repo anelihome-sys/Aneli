@@ -240,7 +240,7 @@
     background: var(--ink);
     color: #f3efe4;
     text-align: center;
-    padding: 30mm 22mm 0;
+    padding: 16mm 22mm 16mm;
   }
   .cta__kicker {
     display: inline-block;
@@ -256,12 +256,12 @@
     font-size: 27pt;
     line-height: 1.28;
     max-width: 148mm;
-    margin: 8mm auto 0;
+    margin: 5mm auto 0;
     color: #fffdf8;
   }
   .cta__when {
     display: inline-block;
-    margin-top: 9mm;
+    margin-top: 6mm;
     background: #e0b968;
     color: #2a2113;
     font-size: 12.5pt; font-weight: 800;
@@ -270,7 +270,7 @@
     letter-spacing: 0.02em;
   }
   .cta__intro {
-    margin: 9mm auto 0;
+    margin: 6mm auto 0;
     max-width: 138mm;
     font-size: 11.8pt;
     line-height: 1.68;
@@ -278,7 +278,7 @@
   }
 
   .cta__list {
-    margin: 10mm auto 0;
+    margin: 7mm auto 0;
     max-width: 140mm;
     text-align: left;
     list-style: none;
@@ -286,7 +286,7 @@
   }
   .cta__list li {
     display: flex; gap: 6mm; align-items: flex-start;
-    padding: 5mm 0;
+    padding: 4mm 0;
     border-top: 1px solid rgba(255,255,255,0.14);
     font-size: 11.8pt;
     color: #c9cdc9;
@@ -304,12 +304,9 @@
     margin-top: 1mm;
   }
 
-  .cta__foot {
-    position: absolute; left: 0; right: 0; bottom: 16mm;
-    text-align: center;
-  }
   .cta__button {
     display: inline-block;
+    margin-top: 6mm;
     background: #e0b968;
     color: #2a2113;
     font-size: 13.5pt;
@@ -317,9 +314,35 @@
     padding: 6mm 15mm;
     border-radius: 100px;
     letter-spacing: 0.01em;
+    text-decoration: none;
   }
+
+  .cta__divider {
+    border: none; border-top: 1px solid rgba(255,255,255,0.16);
+    max-width: 140mm; margin: 7mm auto 0;
+  }
+
+  .cta__consult {
+    max-width: 140mm;
+    margin: 6mm auto 0;
+    text-align: left;
+  }
+  .cta__consult .tag {
+    font-size: 9.5pt; font-weight: 800; letter-spacing: 0.14em; text-transform: uppercase;
+    color: #e0b968;
+  }
+  .cta__consult p {
+    margin: 2.5mm 0 0;
+    font-size: 11pt;
+    line-height: 1.62;
+    color: #c9cdc9;
+  }
+  .cta__consult b { color: #fffdf8; }
+  .cta__consult a { color: #e0b968; font-weight: 700; text-decoration: none; }
+
   .cta__contacts {
-    margin-top: 6mm;
+    position: absolute; left: 0; right: 0; bottom: 12mm;
+    text-align: center;
     font-size: 10.5pt;
     color: #9aa19b;
   }
@@ -401,7 +424,7 @@
     <div class="cta__title">Хотите продвигаться в дизайне интерьера ещё быстрее?</div>
     <div class="cta__when">25 июля · 18:00 по Москве</div>
 
-    <p class="cta__intro">Приходите на бесплатный мастер-класс для начинающих дизайнеров интерьера. Разберём на практике, с чего начать, если у вас пока нет портфолио и клиентов.</p>
+    <p class="cta__intro">Это онлайн-мастер-класс, будем на связи примерно 1–1,5 часа. Освободите этот вечер заранее — вы получите столько полезного, сколько бесплатно обычно никто не даёт. Расскажу всё через призму своего пути: как я начинала, когда только окончила университет.</p>
 
     <ul class="cta__list">
       <li><span class="n">1</span><span><b>Как начать работать без портфолио</b> — что показывать клиентам на старте</span></li>
@@ -409,10 +432,17 @@
       <li><span class="n">3</span><span><b>Как общаться с заказчиками</b> — без страха и потери клиентов</span></li>
     </ul>
 
-    <div class="cta__foot">
-      <div class="cta__button">Записаться на мастер-класс</div>
-      <div class="cta__contacts">WhatsApp +7 707 332 30 71 · aneli.home@gmail.com</div>
+    <a class="cta__button" href="https://wa.me/77073323071?text=%D0%97%D0%B4%D1%80%D0%B0%D0%B2%D1%81%D1%82%D0%B2%D1%83%D0%B9%D1%82%D0%B5%21%20%D0%A5%D0%BE%D1%87%D1%83%20%D0%B7%D0%B0%D0%BF%D0%B8%D1%81%D0%B0%D1%82%D1%8C%D1%81%D1%8F%20%D0%BD%D0%B0%20%D0%BC%D0%B0%D1%81%D1%82%D0%B5%D1%80-%D0%BA%D0%BB%D0%B0%D1%81%D1%81">Записаться на мастер-класс</a>
+
+    <hr class="cta__divider" />
+
+    <div class="cta__consult">
+      <span class="tag">Нужна помощь лично вам?</span>
+      <p>Если вы начинающий или уже практикующий дизайнер интерьера и не знаете, как двигаться дальше — я провожу личные консультации: разбираю ваш конкретный случай и помогаю составить план развития, который приведёт к стабильному доходу.</p>
+      <p>Консультация платная. Если интересно — <a href="https://wa.me/77073323071?text=%D0%97%D0%B4%D1%80%D0%B0%D0%B2%D1%81%D1%82%D0%B2%D1%83%D0%B9%D1%82%D0%B5%21%20%D0%A5%D0%BE%D1%87%D1%83%20%D1%83%D0%B7%D0%BD%D0%B0%D1%82%D1%8C%20%D0%BF%D1%80%D0%BE%20%D0%BA%D0%BE%D0%BD%D1%81%D1%83%D0%BB%D1%8C%D1%82%D0%B0%D1%86%D0%B8%D1%8E"><b>напишите в чат</b></a> — пришлю всю информацию.</p>
     </div>
+
+    <div class="cta__contacts">WhatsApp +7 707 332 30 71 · aneli.home@gmail.com</div>
   </section>
 
 </body>
