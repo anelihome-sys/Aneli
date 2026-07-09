@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8" />
+<title>Продвижение начинающих дизайнеров</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --bg2: #eef2f6;
+    --card: #ffffff;
+    --ink: #2b3a47;
+    --ink-soft: #4d5c68;
+    --ink-mute: #7c8a95;
+    --line: #e2e8ee;
+    --gold: #c2a05f;
+    --gold-soft: #e8dcc2;
+    --accent: #b6772f;
+  }
+  * { box-sizing: border-box; }
+  html, body {
+    margin: 0; padding: 0;
+    font-family: "Manrope", system-ui, -apple-system, sans-serif;
+    color: var(--ink);
+    font-size: 13.5pt;
+    line-height: 1.62;
+    -webkit-font-smoothing: antialiased;
+  }
+  @page { size: A4; margin: 0; }
+  .page {
+    width: 210mm;
+    min-height: 297mm;
+    padding: 16mm 17mm 18mm;
+    page-break-after: always;
+    position: relative;
+    background: var(--card);
+  }
+  .page:last-child { page-break-after: auto; }
+
+  /* ---- Cover ---- */
+  .cover { background: linear-gradient(180deg, #ffffff 0%, var(--bg2) 100%); }
+  .cover__top { display: flex; justify-content: space-between; align-items: flex-start; gap: 18px; }
+  .brand { font-weight: 800; font-size: 12.5pt; letter-spacing: 0.01em; color: var(--ink); }
+  .brand span { color: var(--gold); }
+  .cover__photo {
+    width: 92px; height: 92px;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 3px solid var(--gold-soft);
+    box-shadow: 0 10px 24px -12px rgba(43,58,71,0.35);
+    flex-shrink: 0;
+  }
+  .cover__photo img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 18%; }
+
+  .greeting {
+    margin-top: 26px;
+    background: #fff;
+    border: 1.4px solid var(--gold-soft);
+    border-radius: 18px;
+    padding: 20px 24px;
+    box-shadow: 0 16px 34px -28px rgba(43,58,71,0.35);
+  }
+  .greeting p { margin: 0; color: var(--ink-soft); font-size: 11.5pt; line-height: 1.6; }
+  .greeting b { color: var(--ink); font-weight: 700; }
+  .greeting .lead { color: var(--ink-mute); }
+
+  .cover__title {
+    margin-top: 44px;
+    font-size: 30pt;
+    font-weight: 800;
+    line-height: 1.24;
+    letter-spacing: -0.01em;
+    color: var(--ink);
+  }
+  .cover__title .hl { color: var(--accent); }
+  .cover__subtitle {
+    margin-top: 16px;
+    font-size: 13pt;
+    color: var(--ink-soft);
+    max-width: 145mm;
+  }
+  .cover__tags { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 26px; }
+  .tag {
+    padding: 8px 16px;
+    border-radius: 100px;
+    background: #fff;
+    border: 1px solid var(--line);
+    font-weight: 600;
+    font-size: 10.5pt;
+    color: var(--ink-soft);
+  }
+  .tag--gold { background: var(--gold); border-color: var(--gold); color: #fff; }
+
+  .cover__foot {
+    position: absolute;
+    left: 17mm; right: 17mm; bottom: 16mm;
+    display: flex; justify-content: space-between; align-items: center;
+    font-size: 10pt; color: var(--ink-mute);
+    border-top: 1px solid var(--line);
+    padding-top: 12px;
+  }
+
+  /* ---- Content pages ---- */
+  .kicker {
+    display: inline-block;
+    font-size: 10pt; font-weight: 700; letter-spacing: 0.04em;
+    text-transform: uppercase; color: var(--gold);
+    margin-bottom: 8px;
+  }
+  h2.h1 {
+    font-size: 21pt; font-weight: 800; color: var(--ink);
+    margin: 0 0 18px; line-height: 1.28;
+  }
+  h3.h2 {
+    font-size: 14.5pt; font-weight: 800; color: var(--ink);
+    margin: 26px 0 10px;
+  }
+  h3.h2:first-of-type { margin-top: 4px; }
+  p { margin: 0 0 12px; color: var(--ink-soft); }
+  .lead-p { font-size: 12.5pt; color: var(--ink-soft); margin-bottom: 20px; }
+
+  ul.list, ol.list { margin: 0 0 4px; padding: 0; list-style: none; }
+  ul.list li, ol.list li {
+    display: flex; gap: 12px; align-items: flex-start;
+    padding: 10px 0;
+    border-top: 1px solid var(--line);
+    color: var(--ink-soft);
+  }
+  ul.list li:first-child, ol.list li:first-child { border-top: none; padding-top: 0; }
+  ul.list li::before {
+    content: "—"; color: var(--gold); font-weight: 700; flex-shrink: 0;
+  }
+  ol.list { counter-reset: item; }
+  ol.list li::before {
+    counter-increment: item; content: counter(item);
+    color: #fff; background: var(--gold);
+    font-weight: 700; font-size: 9.5pt;
+    width: 20px; height: 20px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0; margin-top: 2px;
+  }
+  b { color: var(--ink); font-weight: 700; }
+
+  .callout {
+    background: #faf5ec;
+    border: 1.4px solid var(--gold-soft);
+    border-radius: 16px;
+    padding: 16px 20px;
+    margin: 18px 0;
+    font-size: 11.5pt;
+    color: var(--ink-soft);
+  }
+  .callout b { color: var(--accent); }
+
+  .checklist { margin: 10px 0 0; padding: 0; list-style: none; }
+  .checklist li {
+    display: flex; gap: 12px; align-items: flex-start;
+    padding: 9px 0; color: var(--ink-soft); font-size: 11.5pt;
+  }
+  .checklist li::before {
+    content: ""; width: 16px; height: 16px; margin-top: 2px;
+    border: 1.6px solid var(--gold); border-radius: 5px; flex-shrink: 0;
+  }
+
+  .week-grid { display: flex; flex-direction: column; gap: 10px; margin-top: 8px; }
+  .week {
+    display: flex; gap: 16px;
+    border: 1px solid var(--line); border-radius: 14px;
+    padding: 14px 18px;
+  }
+  .week__n {
+    font-weight: 800; color: var(--gold); font-size: 11pt;
+    min-width: 66px; flex-shrink: 0;
+  }
+  .week__t { color: var(--ink-soft); font-size: 11.5pt; }
+  .week__t b { display: block; color: var(--ink); margin-bottom: 2px; font-size: 12pt; }
+
+  .pagefoot {
+    position: absolute; left: 17mm; right: 17mm; bottom: 12mm;
+    display: flex; justify-content: space-between;
+    font-size: 9.5pt; color: var(--ink-mute);
+    border-top: 1px solid var(--line); padding-top: 10px;
+  }
+
+  .final {
+    background: linear-gradient(180deg, #ffffff 0%, var(--bg2) 100%);
+  }
+  .final__box {
+    margin-top: 18px;
+    background: #fff; border: 1.4px solid var(--gold-soft);
+    border-radius: 18px; padding: 22px 26px;
+  }
+  .final__box dl { margin: 14px 0 0; padding: 0; }
+  .final__box dl div { display: flex; justify-content: space-between; padding: 10px 0; border-top: 1px solid var(--line); }
+  .final__box dl div:first-child { border-top: none; padding-top: 0; }
+  .final__box dt { color: var(--ink-mute); }
+  .final__box dd { margin: 0; font-weight: 700; color: var(--ink); }
+</style>
+</head>
+<body>
+
+  <!-- COVER -->
+  <section class="page cover">
+    <div class="cover__top">
+      <div class="brand">Анели&nbsp;Ташбаева<br /><span>дизайнер интерьера</span></div>
+      <div class="cover__photo"><img src="assets/aneli.jpeg" alt="Анели Ташбаева" /></div>
+    </div>
+
+    <div class="greeting">
+      <p><span class="lead">Привет, я —</span> <b>Анели Ташбаева.</b> Дизайнер интерьера с архитектурным образованием и международным опытом: больше 70 проектов в Казахстане, Турции и ОАЭ, веду премиальные проекты в Дубае. Провожу офлайн-практикум для начинающих дизайнеров в Алматы и точно знаю, с какими трудностями сталкивается каждый в начале пути — включая поиск первых заказов.</p>
+    </div>
+
+    <div class="cover__title">Продвижение начинающих дизайнеров: <span class="hl">где искать заказы</span></div>
+    <p class="cover__subtitle">Пошаговый гайд о том, где брать первых клиентов, как оформить портфолио без опыта и выстроить поток заказов, если вы только начинаете путь в дизайне интерьера.</p>
+
+    <div class="cover__tags">
+      <span class="tag tag--gold">Практический гайд</span>
+      <span class="tag">Для начинающих</span>
+      <span class="tag">Алматы</span>
+    </div>
+
+    <div class="cover__foot">
+      <span>Гайд для начинающих дизайнеров интерьера</span>
+      <span>aneli.home@gmail.com</span>
+    </div>
+  </section>
+
+  <!-- PAGE 2 -->
+  <section class="page">
+    <span class="kicker">Шаг 1</span>
+    <h2 class="h1">Соберите портфолио, даже если ещё не было клиентов</h2>
+    <p class="lead-p">Пока нет реальных проектов, заказчик оценивает вас по тому, что видит. Портфолио — это не список выполненных работ, а доказательство вкуса и уровня мышления.</p>
+
+    <h3 class="h2">Что можно показать без единого клиента</h3>
+    <ul class="list">
+      <li>Учебные и дипломные проекты — оформленные как готовые концепции, с планировкой, визуализацией и подбором материалов</li>
+      <li>Реконцепция чужих интерьеров — берёте фото реальной квартиры (свою, друзей, из объявлений об аренде) и делаете свой вариант «до / после»</li>
+      <li>Проект «для себя» — полностью проработанная концепция вашей квартиры или квартиры мечты</li>
+      <li>Мудборды и подборки по стилям — показывают умение работать с цветом, фактурой и композицией</li>
+    </ul>
+
+    <h3 class="h2">Где оформить портфолио</h3>
+    <ul class="list">
+      <li><b>Behance</b> — главная площадка для визуального портфолио, ищут клиенты и агентства</li>
+      <li><b>Pinterest</b> — работает как визуальная витрина и приводит трафик на другие площадки</li>
+      <li><b>Instagram</b> — оформленная шапка профиля + сохранённые истории с проектами</li>
+      <li>Простой сайт-визитка или лендинг на 1 экран — фото, 3–5 проектов, контакты</li>
+    </ul>
+
+    <div class="callout">Совет: не выкладывайте всё подряд. Лучше 6 сильных проектов, чем 20 слабых — портфолио должно быть короче и убедительнее, чем кажется правильным.</div>
+
+    <div class="pagefoot"><span>Продвижение начинающих дизайнеров</span><span>2</span></div>
+  </section>
+
+  <!-- PAGE 3 -->
+  <section class="page">
+    <span class="kicker">Шаг 2</span>
+    <h2 class="h1">Соцсети: основной источник клиентов на старте</h2>
+    <p class="lead-p">В начале пути соцсети работают лучше сайта — заказчик видит не только проекты, но и вас как человека, которому можно доверить свой дом.</p>
+
+    <h3 class="h2">Что публиковать</h3>
+    <ul class="list">
+      <li>Процесс работы — замеры, подбор материалов, поездки на объекты, разговоры с подрядчиками</li>
+      <li>До / после — самый сильный формат, даже на небольших зонах или бюджетных проектах</li>
+      <li>Разбор чужих интерьеров — экспертный контент, который показывает вкус и знания</li>
+      <li>Личные истории — почему выбрали профессию, ваши ценности в дизайне</li>
+      <li>Ответы на частые вопросы клиентов — «сколько стоит», «сколько длится ремонт», «с чего начать»</li>
+    </ul>
+
+    <h3 class="h2">Как усилить охват</h3>
+    <ul class="list">
+      <li>Указывайте геолокацию города — так вас находят локальные клиенты</li>
+      <li>Используйте отметки мебельных магазинов, шоурумов, подрядчиков — это работает на взаимный обмен аудиторией</li>
+      <li>Просите первых клиентов отметить вас и оставить отзыв в сторис</li>
+      <li>Ведите рубрику вопрос-ответ в сторис — прогревает тех, кто ещё не готов написать</li>
+    </ul>
+
+    <div class="callout"><b>Важно:</b> регулярность важнее качества съёмки. Аккаунт, который ведут раз в неделю стабильно, работает лучше, чем идеальный, но заброшенный.</div>
+
+    <div class="pagefoot"><span>Продвижение начинающих дизайнеров</span><span>3</span></div>
+  </section>
+
+  <!-- PAGE 4 -->
+  <section class="page">
+    <span class="kicker">Шаг 3</span>
+    <h2 class="h1">Живой нетворкинг: там, где клиенты появляются раньше соцсетей</h2>
+    <p class="lead-p">Большая часть первых заказов у начинающих дизайнеров приходит не из интернета, а из личных знакомств и связей со смежными специалистами.</p>
+
+    <h3 class="h2">С кем стоит знакомиться</h3>
+    <ul class="list">
+      <li><b>Прорабы и бригады ремонта</b> — им нужен дизайнер для клиентов без концепции, а вам — их клиенты</li>
+      <li><b>Риелторы</b> — видят людей, которые только купили квартиру и ищут ремонт «под ключ»</li>
+      <li><b>Мебельные шоурумы и салоны штор</b> — предложите взаимные рекомендации клиентам</li>
+      <li><b>Строительные магазины и салоны плитки</b> — часто соглашаются оставлять ваши визитки на кассе</li>
+      <li><b>Архитекторы и застройщики</b> — им нужны дизайнеры интерьера для сдачи объектов клиентам</li>
+    </ul>
+
+    <h3 class="h2">Где ещё искать контакты</h3>
+    <ul class="list">
+      <li>Чаты жильцов новостроек и ЖК в мессенджерах — там всегда обсуждают ремонт</li>
+      <li>Локальные группы города и районные сообщества</li>
+      <li>Дизайн-выставки, форумы по недвижимости и строительные выставки</li>
+      <li>Профессиональные встречи и клубы дизайнеров — обмен клиентами и рекомендациями</li>
+    </ul>
+
+    <div class="callout">Договаривайтесь о партнёрстве честно: процент от заказа или взаимная рекомендация — это нормальная практика, а не одолжение.</div>
+
+    <div class="pagefoot"><span>Продвижение начинающих дизайнеров</span><span>4</span></div>
+  </section>
+
+  <!-- PAGE 5 -->
+  <section class="page">
+    <span class="kicker">Шаг 4</span>
+    <h2 class="h1">Биржи услуг и сарафанное радио</h2>
+
+    <h3 class="h2">Площадки для поиска заказов</h3>
+    <ul class="list">
+      <li><b>Profi.ru, Юду, Авито Услуги</b> — быстрый старт, много заявок, важно грамотно оформить профиль и портфолио</li>
+      <li><b>Яндекс Услуги</b> — хорошо работает для локальных клиентов вашего города</li>
+      <li>Специализированные платформы поиска дизайнеров интерьера и архитектурные каталоги</li>
+      <li>Группы «ищу дизайнера» в соцсетях и городских чатах — мониторьте регулярно и откликайтесь первыми</li>
+    </ul>
+
+    <h3 class="h2">Первые клиенты — по спецусловиям</h3>
+    <ul class="list">
+      <li>Предложите 1–2 проекта по сниженной цене или за отзыв и право использовать проект в портфолио</li>
+      <li>Договоритесь с друзьями и родственниками — их квартиры часто становятся лучшими первыми кейсами</li>
+      <li>После каждого проекта просите отзыв и разрешение снять готовый интерьер на видео</li>
+      <li>Запустите простую реферальную систему — скидка тому, кто привёл клиента</li>
+    </ul>
+
+    <div class="callout"><b>Помните:</b> цель первых 3–5 проектов — не заработок, а сильные кейсы, отзывы и репутация, на которых будут строиться следующие заказы уже по полной цене.</div>
+
+    <div class="pagefoot"><span>Продвижение начинающих дизайнеров</span><span>5</span></div>
+  </section>
+
+  <!-- PAGE 6: PLAN -->
+  <section class="page">
+    <span class="kicker">План действий</span>
+    <h2 class="h1">Первый месяц: неделя за неделей</h2>
+
+    <div class="week-grid">
+      <div class="week"><span class="week__n">Неделя 1</span><span class="week__t"><b>Портфолио и упаковка</b>Соберите 3–6 проектов (учебные, реконцепции, свои идеи), оформите Behance/Pinterest, приведите в порядок Instagram.</span></div>
+      <div class="week"><span class="week__n">Неделя 2</span><span class="week__t"><b>Соцсети и контент</b>Опубликуйте первые посты о процессе работы, запустите рубрику вопрос-ответ, начните вести регулярно.</span></div>
+      <div class="week"><span class="week__n">Неделя 3</span><span class="week__t"><b>Нетворкинг</b>Познакомьтесь минимум с 3 подрядчиками, риелторами или владельцами шоурумов, договоритесь о взаимных рекомендациях.</span></div>
+      <div class="week"><span class="week__n">Неделя 4</span><span class="week__t"><b>Первые заявки</b>Зарегистрируйтесь на 2–3 биржах услуг, предложите спецусловия первым клиентам, соберите первые отзывы.</span></div>
+    </div>
+
+    <h3 class="h2">Чек-лист перед стартом</h3>
+    <ul class="checklist">
+      <li>Портфолио из 3–6 проектов готово и оформлено</li>
+      <li>Профили в соцсетях приведены в порядок</li>
+      <li>Есть список из 5 подрядчиков/партнёров для нетворкинга</li>
+      <li>Определено спецпредложение для первых клиентов</li>
+      <li>Профиль создан хотя бы на одной бирже услуг</li>
+    </ul>
+
+    <div class="pagefoot"><span>Продвижение начинающих дизайнеров</span><span>6</span></div>
+  </section>
+
+  <!-- FINAL -->
+  <section class="page final">
+    <span class="kicker">В заключение</span>
+    <h2 class="h1">Заказы приходят к тем, кто действует системно</h2>
+    <p class="lead-p">Не существует одного канала, который сразу принесёт поток клиентов. Портфолио, соцсети, нетворкинг и биржи услуг работают вместе — и чем раньше вы начнёте вести их параллельно, тем быстрее появятся первые заказы.</p>
+    <p>Если хотите не просто читать о профессии, а пройти путь от первых замеров до реального проекта вместе со мной — приходите на офлайн-практикум для начинающих дизайнеров интерьера в Алматы. Разбираем портфолио, поиск клиентов и ведение проектов на практике.</p>
+
+    <div class="final__box">
+      <b>Анели Ташбаева</b> — дизайнер интерьера
+      <dl>
+        <div><dt>WhatsApp</dt><dd>+7 707 332 30 71</dd></div>
+        <div><dt>Email</dt><dd>aneli.home@gmail.com</dd></div>
+        <div><dt>Город</dt><dd>Алматы</dd></div>
+      </dl>
+    </div>
+
+    <div class="pagefoot"><span>Продвижение начинающих дизайнеров</span><span>7</span></div>
+  </section>
+
+</body>
+</html>
