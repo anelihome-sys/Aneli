@@ -5,14 +5,19 @@
 <title>Продвижение начинающих дизайнеров</title>
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700;800&display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,300;0,500;0,600;0,700;0,900;1,500;1,600&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
 <style>
   :root {
-    --ink: #26333e;
-    --ink-soft: #4c5b66;
-    --gold: #b6892f;
-    --line: #e3e2dd;
-    --paper: #fffdf9;
+    --ink: #1f2a33;
+    --ink-soft: #5a6670;
+    --ink-mute: #8b9199;
+    --paper: #f7f2e9;
+    --card: #fffdf8;
+    --line: #e2dccb;
+    --gold: #a3813a;
+    --gold-deep: #8a6a2c;
+    --terracotta: #b3654a;
+    --teal: #375953;
   }
   * { box-sizing: border-box; }
   html, body {
@@ -20,144 +25,260 @@
     font-family: "Manrope", system-ui, -apple-system, sans-serif;
     color: var(--ink);
     background: var(--paper);
+    -webkit-font-smoothing: antialiased;
   }
   @page { size: A4; margin: 0; }
+  .serif { font-family: "Fraunces", Georgia, serif; }
   .page {
     width: 210mm;
     height: 297mm;
-    padding: 22mm 24mm;
-    page-break-after: always;
     position: relative;
     background: var(--paper);
     overflow: hidden;
+    page-break-after: always;
   }
   .page:last-child { page-break-after: auto; }
 
-  /* ===== PAGE 1 — COVER / GREETING ===== */
-  .cover { display: flex; flex-direction: column; align-items: center; text-align: center; padding-top: 20mm; }
-  .cover__photo {
-    width: 82mm;
-    height: 100mm;
-    border-radius: 8mm;
-    overflow: hidden;
-    box-shadow: 0 0 0 1.5px var(--gold), 0 26px 46px -22px rgba(38,51,62,0.4);
+  .kicker {
+    font-family: "Manrope", sans-serif;
+    font-size: 9.5pt;
+    font-weight: 800;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--gold);
   }
-  .cover__photo img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 15%; }
 
-  .cover__name { margin-top: 9mm; font-size: 26pt; font-weight: 800; letter-spacing: -0.01em; }
-  .cover__role { margin-top: 3mm; font-size: 13pt; font-weight: 700; color: var(--gold); }
+  /* ============ PAGE 1 — COVER ============ */
+  .cover__photo {
+    position: absolute;
+    top: 0; right: 0;
+    width: 98mm;
+    height: 156mm;
+    border-radius: 0 0 0 22mm;
+    overflow: hidden;
+    box-shadow: -2px 0 0 rgba(163,129,58,0.35);
+  }
+  .cover__photo img {
+    width: 100%; height: 100%;
+    object-fit: cover; object-position: 50% 12%;
+  }
+  .cover__photo::after {
+    content: "";
+    position: absolute; inset: 0;
+    box-shadow: inset 0 -30mm 26mm -30mm rgba(20,20,15,0.45);
+  }
 
+  .cover__spine {
+    position: absolute;
+    top: 168mm; right: 13mm;
+    writing-mode: vertical-rl;
+    transform: rotate(180deg);
+    font-size: 9.5pt;
+    font-weight: 700;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--gold);
+    opacity: 0.85;
+  }
+
+  .cover__text {
+    position: relative;
+    padding: 24mm 0 0 20mm;
+    max-width: 103mm;
+  }
+  .cover__lead {
+    font-family: "Fraunces", serif;
+    font-style: italic;
+    font-weight: 500;
+    font-size: 14pt;
+    color: var(--gold-deep);
+  }
+  .cover__name {
+    font-family: "Fraunces", serif;
+    font-weight: 600;
+    font-size: 35pt;
+    line-height: 1.06;
+    letter-spacing: -0.01em;
+    color: var(--ink);
+    margin-top: 3mm;
+  }
+  .cover__role {
+    margin-top: 6mm;
+    font-size: 10.5pt;
+    font-weight: 800;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    padding-bottom: 6mm;
+    border-bottom: 1.4px solid var(--gold);
+    display: inline-block;
+  }
   .cover__bio {
-    margin-top: 9mm;
-    max-width: 145mm;
-    font-size: 13pt;
-    line-height: 1.75;
+    margin-top: 8mm;
+    font-size: 11.5pt;
+    line-height: 1.72;
     color: var(--ink-soft);
   }
-  .cover__bio b { color: var(--ink); }
+  .cover__bio b { color: var(--ink); font-weight: 700; }
 
   .cover__stat {
-    margin-top: 7mm;
-    max-width: 145mm;
-    font-size: 15pt;
-    font-weight: 800;
-    line-height: 1.5;
-    color: var(--ink);
-    background: #fbf1dc;
-    border: 1.5px solid var(--gold);
-    border-radius: 4mm;
-    padding: 6mm 9mm;
+    margin-top: 8mm;
+    background: var(--ink);
+    border-radius: 3mm;
+    padding: 7mm 9mm;
+    max-width: 103mm;
   }
-  .cover__stat span { color: var(--gold); font-size: 1.25em; }
-
-  .cover__rule {
-    margin-top: 12mm;
-    width: 36mm;
-    height: 2px;
-    background: var(--gold);
-    border: none;
+  .cover__stat .num {
+    font-family: "Fraunces", serif;
+    font-weight: 700;
+    font-size: 21pt;
+    color: #f0d9a3;
+    letter-spacing: -0.01em;
   }
-
-  .cover__guide {
-    margin-top: 10mm;
-    font-size: 20pt;
-    font-weight: 800;
-    line-height: 1.4;
-    max-width: 150mm;
+  .cover__stat .txt {
+    margin-top: 1mm;
+    font-size: 10.5pt;
+    line-height: 1.55;
+    color: #d9dee1;
   }
-  .cover__guide .hl { color: var(--gold); }
 
   .cover__foot {
-    position: absolute; left: 0; right: 0; bottom: 14mm;
-    text-align: center;
-    font-size: 10.5pt;
-    color: #8b968f;
+    position: absolute; left: 20mm; bottom: 14mm;
+    font-size: 9.5pt;
+    color: var(--ink-mute);
+    letter-spacing: 0.04em;
   }
 
-  /* ===== PAGE 2 — THREE WAYS ===== */
+  /* ============ PAGE 2 — THREE WAYS ============ */
+  .p2 { padding: 16mm 22mm 8mm; }
+  .p2-head { max-width: 150mm; }
   .h-title {
-    font-size: 22pt; font-weight: 800; line-height: 1.3;
-    margin: 0 0 3mm;
+    font-family: "Fraunces", serif;
+    font-weight: 600;
+    font-size: 27pt;
+    line-height: 1.18;
+    margin: 3mm 0 4mm;
+    color: var(--ink);
   }
-  .h-sub { font-size: 12.5pt; color: var(--ink-soft); margin: 0 0 8mm; line-height: 1.6; }
+  .h-sub {
+    font-size: 11.5pt;
+    color: var(--ink-soft);
+    line-height: 1.6;
+    max-width: 145mm;
+  }
 
-  .way { display: flex; gap: 7mm; margin-bottom: 6mm; align-items: flex-start; }
-  .way__num {
+  .ways { margin-top: 7mm; }
+  .way { display: flex; gap: 6mm; position: relative; }
+  .way + .way { margin-top: 4mm; }
+  .way__rail {
     flex-shrink: 0;
-    width: 14mm; height: 14mm;
-    border-radius: 50%;
-    background: var(--gold);
-    color: #fff;
-    font-size: 15pt; font-weight: 800;
-    display: flex; align-items: center; justify-content: center;
+    width: 15mm;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
   }
-  .way__body { flex: 1; }
-  .way__title { font-size: 14.5pt; font-weight: 800; margin: 0 0 2mm; }
-  .way__text { font-size: 12pt; line-height: 1.68; color: var(--ink-soft); margin: 0; }
-  .way__text + .way__text { margin-top: 2.5mm; }
-  .way__text b { color: var(--ink); }
+  .way__num {
+    font-family: "Fraunces", serif;
+    font-weight: 700;
+    font-size: 20pt;
+    line-height: 1;
+    color: var(--accent);
+  }
+  .way__stem {
+    flex: 1;
+    width: 1.4px;
+    background: var(--line);
+    margin-top: 3mm;
+  }
+  .way:last-of-type .way__stem { display: none; }
 
-  .divider { border: none; border-top: 1px solid var(--line); margin: 0 0 6mm 21mm; }
+  .way__body { flex: 1; padding-bottom: 2mm; }
+  .way__tag {
+    font-size: 9pt;
+    font-weight: 800;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--accent);
+  }
+  .way__title {
+    font-family: "Fraunces", serif;
+    font-weight: 600;
+    font-size: 15.5pt;
+    margin: 1.5mm 0 3mm;
+    color: var(--ink);
+  }
+  .way__text { font-size: 11.3pt; line-height: 1.62; color: var(--ink-soft); margin: 0; }
+  .way__text + .way__text { margin-top: 2.5mm; }
+  .way__text b { color: var(--ink); font-weight: 700; }
+
+  .way--1 { --accent: var(--gold); }
+  .way--2 { --accent: var(--terracotta); }
+  .way--3 { --accent: var(--teal); }
 
   .goal-box {
-    margin-top: 4mm;
-    background: #fbf6ec;
-    border-left: 3px solid var(--gold);
-    padding: 6mm 8mm;
-    font-size: 12pt;
-    line-height: 1.65;
-    color: var(--ink-soft);
+    margin: 5mm 0 0 21mm;
+    background: var(--ink);
+    border-radius: 3mm;
+    padding: 5.5mm 9mm;
   }
-  .goal-box b { color: var(--ink); }
+  .goal-box .tag {
+    font-size: 9pt; font-weight: 800; letter-spacing: 0.14em; text-transform: uppercase;
+    color: #f0d9a3;
+  }
+  .goal-box p {
+    font-family: "Fraunces", serif;
+    font-style: italic;
+    font-weight: 500;
+    font-size: 13pt;
+    line-height: 1.5;
+    color: #f3efe4;
+    margin: 2mm 0 0;
+  }
 
-  /* ===== PAGE 3 — CTA MASTERCLASS ===== */
-  .cta { text-align: center; padding-top: 18mm; }
+  /* ============ PAGE 3 — CTA MASTERCLASS ============ */
+  .cta {
+    background: var(--ink);
+    color: #f3efe4;
+    text-align: center;
+    padding: 30mm 22mm 0;
+  }
   .cta__kicker {
     display: inline-block;
-    font-size: 11pt; font-weight: 800; letter-spacing: 0.04em; text-transform: uppercase;
-    color: var(--gold);
-    margin-bottom: 6mm;
+    font-size: 10pt; font-weight: 800; letter-spacing: 0.18em; text-transform: uppercase;
+    color: #e0b968;
+    padding: 2.5mm 6mm;
+    border: 1px solid rgba(224,185,104,0.5);
+    border-radius: 100px;
   }
-  .cta__title { font-size: 24pt; font-weight: 800; line-height: 1.3; max-width: 150mm; margin: 0 auto; }
+  .cta__title {
+    font-family: "Fraunces", serif;
+    font-weight: 600;
+    font-size: 27pt;
+    line-height: 1.28;
+    max-width: 148mm;
+    margin: 8mm auto 0;
+    color: #fffdf8;
+  }
   .cta__when {
     display: inline-block;
     margin-top: 9mm;
-    background: var(--ink);
-    color: #fff;
-    font-size: 13pt; font-weight: 700;
-    padding: 5mm 10mm;
+    background: #e0b968;
+    color: #2a2113;
+    font-size: 12.5pt; font-weight: 800;
+    padding: 4.5mm 10mm;
     border-radius: 100px;
+    letter-spacing: 0.02em;
   }
   .cta__intro {
-    margin: 10mm auto 0;
-    max-width: 140mm;
-    font-size: 12.5pt;
-    line-height: 1.7;
-    color: var(--ink-soft);
+    margin: 9mm auto 0;
+    max-width: 138mm;
+    font-size: 11.8pt;
+    line-height: 1.68;
+    color: #c9cdc9;
   }
 
   .cta__list {
-    margin: 11mm auto 0;
+    margin: 10mm auto 0;
     max-width: 140mm;
     text-align: left;
     list-style: none;
@@ -166,93 +287,112 @@
   .cta__list li {
     display: flex; gap: 6mm; align-items: flex-start;
     padding: 5mm 0;
-    border-top: 1px solid var(--line);
-    font-size: 12.5pt;
-    color: var(--ink-soft);
+    border-top: 1px solid rgba(255,255,255,0.14);
+    font-size: 11.8pt;
+    color: #c9cdc9;
   }
   .cta__list li:first-child { border-top: none; }
-  .cta__list b { color: var(--ink); }
+  .cta__list b { color: #fffdf8; font-family: "Fraunces", serif; font-weight: 600; font-size: 1.02em; }
   .cta__list .n {
     flex-shrink: 0;
-    width: 8mm; height: 8mm;
+    width: 7.5mm; height: 7.5mm;
     border-radius: 50%;
-    background: var(--gold);
-    color: #fff;
+    border: 1.4px solid #e0b968;
+    color: #e0b968;
     font-size: 10pt; font-weight: 800;
     display: flex; align-items: center; justify-content: center;
     margin-top: 1mm;
   }
 
   .cta__foot {
-    position: absolute; left: 0; right: 0; bottom: 18mm;
+    position: absolute; left: 0; right: 0; bottom: 16mm;
     text-align: center;
   }
   .cta__button {
     display: inline-block;
-    background: var(--gold);
-    color: #fff;
+    background: #e0b968;
+    color: #2a2113;
     font-size: 13.5pt;
     font-weight: 800;
-    padding: 6mm 14mm;
+    padding: 6mm 15mm;
     border-radius: 100px;
+    letter-spacing: 0.01em;
   }
   .cta__contacts {
     margin-top: 6mm;
-    font-size: 11pt;
-    color: #8b968f;
+    font-size: 10.5pt;
+    color: #9aa19b;
   }
 </style>
 </head>
 <body>
 
   <!-- PAGE 1 — GREETING -->
-  <section class="page cover">
+  <section class="page">
     <div class="cover__photo"><img src="assets/aneli.jpeg" alt="Анели Ташбаева" /></div>
-    <div class="cover__name">Привет, я Анели Ташбаева</div>
-    <div class="cover__role">Дизайнер интерьера</div>
-    <p class="cover__bio">Архитектурное образование, международный опыт и больше <b>70 реализованных проектов</b> в Казахстане, Турции и ОАЭ. Веду премиальные проекты в Дубае и разработала практикум для начинающих дизайнеров интерьера, благодаря которому можно выйти на стабильный заработок в профессии.</p>
-    <div class="cover__stat">Доход от <span>$1 000</span> в месяц — реально для дизайнера интерьера после практикума</div>
-    <hr class="cover__rule" />
-    <div class="cover__guide">3 способа продвижения<br /><span class="hl">для начинающих дизайнеров интерьера</span></div>
-    <div class="cover__foot">Гайд · Анели Ташбаева</div>
+    <div class="cover__spine">Гайд по продвижению дизайнера</div>
+
+    <div class="cover__text">
+      <div class="cover__lead">Привет, я —</div>
+      <div class="cover__name">Анели<br />Ташбаева</div>
+      <div class="cover__role">Дизайнер интерьера</div>
+
+      <p class="cover__bio">Архитектурное образование, международный опыт и больше <b>70 реализованных проектов</b> в Казахстане, Турции и ОАЭ. Веду премиальные проекты в Дубае и разработала практикум для начинающих дизайнеров интерьера, благодаря которому можно выйти на стабильный заработок в профессии.</p>
+
+      <div class="cover__stat">
+        <div class="num">от $1 000 / мес</div>
+        <div class="txt">Реальный доход дизайнера интерьера после практикума</div>
+      </div>
+    </div>
+
+    <div class="cover__foot">Гайд · Анели Ташбаева · 3 способа продвижения</div>
   </section>
 
   <!-- PAGE 2 — THREE WAYS -->
-  <section class="page">
-    <div class="h-title">Как начать получать заказы</div>
-    <p class="h-sub">Не нужно ждать идеального портфолио — заказы начинаются с того, что о вас узнают. Вот три рабочих способа для старта.</p>
-
-    <div class="way">
-      <div class="way__num">1</div>
-      <div class="way__body">
-        <div class="way__title">Займитесь соцсетями — прямо сейчас</div>
-        <p class="way__text">Настоятельно рекомендую: отложите всё и откройте свой Instagram. Проверьте шапку профиля — уверена, у большинства из вас там даже не указан город.</p>
-        <p class="way__text">Обязательно напишите, что вы <b>дизайнер интерьера</b> или <b>архитектор</b>, и укажите свой <b>город</b> — например, Москва или Алматы. Именно по этим словам клиенты чаще всего находят специалиста, и многие забывают об этом простом шаге.</p>
-        <p class="way__text">Дальше — контент: <b>дипломные проекты</b>, экспертные разборы «что хорошо, что плохо», вы <b>в кадре</b> и съёмки прямо в шоурумах и магазинах материалов.</p>
-      </div>
-    </div>
-    <hr class="divider" />
-
-    <div class="way">
-      <div class="way__num">2</div>
-      <div class="way__body">
-        <div class="way__title">Расскажите всем, что вы дизайнер</div>
-        <p class="way__text">Многие недооценивают этот способ. Сообщите о себе знакомым, коллегам и родственникам — и знакомым ваших знакомых. Именно так чаще всего появляется <b>первый заказ</b>.</p>
-        <p class="way__text">Не ждите большой проект — предложите оформить <b>одну комнату</b>. Это уже реальная практика и кейс для портфолио.</p>
-      </div>
-    </div>
-    <hr class="divider" />
-
-    <div class="way">
-      <div class="way__num">3</div>
-      <div class="way__body">
-        <div class="way__title">Работайте с риелторами и прорабами</div>
-        <p class="way__text">Это недооценённый канал клиентов. Договоритесь с <b>риелторами</b> — у них есть клиенты, которые только купили квартиру в новостройке и которым нужен дизайн интерьера.</p>
-        <p class="way__text">Собирайте контакты <b>прорабов и строительных бригад</b> — им тоже нужны дизайнеры для своих клиентов.</p>
-      </div>
+  <section class="page p2">
+    <div class="p2-head">
+      <span class="kicker">Стратегия продвижения</span>
+      <div class="h-title">Как начать получать заказы</div>
+      <p class="h-sub">Не нужно ждать идеального портфолио — заказы начинаются с того, что о вас узнают. Вот три рабочих способа для старта.</p>
     </div>
 
-    <div class="goal-box"><b>Главная цель:</b> сделать так, чтобы как можно больше людей знали, что вы — дизайнер интерьера и уже оказываете эти услуги.</div>
+    <div class="ways">
+      <div class="way way--1">
+        <div class="way__rail"><div class="way__num">01</div><div class="way__stem"></div></div>
+        <div class="way__body">
+          <div class="way__tag">Соцсети</div>
+          <div class="way__title">Займитесь соцсетями — прямо сейчас</div>
+          <p class="way__text">Настоятельно рекомендую: отложите всё и откройте свой Instagram. Проверьте шапку профиля — уверена, у большинства из вас там даже не указан город.</p>
+          <p class="way__text">Обязательно напишите, что вы <b>дизайнер интерьера</b> или <b>архитектор</b>, и укажите свой <b>город</b> — например, Москва или Алматы. Именно по этим словам клиенты чаще всего находят специалиста, и многие забывают об этом простом шаге.</p>
+          <p class="way__text">Дальше — контент: <b>дипломные проекты</b>, экспертные разборы «что хорошо, что плохо», вы <b>в кадре</b> и съёмки прямо в шоурумах и магазинах материалов.</p>
+        </div>
+      </div>
+
+      <div class="way way--2">
+        <div class="way__rail"><div class="way__num">02</div><div class="way__stem"></div></div>
+        <div class="way__body">
+          <div class="way__tag">Знакомые</div>
+          <div class="way__title">Расскажите всем, что вы дизайнер</div>
+          <p class="way__text">Многие недооценивают этот способ. Сообщите о себе знакомым, коллегам и родственникам — и знакомым ваших знакомых. Именно так чаще всего появляется <b>первый заказ</b>.</p>
+          <p class="way__text">Не ждите большой проект — предложите оформить <b>одну комнату</b>. Это уже реальная практика и кейс для портфолио.</p>
+        </div>
+      </div>
+
+      <div class="way way--3">
+        <div class="way__rail"><div class="way__num">03</div><div class="way__stem"></div></div>
+        <div class="way__body">
+          <div class="way__tag">Партнёрства</div>
+          <div class="way__title">Работайте с риелторами и прорабами</div>
+          <p class="way__text">Это недооценённый канал клиентов. Договоритесь с <b>риелторами</b> — у них есть клиенты, которые только купили квартиру в новостройке и которым нужен дизайн интерьера.</p>
+          <p class="way__text">Собирайте контакты <b>прорабов и строительных бригад</b> — им тоже нужны дизайнеры для своих клиентов.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="goal-box">
+      <span class="tag">Главная цель</span>
+      <p>Сделать так, чтобы как можно больше людей знали, что вы — дизайнер интерьера и уже оказываете эти услуги.</p>
+    </div>
   </section>
 
   <!-- PAGE 3 — CTA MASTERCLASS -->
