@@ -49,137 +49,34 @@
   .frame::before { top: 11mm; left: 11mm; border-right: none; border-bottom: none; }
   .frame::after { bottom: 11mm; right: 11mm; border-left: none; border-top: none; }
 
-  /* ===================== COVER ===================== */
-  .cover {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 26mm 20mm 16mm;
-    background:
-      radial-gradient(circle at 18% 12%, rgba(182,135,74,0.16), transparent 45%),
-      radial-gradient(circle at 88% 90%, rgba(140,98,60,0.16), transparent 50%),
-      linear-gradient(160deg, #f9f2e8 0%, #ecdec2 100%);
+  /* ===================== INTRO HEADER ===================== */
+  .intro {
+    padding-bottom: 4.5mm;
+    margin-bottom: 2.5mm;
+    border-bottom: 1.6px solid var(--gold-light);
   }
-  .cover .eyebrow {
-    letter-spacing: 0.38em;
-    font-size: 12pt;
-    color: var(--brown-mid);
-    text-transform: uppercase;
-    font-weight: 600;
-    margin-bottom: 9mm;
-    text-align: center;
-  }
-  .cover .eyebrow::before, .cover .eyebrow::after { content: "—"; color: var(--gold); margin: 0 6mm; }
-  .cover h1 {
+  .intro h1 {
     font-family: Georgia, 'Times New Roman', serif;
-    font-size: 38pt;
-    line-height: 1.22;
+    font-size: 21pt;
+    line-height: 1.2;
     color: var(--brown-dark);
-    text-align: center;
     font-weight: 700;
+    margin-bottom: 2.4mm;
   }
-  .cover .subtitle {
-    font-family: Georgia, serif;
-    color: var(--gold);
-    font-size: 17pt;
-    font-weight: 700;
-    text-align: center;
-    margin-top: 4mm;
-  }
-  .cover .divider {
-    width: 50mm; height: 1.4px;
-    background: linear-gradient(90deg, transparent, var(--gold), transparent);
-    margin: 9mm 0;
-  }
-  .cover .lead {
-    font-size: 13pt;
-    color: var(--text-soft);
-    max-width: 138mm;
-    line-height: 1.7;
-    text-align: center;
-  }
-  .cover .schedule {
-    margin-top: 10mm;
+  .intro__meta {
     display: flex;
-    gap: 6mm;
-    justify-content: center;
-  }
-  .cover .chip {
-    background: var(--card);
-    border: 1px solid var(--gold-light);
-    color: var(--brown);
-    font-weight: 700;
-    font-size: 11pt;
-    white-space: nowrap;
-    padding: 4.6mm 8mm;
-    border-radius: 100px;
-    box-shadow: 0 3mm 6mm -4mm rgba(90,60,30,0.35);
-  }
-  .cover .chip span {
-    display: block;
-    font-weight: 400;
-    font-size: 8.2pt;
-    color: var(--brown-mid);
-    letter-spacing: 0.03em;
-    margin-top: 0.9mm;
-    text-align: center;
-  }
-
-  .toc {
-    margin-top: 12mm;
-    width: 100%;
-    max-width: 160mm;
-    border-top: 1.4px solid var(--gold-light);
-    padding-top: 8mm;
-  }
-  .toc__label {
-    text-align: center;
-    text-transform: uppercase;
-    letter-spacing: 0.25em;
-    font-size: 9.5pt;
-    font-weight: 700;
-    color: var(--brown-mid);
-    margin-bottom: 7mm;
-  }
-  .toc__grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    column-gap: 10mm;
-    row-gap: 4.5mm;
-  }
-  .toc__item {
-    display: flex;
+    flex-wrap: wrap;
     align-items: baseline;
-    gap: 4mm;
-    padding-bottom: 3.4mm;
-    border-bottom: 1px solid var(--line);
-  }
-  .toc__item b {
-    font-family: Georgia, serif;
-    color: var(--gold);
-    font-size: 13.5pt;
-    font-weight: 700;
-    min-width: 9mm;
-  }
-  .toc__item span {
-    font-size: 11pt;
-    color: var(--brown-dark);
-    font-weight: 600;
-    line-height: 1.35;
-  }
-
-  .cover .footer-note {
-    margin-top: auto;
-    padding-top: 10mm;
-    font-size: 9.5pt;
-    letter-spacing: 0.18em;
-    text-transform: uppercase;
+    gap: 2.6mm;
+    font-size: 10.3pt;
     color: var(--brown-mid);
-    font-weight: 600;
   }
+  .intro__meta b { color: var(--brown-dark); font-weight: 700; }
+  .intro__meta .dot { color: var(--gold); font-weight: 700; }
 
   /* ===================== CONTENT PAGES ===================== */
-  .sheet { padding: 9mm 17mm 16mm; display: flex; flex-direction: column; height: 100%; }
+  .sheet { padding: 12mm 17mm 16mm; display: flex; flex-direction: column; height: 100%; }
+  .sheet--bare { padding-top: 15mm; }
 
   .sheet__head {
     display: flex;
@@ -206,7 +103,7 @@
   .weeks { flex: 1; display: flex; flex-direction: column; }
 
   .week-row {
-    padding: 3.5mm 0;
+    padding: 2.8mm 0;
     border-bottom: 1px solid var(--line);
   }
   .week-row:last-child { border-bottom: none; }
@@ -215,7 +112,7 @@
     display: flex;
     align-items: baseline;
     gap: 6mm;
-    margin-bottom: 3.5mm;
+    margin-bottom: 3mm;
   }
   .week-row__head .num {
     font-family: Georgia, serif;
@@ -242,7 +139,7 @@
     display: grid;
     grid-template-columns: 1fr 1fr;
     column-gap: 7mm;
-    row-gap: 2mm;
+    row-gap: 1.7mm;
   }
   .study-grid li {
     position: relative;
@@ -263,7 +160,7 @@
     background: var(--card);
     border-left: 2.6px solid var(--gold);
     border-radius: 0 3mm 3mm 0;
-    padding: 3mm 5mm;
+    padding: 2.6mm 4.5mm;
   }
   .result-block .tag {
     display: block;
@@ -332,42 +229,17 @@
 </head>
 <body>
 
-  <!-- ============ PAGE 1 — COVER ============ -->
-  <section class="page cover frame">
-    <div class="eyebrow">Практикум</div>
-    <h1>Профессия<br>дизайнер интерьера</h1>
-    <div class="subtitle">Программа курса</div>
-    <div class="divider"></div>
-    <p class="lead">
-      Пошаговый практикум, который проведёт вас через весь цикл работы дизайнера интерьера —
-      от первой встречи с заказчиком до запуска собственной практики и портфолио.
-    </p>
-    <div class="schedule">
-      <div class="chip">3 занятия в неделю<span>формат обучения</span></div>
-      <div class="chip">2,5–3 часа<span>одно занятие</span></div>
-      <div class="chip">6 недель<span>весь практикум</span></div>
-    </div>
-
-    <div class="toc">
-      <div class="toc__label">Программа по неделям</div>
-      <div class="toc__grid">
-        <div class="toc__item"><b>01</b><span>Основа успешного проекта</span></div>
-        <div class="toc__item"><b>02</b><span>Создание концепции интерьера</span></div>
-        <div class="toc__item"><b>03</b><span>Комплектация проекта</span></div>
-        <div class="toc__item"><b>04</b><span>Реализация проекта</span></div>
-        <div class="toc__item"><b>05</b><span>Управление проектом</span></div>
-        <div class="toc__item"><b>06</b><span>Запуск карьеры</span></div>
+  <!-- ============ PAGE 1 — INTRO + WEEKS 1–3 ============ -->
+  <section class="page sheet frame">
+    <div class="intro">
+      <h1>Практикум для дизайнеров интерьера</h1>
+      <div class="intro__meta">
+        <span><b>6 недель</b> длительность практикума</span>
+        <span class="dot">•</span>
+        <span><b>3 занятия</b> в неделю</span>
+        <span class="dot">•</span>
+        <span><b>2,5–3 часа</b> одно занятие</span>
       </div>
-    </div>
-
-    <div class="footer-note">Aneli · Школа дизайна интерьера</div>
-  </section>
-
-  <!-- ============ PAGE 2 — WEEKS 1–3 ============ -->
-  <section class="page sheet">
-    <div class="sheet__head">
-      <div class="t">Программа практикума</div>
-      <div class="r">Недели 01–03</div>
     </div>
 
     <div class="weeks">
@@ -427,16 +299,11 @@
       </div>
     </div>
 
-    <div class="sheet__footer"><span>Практикум «Профессия дизайнер интерьера»</span><span>02</span></div>
+    <div class="sheet__footer"><span>Практикум «Профессия дизайнер интерьера»</span><span>01</span></div>
   </section>
 
-  <!-- ============ PAGE 3 — WEEKS 4–6 + NOTICE ============ -->
-  <section class="page sheet">
-    <div class="sheet__head">
-      <div class="t">Программа практикума</div>
-      <div class="r">Недели 04–06</div>
-    </div>
-
+  <!-- ============ PAGE 2 — WEEKS 4–6 + NOTICE ============ -->
+  <section class="page sheet sheet--bare frame">
     <div class="weeks">
       <div class="week-row">
         <div class="week-row__head"><span class="num">04</span><h3>Реализация проекта</h3></div>
@@ -505,7 +372,7 @@
       </div>
     </div>
 
-    <div class="sheet__footer"><span>Практикум «Профессия дизайнер интерьера»</span><span>03</span></div>
+    <div class="sheet__footer"><span>Практикум «Профессия дизайнер интерьера»</span><span>02</span></div>
   </section>
 
 </body>
