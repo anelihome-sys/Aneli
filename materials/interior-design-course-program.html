@@ -16,99 +16,92 @@
   body { background: #efe3d2; }
 
   :root {
-    --cream: #f7f0e6;
+    --cream: #f8f1e6;
     --cream2: #efe3d2;
     --card: #fffbf4;
-    --brown-dark: #3d2b1c;
+    --brown-dark: #3b2a1c;
     --brown: #5c4029;
     --brown-mid: #8a6240;
-    --gold: #b98b4e;
+    --gold: #b6874a;
     --gold-light: #d9b98a;
     --gold-soft: #ecdcc0;
-    --line: #e2d0b3;
+    --line: #e2cfab;
     --text-soft: #6e5a44;
   }
 
   .page {
     width: 210mm;
-    height: 297mm;
+    min-height: 297mm;
     position: relative;
-    overflow: hidden;
+    overflow: visible;
     page-break-after: always;
     background: linear-gradient(160deg, var(--cream) 0%, var(--cream2) 100%);
   }
   .page:last-child { page-break-after: auto; }
 
-  /* Decorative corner frame */
   .frame::before, .frame::after {
     content: "";
     position: absolute;
-    width: 26mm; height: 26mm;
+    width: 22mm; height: 22mm;
     border: 1.4px solid var(--gold);
     opacity: .55;
   }
-  .frame::before { top: 10mm; left: 10mm; border-right: none; border-bottom: none; }
-  .frame::after { bottom: 10mm; right: 10mm; border-left: none; border-top: none; }
+  .frame::before { top: 11mm; left: 11mm; border-right: none; border-bottom: none; }
+  .frame::after { bottom: 11mm; right: 11mm; border-left: none; border-top: none; }
 
   /* ===================== COVER ===================== */
   .cover {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
-    text-align: center;
-    padding: 20mm;
+    padding: 26mm 20mm 16mm;
     background:
-      radial-gradient(circle at 20% 15%, rgba(185,139,78,0.14), transparent 45%),
-      radial-gradient(circle at 85% 85%, rgba(140,98,60,0.16), transparent 50%),
-      linear-gradient(160deg, #f8f1e7 0%, #ecdec2 100%);
+      radial-gradient(circle at 18% 12%, rgba(182,135,74,0.16), transparent 45%),
+      radial-gradient(circle at 88% 90%, rgba(140,98,60,0.16), transparent 50%),
+      linear-gradient(160deg, #f9f2e8 0%, #ecdec2 100%);
   }
   .cover .eyebrow {
-    letter-spacing: 0.35em;
-    font-size: 11pt;
+    letter-spacing: 0.38em;
+    font-size: 12pt;
     color: var(--brown-mid);
     text-transform: uppercase;
     font-weight: 600;
-    margin-bottom: 10mm;
+    margin-bottom: 9mm;
+    text-align: center;
   }
-  .cover .eyebrow::before, .cover .eyebrow::after {
-    content: "—";
-    color: var(--gold);
-    margin: 0 6mm;
-  }
+  .cover .eyebrow::before, .cover .eyebrow::after { content: "—"; color: var(--gold); margin: 0 6mm; }
   .cover h1 {
     font-family: Georgia, 'Times New Roman', serif;
-    font-size: 34pt;
-    line-height: 1.28;
+    font-size: 38pt;
+    line-height: 1.22;
     color: var(--brown-dark);
-    max-width: 150mm;
+    text-align: center;
     font-weight: 700;
   }
-  .cover h1 em {
-    font-style: normal;
+  .cover .subtitle {
+    font-family: Georgia, serif;
     color: var(--gold);
-    display: block;
-    font-size: 0.7em;
+    font-size: 17pt;
+    font-weight: 700;
+    text-align: center;
     margin-top: 4mm;
-    font-weight: 600;
   }
   .cover .divider {
-    width: 46mm;
-    height: 1.4px;
+    width: 50mm; height: 1.4px;
     background: linear-gradient(90deg, transparent, var(--gold), transparent);
-    margin: 12mm 0;
+    margin: 9mm 0;
   }
   .cover .lead {
-    font-size: 12.5pt;
+    font-size: 13pt;
     color: var(--text-soft);
-    max-width: 128mm;
-    line-height: 1.75;
+    max-width: 138mm;
+    line-height: 1.7;
+    text-align: center;
   }
   .cover .schedule {
-    margin-top: 14mm;
+    margin-top: 10mm;
     display: flex;
-    gap: 5mm;
-    flex-wrap: nowrap;
+    gap: 6mm;
     justify-content: center;
   }
   .cover .chip {
@@ -116,254 +109,234 @@
     border: 1px solid var(--gold-light);
     color: var(--brown);
     font-weight: 700;
-    font-size: 9.6pt;
+    font-size: 11pt;
     white-space: nowrap;
-    padding: 4.2mm 6.5mm;
+    padding: 4.6mm 8mm;
     border-radius: 100px;
     box-shadow: 0 3mm 6mm -4mm rgba(90,60,30,0.35);
   }
   .cover .chip span {
     display: block;
     font-weight: 400;
-    font-size: 7.3pt;
+    font-size: 8.2pt;
     color: var(--brown-mid);
     letter-spacing: 0.03em;
-    margin-top: 0.8mm;
+    margin-top: 0.9mm;
     text-align: center;
   }
+
+  .toc {
+    margin-top: 12mm;
+    width: 100%;
+    max-width: 160mm;
+    border-top: 1.4px solid var(--gold-light);
+    padding-top: 8mm;
+  }
+  .toc__label {
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 0.25em;
+    font-size: 9.5pt;
+    font-weight: 700;
+    color: var(--brown-mid);
+    margin-bottom: 7mm;
+  }
+  .toc__grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 10mm;
+    row-gap: 4.5mm;
+  }
+  .toc__item {
+    display: flex;
+    align-items: baseline;
+    gap: 4mm;
+    padding-bottom: 3.4mm;
+    border-bottom: 1px solid var(--line);
+  }
+  .toc__item b {
+    font-family: Georgia, serif;
+    color: var(--gold);
+    font-size: 13.5pt;
+    font-weight: 700;
+    min-width: 9mm;
+  }
+  .toc__item span {
+    font-size: 11pt;
+    color: var(--brown-dark);
+    font-weight: 600;
+    line-height: 1.35;
+  }
+
   .cover .footer-note {
-    position: absolute;
-    bottom: 16mm;
-    font-size: 9pt;
-    letter-spacing: 0.15em;
+    margin-top: auto;
+    padding-top: 10mm;
+    font-size: 9.5pt;
+    letter-spacing: 0.18em;
     text-transform: uppercase;
     color: var(--brown-mid);
     font-weight: 600;
   }
 
-  /* ===================== WEEK PAGES ===================== */
-  .week { padding: 16mm 16mm 14mm; display: flex; flex-direction: column; }
+  /* ===================== CONTENT PAGES ===================== */
+  .sheet { padding: 9mm 17mm 16mm; display: flex; flex-direction: column; height: 100%; }
 
-  .week__head {
+  .sheet__head {
     display: flex;
-    align-items: center;
-    gap: 8mm;
-    padding-bottom: 8mm;
+    justify-content: space-between;
+    align-items: baseline;
+    padding-bottom: 4mm;
     border-bottom: 1.4px solid var(--gold-light);
-    margin-bottom: 10mm;
+    margin-bottom: 2mm;
   }
-  .week__num {
+  .sheet__head .t {
     font-family: Georgia, serif;
-    font-size: 30pt;
+    font-size: 15pt;
+    font-weight: 700;
+    color: var(--brown-dark);
+  }
+  .sheet__head .r {
+    font-size: 9pt;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--brown-mid);
+    font-weight: 700;
+  }
+
+  .weeks { flex: 1; display: flex; flex-direction: column; }
+
+  .week-row {
+    padding: 3.5mm 0;
+    border-bottom: 1px solid var(--line);
+  }
+  .week-row:last-child { border-bottom: none; }
+
+  .week-row__head {
+    display: flex;
+    align-items: baseline;
+    gap: 6mm;
+    margin-bottom: 3.5mm;
+  }
+  .week-row__head .num {
+    font-family: Georgia, serif;
+    font-size: 25pt;
     font-weight: 700;
     color: var(--gold);
     line-height: 1;
-    min-width: 26mm;
   }
-  .week__num small {
-    display: block;
-    font-family: 'Segoe UI', sans-serif;
-    font-size: 8.5pt;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    color: var(--brown-mid);
-    font-weight: 700;
-    margin-top: 2mm;
-  }
-  .week__title {
+  .week-row__head h3 {
     font-family: Georgia, serif;
-    font-size: 20pt;
-    color: var(--brown-dark);
+    font-size: 17pt;
     font-weight: 700;
-    line-height: 1.3;
+    color: var(--brown-dark);
   }
 
-  .week__body {
+  .week-row__body {
     display: grid;
-    grid-template-columns: 1.05fr 0.95fr;
-    gap: 10mm;
-    flex: 1;
+    grid-template-columns: 1.35fr 1fr;
+    gap: 9mm;
+    align-items: start;
   }
 
-  .panel {
-    background: var(--card);
-    border: 1px solid var(--line);
-    border-radius: 5mm;
-    padding: 9mm 9mm;
-    box-shadow: 0 4mm 10mm -8mm rgba(90,60,30,0.5);
+  .study-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 7mm;
+    row-gap: 2mm;
   }
-  .panel h3 {
-    font-size: 10.5pt;
+  .study-grid li {
+    position: relative;
+    padding-left: 5mm;
+    font-size: 11.3pt;
+    line-height: 1.45;
+    color: var(--brown);
+  }
+  .study-grid li::before {
+    content: "";
+    position: absolute;
+    left: 0; top: 5.4pt;
+    width: 3.2mm; height: 1.5px;
+    background: var(--gold);
+  }
+
+  .result-block {
+    background: var(--card);
+    border-left: 2.6px solid var(--gold);
+    border-radius: 0 3mm 3mm 0;
+    padding: 3mm 5mm;
+  }
+  .result-block .tag {
+    display: block;
+    font-size: 8.6pt;
     text-transform: uppercase;
-    letter-spacing: 0.12em;
+    letter-spacing: 0.14em;
     color: var(--brown-mid);
     font-weight: 700;
-    margin-bottom: 6mm;
-    display: flex;
-    align-items: center;
-    gap: 3mm;
+    margin-bottom: 2.6mm;
   }
-  .panel h3::before {
-    content: "";
-    width: 5mm; height: 1.4px;
-    background: var(--gold);
-  }
-
-  .study-list li {
-    display: flex;
-    align-items: baseline;
-    gap: 3.4mm;
-    padding: 3.2mm 0;
+  .result-block p {
     font-size: 10.8pt;
-    color: var(--brown);
-    line-height: 1.5;
-    border-top: 1px solid var(--line);
-  }
-  .study-list li:first-child { border-top: none; padding-top: 0; }
-  .study-list li::before {
-    content: "";
-    flex: none;
-    width: 3mm; height: 1.4px;
-    background: var(--gold);
-    transform: translateY(-3.6pt);
-  }
-
-  .result-list { display: flex; flex-direction: column; gap: 5mm; }
-  .result-list li {
-    display: flex;
-    gap: 4mm;
-    align-items: flex-start;
-    font-size: 10.8pt;
+    line-height: 1.55;
     color: var(--brown-dark);
-    line-height: 1.5;
-    font-weight: 500;
-  }
-  .check {
-    flex: none;
-    width: 5.6mm; height: 5.6mm;
-    border-radius: 50%;
-    background: var(--gold);
-    color: #fff;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 8pt;
-    font-weight: 700;
-    margin-top: 0.4mm;
   }
 
-  .week__footer {
-    margin-top: 10mm;
+  .sheet__footer {
+    position: absolute;
+    left: 17mm; right: 17mm; bottom: 9mm;
     display: flex;
     justify-content: space-between;
-    align-items: center;
     font-size: 8.5pt;
-    color: var(--brown-mid);
-    letter-spacing: 0.08em;
+    letter-spacing: 0.14em;
     text-transform: uppercase;
+    color: var(--brown-mid);
     font-weight: 600;
   }
-  .week__footer .brand { color: var(--gold); }
 
-  /* ===================== FINAL PAGE ===================== */
-  .final { padding: 20mm; display: flex; flex-direction: column; }
-  .final__top {
-    text-align: center;
-    margin-bottom: 12mm;
-  }
-  .final__top .eyebrow {
-    letter-spacing: 0.3em;
-    font-size: 10pt;
-    color: var(--brown-mid);
-    text-transform: uppercase;
-    font-weight: 700;
-    margin-bottom: 5mm;
-  }
-  .final__top h2 {
-    font-family: Georgia, serif;
-    font-size: 22pt;
-    color: var(--brown-dark);
-  }
-
-  .recap {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 5mm;
-    margin-bottom: 12mm;
-  }
-  .recap .item {
-    background: var(--card);
-    border: 1px solid var(--line);
-    border-radius: 4mm;
-    padding: 6mm 5mm;
-    text-align: center;
-  }
-  .recap .item .n {
-    font-family: Georgia, serif;
-    font-weight: 700;
-    font-size: 13pt;
-    color: var(--gold);
-    margin-bottom: 2mm;
-  }
-  .recap .item .t {
-    font-size: 8.6pt;
-    color: var(--brown);
-    line-height: 1.4;
-  }
-
+  /* ===================== RULE / NOTICE ===================== */
   .rule-box {
-    margin-top: auto;
+    margin-top: 3mm;
     background: var(--brown-dark);
-    border-radius: 6mm;
-    padding: 12mm 14mm;
+    border-radius: 5mm;
+    padding: 5mm 8mm;
     color: #f6ead9;
     display: flex;
-    gap: 8mm;
+    gap: 6mm;
     align-items: center;
-    box-shadow: 0 8mm 16mm -10mm rgba(60,40,20,0.6);
+    box-shadow: 0 6mm 14mm -9mm rgba(60,40,20,0.6);
   }
   .rule-box .icon {
     flex: none;
-    width: 18mm; height: 18mm;
+    width: 11mm; height: 11mm;
     border-radius: 50%;
     border: 1.6px solid var(--gold-light);
     display: flex;
     align-items: center;
     justify-content: center;
   }
-  .rule-box .icon svg { width: 9mm; height: 9mm; }
+  .rule-box .icon svg { width: 6mm; height: 6mm; }
   .rule-box .txt .label {
     text-transform: uppercase;
     letter-spacing: 0.18em;
-    font-size: 9pt;
+    font-size: 8.5pt;
     color: var(--gold-light);
     font-weight: 700;
-    margin-bottom: 2.5mm;
+    margin-bottom: 1.8mm;
   }
   .rule-box .txt p {
-    font-size: 12pt;
-    line-height: 1.55;
+    font-size: 10.5pt;
+    line-height: 1.35;
     color: #f6ead9;
   }
   .rule-box .txt p b { color: var(--gold-light); }
-
-  .final__footer {
-    margin-top: 10mm;
-    text-align: center;
-    font-size: 8.5pt;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    color: var(--brown-mid);
-    font-weight: 600;
-  }
 </style>
 </head>
 <body>
 
-  <!-- ============ COVER ============ -->
+  <!-- ============ PAGE 1 — COVER ============ -->
   <section class="page cover frame">
     <div class="eyebrow">Практикум</div>
-    <h1>Профессия<br>дизайнер интерьера<em>Программа курса</em></h1>
+    <h1>Профессия<br>дизайнер интерьера</h1>
+    <div class="subtitle">Программа курса</div>
     <div class="divider"></div>
     <p class="lead">
       Пошаговый практикум, который проведёт вас через весь цикл работы дизайнера интерьера —
@@ -374,209 +347,151 @@
       <div class="chip">2,5–3 часа<span>одно занятие</span></div>
       <div class="chip">6 недель<span>весь практикум</span></div>
     </div>
+
+    <div class="toc">
+      <div class="toc__label">Программа по неделям</div>
+      <div class="toc__grid">
+        <div class="toc__item"><b>01</b><span>Основа успешного проекта</span></div>
+        <div class="toc__item"><b>02</b><span>Создание концепции интерьера</span></div>
+        <div class="toc__item"><b>03</b><span>Комплектация проекта</span></div>
+        <div class="toc__item"><b>04</b><span>Реализация проекта</span></div>
+        <div class="toc__item"><b>05</b><span>Управление проектом</span></div>
+        <div class="toc__item"><b>06</b><span>Запуск карьеры</span></div>
+      </div>
+    </div>
+
     <div class="footer-note">Aneli · Школа дизайна интерьера</div>
   </section>
 
-  <!-- ============ WEEK 1 ============ -->
-  <section class="page week">
-    <div class="week__head">
-      <div class="week__num">01<small>Неделя</small></div>
-      <div class="week__title">Основа успешного проекта</div>
+  <!-- ============ PAGE 2 — WEEKS 1–3 ============ -->
+  <section class="page sheet">
+    <div class="sheet__head">
+      <div class="t">Программа практикума</div>
+      <div class="r">Недели 01–03</div>
     </div>
-    <div class="week__body">
-      <div class="panel">
-        <h3>Что изучаем</h3>
-        <ul class="study-list">
-          <li>Оформление социальных сетей дизайнера</li>
-          <li>Этапы работы над дизайн-проектом</li>
-          <li>Составление технического задания</li>
-          <li>Первый выезд на объект</li>
-          <li>Замеры помещения</li>
-          <li>Основные технические нюансы стройки</li>
-          <li>Разработка планировочного решения</li>
-        </ul>
+
+    <div class="weeks">
+      <div class="week-row">
+        <div class="week-row__head"><span class="num">01</span><h3>Основа успешного проекта</h3></div>
+        <div class="week-row__body">
+          <ul class="study-grid">
+            <li>Оформление социальных сетей дизайнера</li>
+            <li>Этапы работы над дизайн-проектом</li>
+            <li>Составление технического задания</li>
+            <li>Первый выезд на объект</li>
+            <li>Замеры помещения</li>
+            <li>Основные технические нюансы стройки</li>
+            <li>Разработка планировочного решения</li>
+          </ul>
+          <div class="result-block">
+            <span class="tag">Результат недели</span>
+            <p>Понимаете полный цикл работы дизайнера интерьера, проводите первую встречу с заказчиком, снимаете профессиональные замеры, составляете грамотное ТЗ и создаёте первую функциональную планировку.</p>
+          </div>
+        </div>
       </div>
-      <div class="panel">
-        <h3>Результат недели</h3>
-        <ul class="result-list">
-          <li><span class="check">✓</span>Понимаете полный цикл работы дизайнера интерьера</li>
-          <li><span class="check">✓</span>Умеете проводить первую встречу с заказчиком</li>
-          <li><span class="check">✓</span>Самостоятельно снимаете профессиональные замеры объекта</li>
-          <li><span class="check">✓</span>Составляете грамотное техническое задание</li>
-          <li><span class="check">✓</span>Создаёте свою первую функциональную планировку</li>
-        </ul>
+
+      <div class="week-row">
+        <div class="week-row__head"><span class="num">02</span><h3>Создание концепции интерьера</h3></div>
+        <div class="week-row__body">
+          <ul class="study-grid">
+            <li>Разбор планировочных решений</li>
+            <li>Технические доработки</li>
+            <li>Повторный выезд на стройку</li>
+            <li>Стили интерьера</li>
+            <li>Цветовые сочетания</li>
+            <li>Разработка концепции</li>
+            <li>Презентация идеи заказчику</li>
+          </ul>
+          <div class="result-block">
+            <span class="tag">Результат недели</span>
+            <p>Создаёте интерьерную концепцию под запрос клиента, сочетаете стили, цвета, фактуры и материалы, дорабатываете планировку с учётом технических требований и уверенно презентуете идеи заказчику.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="week-row">
+        <div class="week-row__head"><span class="num">03</span><h3>Комплектация проекта</h3></div>
+        <div class="week-row__body">
+          <ul class="study-grid">
+            <li>Работа с поставщиками</li>
+            <li>Выезды в шоурумы</li>
+            <li>Подбор материалов</li>
+            <li>Комплектация объекта</li>
+            <li>Составление сметы</li>
+          </ul>
+          <div class="result-block">
+            <span class="tag">Результат недели</span>
+            <p>Знаете, где искать качественные материалы, умеете работать с поставщиками и шоурумами, подбираете материалы под концепцию и бюджет проекта и самостоятельно составляете смету на комплектацию.</p>
+          </div>
+        </div>
       </div>
     </div>
-    <div class="week__footer"><span>Практикум «Профессия дизайнер интерьера»</span><span class="brand">01 / 06</span></div>
+
+    <div class="sheet__footer"><span>Практикум «Профессия дизайнер интерьера»</span><span>02</span></div>
   </section>
 
-  <!-- ============ WEEK 2 ============ -->
-  <section class="page week">
-    <div class="week__head">
-      <div class="week__num">02<small>Неделя</small></div>
-      <div class="week__title">Создание концепции интерьера</div>
+  <!-- ============ PAGE 3 — WEEKS 4–6 + NOTICE ============ -->
+  <section class="page sheet">
+    <div class="sheet__head">
+      <div class="t">Программа практикума</div>
+      <div class="r">Недели 04–06</div>
     </div>
-    <div class="week__body">
-      <div class="panel">
-        <h3>Что изучаем</h3>
-        <ul class="study-list">
-          <li>Разбор планировочных решений</li>
-          <li>Технические доработки</li>
-          <li>Повторный выезд на стройку</li>
-          <li>Стили интерьера</li>
-          <li>Цветовые сочетания</li>
-          <li>Разработка концепции</li>
-          <li>Презентация идеи заказчику</li>
-        </ul>
-      </div>
-      <div class="panel">
-        <h3>Результат недели</h3>
-        <ul class="result-list">
-          <li><span class="check">✓</span>Умеете создавать интерьерную концепцию под запрос клиента</li>
-          <li><span class="check">✓</span>Понимаете, как сочетать стили, цвета, фактуры и материалы</li>
-          <li><span class="check">✓</span>Дорабатываете планировку с учётом технических требований</li>
-          <li><span class="check">✓</span>Учитесь уверенно презентовать свои идеи заказчику</li>
-        </ul>
-      </div>
-    </div>
-    <div class="week__footer"><span>Практикум «Профессия дизайнер интерьера»</span><span class="brand">02 / 06</span></div>
-  </section>
 
-  <!-- ============ WEEK 3 ============ -->
-  <section class="page week">
-    <div class="week__head">
-      <div class="week__num">03<small>Неделя</small></div>
-      <div class="week__title">Комплектация проекта</div>
-    </div>
-    <div class="week__body">
-      <div class="panel">
-        <h3>Что изучаем</h3>
-        <ul class="study-list">
-          <li>Работа с поставщиками</li>
-          <li>Выезды в шоурумы</li>
-          <li>Подбор материалов</li>
-          <li>Комплектация объекта</li>
-          <li>Составление сметы</li>
-        </ul>
+    <div class="weeks">
+      <div class="week-row">
+        <div class="week-row__head"><span class="num">04</span><h3>Реализация проекта</h3></div>
+        <div class="week-row__body">
+          <ul class="study-grid">
+            <li>Создание живого мудборда</li>
+            <li>Разбор ошибок при подборе материалов</li>
+            <li>Особенности мебельного производства</li>
+            <li>Выезд на мебельное производство</li>
+            <li>Расчёт стоимости мебели</li>
+          </ul>
+          <div class="result-block">
+            <span class="tag">Результат недели</span>
+            <p>Создаёте профессиональный физический мудборд, избегаете дорогостоящих ошибок при комплектации, разбираетесь в изготовлении мебели на заказ и рассчитываете бюджет мебели, взаимодействуя с производством.</p>
+          </div>
+        </div>
       </div>
-      <div class="panel">
-        <h3>Результат недели</h3>
-        <ul class="result-list">
-          <li><span class="check">✓</span>Знаете, где искать качественные материалы</li>
-          <li><span class="check">✓</span>Умеете работать с поставщиками и шоурумами</li>
-          <li><span class="check">✓</span>Подбираете материалы под концепцию и бюджет проекта</li>
-          <li><span class="check">✓</span>Самостоятельно составляете смету на комплектацию объекта</li>
-        </ul>
-      </div>
-    </div>
-    <div class="week__footer"><span>Практикум «Профессия дизайнер интерьера»</span><span class="brand">03 / 06</span></div>
-  </section>
 
-  <!-- ============ WEEK 4 ============ -->
-  <section class="page week">
-    <div class="week__head">
-      <div class="week__num">04<small>Неделя</small></div>
-      <div class="week__title">Реализация проекта</div>
-    </div>
-    <div class="week__body">
-      <div class="panel">
-        <h3>Что изучаем</h3>
-        <ul class="study-list">
-          <li>Создание живого мудборда</li>
-          <li>Разбор ошибок при подборе материалов</li>
-          <li>Особенности мебельного производства</li>
-          <li>Выезд на мебельное производство</li>
-          <li>Расчёт стоимости мебели</li>
-        </ul>
+      <div class="week-row">
+        <div class="week-row__head"><span class="num">05</span><h3>Управление проектом</h3></div>
+        <div class="week-row__body">
+          <ul class="study-grid">
+            <li>Презентация рендеров</li>
+            <li>Защита проекта</li>
+            <li>Менеджмент стройки</li>
+            <li>Работа с подрядчиками</li>
+            <li>Юридическая безопасность</li>
+            <li>Общение с заказчиками</li>
+          </ul>
+          <div class="result-block">
+            <span class="tag">Результат недели</span>
+            <p>Уверенно презентуете дизайн-проект клиенту, ведёте объект во время реализации, выстраиваете работу со строителями и поставщиками, избегаете юридических ошибок и увереннее чувствуете себя в переговорах.</p>
+          </div>
+        </div>
       </div>
-      <div class="panel">
-        <h3>Результат недели</h3>
-        <ul class="result-list">
-          <li><span class="check">✓</span>Создаёте профессиональный физический мудборд</li>
-          <li><span class="check">✓</span>Понимаете, как избежать дорогостоящих ошибок при комплектации</li>
-          <li><span class="check">✓</span>Разбираетесь в процессе изготовления мебели на заказ</li>
-          <li><span class="check">✓</span>Умеете рассчитывать бюджет мебели и взаимодействовать с производством</li>
-        </ul>
-      </div>
-    </div>
-    <div class="week__footer"><span>Практикум «Профессия дизайнер интерьера»</span><span class="brand">04 / 06</span></div>
-  </section>
 
-  <!-- ============ WEEK 5 ============ -->
-  <section class="page week">
-    <div class="week__head">
-      <div class="week__num">05<small>Неделя</small></div>
-      <div class="week__title">Управление проектом</div>
-    </div>
-    <div class="week__body">
-      <div class="panel">
-        <h3>Что изучаем</h3>
-        <ul class="study-list">
-          <li>Презентация рендеров</li>
-          <li>Защита проекта</li>
-          <li>Менеджмент стройки</li>
-          <li>Работа с подрядчиками</li>
-          <li>Юридическая безопасность</li>
-          <li>Общение с заказчиками</li>
-        </ul>
-      </div>
-      <div class="panel">
-        <h3>Результат недели</h3>
-        <ul class="result-list">
-          <li><span class="check">✓</span>Уверенно презентуете дизайн-проект клиенту</li>
-          <li><span class="check">✓</span>Понимаете, как вести объект во время реализации</li>
-          <li><span class="check">✓</span>Знаете, как выстраивать работу со строителями и поставщиками</li>
-          <li><span class="check">✓</span>Избегаете распространённых юридических и организационных ошибок</li>
-          <li><span class="check">✓</span>Чувствуете себя увереннее в переговорах с заказчиками</li>
-        </ul>
+      <div class="week-row">
+        <div class="week-row__head"><span class="num">06</span><h3>Запуск карьеры</h3></div>
+        <div class="week-row__body">
+          <ul class="study-grid">
+            <li>Подбор текстиля</li>
+            <li>Подбор декора и освещения</li>
+            <li>Создание экспертного контента</li>
+            <li>Поиск первых клиентов</li>
+            <li>Каналы продвижения</li>
+            <li>Подведение итогов</li>
+          </ul>
+          <div class="result-block">
+            <span class="tag">Результат недели</span>
+            <p>Завершаете интерьер текстилем, освещением и декором, получаете стратегию продвижения себя как дизайнера, знаете, где искать первых клиентов, и формируете учебный проект для портфолио.</p>
+          </div>
+        </div>
       </div>
     </div>
-    <div class="week__footer"><span>Практикум «Профессия дизайнер интерьера»</span><span class="brand">05 / 06</span></div>
-  </section>
 
-  <!-- ============ WEEK 6 ============ -->
-  <section class="page week">
-    <div class="week__head">
-      <div class="week__num">06<small>Неделя</small></div>
-      <div class="week__title">Запуск карьеры</div>
-    </div>
-    <div class="week__body">
-      <div class="panel">
-        <h3>Что изучаем</h3>
-        <ul class="study-list">
-          <li>Подбор текстиля</li>
-          <li>Подбор декора и освещения</li>
-          <li>Создание экспертного контента</li>
-          <li>Поиск первых клиентов</li>
-          <li>Каналы продвижения</li>
-          <li>Подведение итогов</li>
-        </ul>
-      </div>
-      <div class="panel">
-        <h3>Результат недели</h3>
-        <ul class="result-list">
-          <li><span class="check">✓</span>Умеете завершать интерьер с помощью текстиля, освещения и декора</li>
-          <li><span class="check">✓</span>Получаете стратегию продвижения себя как дизайнера</li>
-          <li><span class="check">✓</span>Понимаете, где искать первых заказчиков и как привлекать новых клиентов</li>
-          <li><span class="check">✓</span>Формируете план развития на первые месяцы работы</li>
-          <li><span class="check">✓</span>Завершаете собственный учебный проект для портфолио</li>
-        </ul>
-      </div>
-    </div>
-    <div class="week__footer"><span>Практикум «Профессия дизайнер интерьера»</span><span class="brand">06 / 06</span></div>
-  </section>
-
-  <!-- ============ FINAL ============ -->
-  <section class="page final frame">
-    <div class="final__top">
-      <div class="eyebrow">По итогам практикума</div>
-      <h2>Вы пройдёте полный путь дизайнера интерьера</h2>
-    </div>
-    <div class="recap">
-      <div class="item"><div class="n">01–02</div><div class="t">Замеры, ТЗ, планировка и концепция интерьера</div></div>
-      <div class="item"><div class="n">03–04</div><div class="t">Комплектация, смета и мудборд проекта</div></div>
-      <div class="item"><div class="n">05–06</div><div class="t">Защита проекта, менеджмент стройки и старт карьеры</div></div>
-    </div>
     <div class="rule-box">
       <div class="icon">
         <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -586,11 +501,11 @@
       </div>
       <div class="txt">
         <div class="label">Важно</div>
-        <p>На все занятия практикума необходимо приходить <b>без опозданий</b>. Пунктуальность —
-        часть профессиональной культуры дизайнера, и мы формируем её с первых дней обучения.</p>
+        <p>На все занятия практикума необходимо приходить <b>без опозданий</b>. Пунктуальность — часть профессиональной культуры дизайнера, и мы формируем её с первых дней обучения.</p>
       </div>
     </div>
-    <div class="final__footer">Aneli · Школа дизайна интерьера</div>
+
+    <div class="sheet__footer"><span>Практикум «Профессия дизайнер интерьера»</span><span>03</span></div>
   </section>
 
 </body>
