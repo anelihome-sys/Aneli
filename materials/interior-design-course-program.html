@@ -27,6 +27,9 @@
     --gold-soft: #ecdcc0;
     --line: #e2cfab;
     --text-soft: #6e5a44;
+    --terracotta: #af5a3b;
+    --terracotta-light: #d99a7c;
+    --terracotta-soft: #f1ddce;
   }
 
   .page {
@@ -51,31 +54,65 @@
 
   /* ===================== INTRO HEADER ===================== */
   .intro {
-    padding-bottom: 4.5mm;
-    margin-bottom: 2.5mm;
-    border-bottom: 1.6px solid var(--gold-light);
+    position: relative;
+    padding: 4mm 6mm 3.5mm;
+    margin-bottom: 2mm;
+    border-radius: 4mm;
+    overflow: hidden;
+    background:
+      linear-gradient(115deg, rgba(175,90,59,0.10) 0%, transparent 38%),
+      linear-gradient(250deg, rgba(182,135,74,0.16) 0%, transparent 45%),
+      linear-gradient(160deg, #f9f1e5 0%, #efdfc7 100%);
+    border: 1px solid var(--gold-light);
+  }
+  .intro__badge {
+    display: inline-block;
+    background: linear-gradient(100deg, var(--terracotta) 0%, var(--gold) 100%);
+    color: #fff8ef;
+    font-size: 8.6pt;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 2.1mm 5mm;
+    border-radius: 100px;
+    margin-bottom: 2.2mm;
   }
   .intro h1 {
     font-family: Georgia, 'Times New Roman', serif;
-    font-size: 21pt;
-    line-height: 1.2;
+    font-size: 22pt;
+    line-height: 1.16;
     color: var(--brown-dark);
     font-weight: 700;
-    margin-bottom: 2.4mm;
+    margin-bottom: 2mm;
   }
+  .intro__hook {
+    font-size: 10.6pt;
+    line-height: 1.35;
+    color: var(--brown);
+    max-width: 165mm;
+    margin-bottom: 3.2mm;
+  }
+  .intro__hook b { color: var(--terracotta); font-weight: 700; }
   .intro__meta {
     display: flex;
     flex-wrap: wrap;
+    gap: 4mm;
+  }
+  .intro__meta .stat {
+    display: flex;
     align-items: baseline;
-    gap: 2.6mm;
-    font-size: 10.3pt;
+    gap: 1.8mm;
+    background: var(--card);
+    border: 1px solid var(--gold-light);
+    border-radius: 100px;
+    padding: 1.8mm 4.5mm;
+    font-size: 9.6pt;
     color: var(--brown-mid);
   }
-  .intro__meta b { color: var(--brown-dark); font-weight: 700; }
-  .intro__meta .dot { color: var(--gold); font-weight: 700; }
+  .intro__meta .stat b { color: var(--brown-dark); font-weight: 700; font-size: 10.4pt; }
 
   /* ===================== CONTENT PAGES ===================== */
-  .sheet { padding: 12mm 17mm 16mm; display: flex; flex-direction: column; height: 100%; }
+  .sheet { padding: 8mm 17mm 13mm; display: flex; flex-direction: column; height: 100%; }
   .sheet--bare { padding-top: 15mm; }
 
   .sheet__head {
@@ -103,22 +140,38 @@
   .weeks { flex: 1; display: flex; flex-direction: column; }
 
   .week-row {
-    padding: 2.8mm 0;
+    --accent: var(--gold);
+    --accent-light: var(--gold-light);
+    --accent-soft: var(--gold-soft);
+    padding: 2mm 0;
     border-bottom: 1px solid var(--line);
   }
   .week-row:last-child { border-bottom: none; }
+  .week-row--b {
+    --accent: var(--terracotta);
+    --accent-light: var(--terracotta-light);
+    --accent-soft: var(--terracotta-soft);
+  }
 
   .week-row__head {
     display: flex;
-    align-items: baseline;
-    gap: 6mm;
-    margin-bottom: 3mm;
+    align-items: center;
+    gap: 4mm;
+    margin-bottom: 2.4mm;
   }
   .week-row__head .num {
+    flex: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 10.5mm;
+    height: 10.5mm;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--accent) 0%, var(--accent-light) 100%);
     font-family: Georgia, serif;
-    font-size: 25pt;
+    font-size: 12.5pt;
     font-weight: 700;
-    color: var(--gold);
+    color: #fff9f0;
     line-height: 1;
   }
   .week-row__head h3 {
@@ -139,41 +192,45 @@
     display: grid;
     grid-template-columns: 1fr 1fr;
     column-gap: 7mm;
-    row-gap: 1.7mm;
+    row-gap: 1.1mm;
   }
   .study-grid li {
     position: relative;
     padding-left: 5mm;
-    font-size: 11.3pt;
-    line-height: 1.45;
+    font-size: 11.2pt;
+    line-height: 1.38;
     color: var(--brown);
   }
   .study-grid li::before {
     content: "";
     position: absolute;
-    left: 0; top: 5.4pt;
-    width: 3.2mm; height: 1.5px;
-    background: var(--gold);
+    left: 0; top: 5.6pt;
+    width: 2mm; height: 2mm;
+    border-radius: 50%;
+    background: var(--accent);
   }
 
   .result-block {
     background: var(--card);
-    border-left: 2.6px solid var(--gold);
+    border-left: 2.6px solid var(--accent);
     border-radius: 0 3mm 3mm 0;
-    padding: 2.6mm 4.5mm;
+    padding: 2mm 3.5mm;
   }
   .result-block .tag {
-    display: block;
-    font-size: 8.6pt;
+    display: inline-block;
+    font-size: 8.2pt;
     text-transform: uppercase;
-    letter-spacing: 0.14em;
-    color: var(--brown-mid);
+    letter-spacing: 0.1em;
+    color: #fff9f0;
+    background: var(--accent);
     font-weight: 700;
-    margin-bottom: 2.6mm;
+    padding: 1mm 3mm;
+    border-radius: 100px;
+    margin-bottom: 2.2mm;
   }
   .result-block p {
-    font-size: 10.8pt;
-    line-height: 1.55;
+    font-size: 10.6pt;
+    line-height: 1.42;
     color: var(--brown-dark);
   }
 
@@ -232,13 +289,13 @@
   <!-- ============ PAGE 1 — INTRO + WEEKS 1–3 ============ -->
   <section class="page sheet frame">
     <div class="intro">
+      <div class="intro__badge">Без теории — только практика</div>
       <h1>Практикум для дизайнеров интерьера</h1>
+      <p class="intro__hook">Для тех, кто реально хочет стартовать в профессии — <b>без теории</b>. Именно то, что поможет вам обрести настоящие навыки дизайнера интерьера уже сегодня.</p>
       <div class="intro__meta">
-        <span><b>6 недель</b> длительность практикума</span>
-        <span class="dot">•</span>
-        <span><b>3 занятия</b> в неделю</span>
-        <span class="dot">•</span>
-        <span><b>2,5–3 часа</b> одно занятие</span>
+        <span class="stat"><b>6 недель</b>&nbsp;длительность практикума</span>
+        <span class="stat"><b>3 занятия</b>&nbsp;в неделю</span>
+        <span class="stat"><b>2,5–3 часа</b>&nbsp;одно занятие</span>
       </div>
     </div>
 
@@ -257,12 +314,12 @@
           </ul>
           <div class="result-block">
             <span class="tag">Результат недели</span>
-            <p>Понимаете полный цикл работы дизайнера интерьера, проводите первую встречу с заказчиком, снимаете профессиональные замеры, составляете грамотное ТЗ и создаёте первую функциональную планировку.</p>
+            <p>Понимаете весь цикл работы дизайнера, уверенно проводите первую встречу с заказчиком, снимаете замеры и создаёте первую функциональную планировку.</p>
           </div>
         </div>
       </div>
 
-      <div class="week-row">
+      <div class="week-row week-row--b">
         <div class="week-row__head"><span class="num">02</span><h3>Создание концепции интерьера</h3></div>
         <div class="week-row__body">
           <ul class="study-grid">
@@ -276,7 +333,7 @@
           </ul>
           <div class="result-block">
             <span class="tag">Результат недели</span>
-            <p>Создаёте интерьерную концепцию под запрос клиента, сочетаете стили, цвета, фактуры и материалы, дорабатываете планировку с учётом технических требований и уверенно презентуете идеи заказчику.</p>
+            <p>Создаёте интерьерную концепцию под запрос клиента, сочетаете стили и цвета, дорабатываете планировку и уверенно презентуете идеи заказчику.</p>
           </div>
         </div>
       </div>
@@ -293,7 +350,7 @@
           </ul>
           <div class="result-block">
             <span class="tag">Результат недели</span>
-            <p>Знаете, где искать качественные материалы, умеете работать с поставщиками и шоурумами, подбираете материалы под концепцию и бюджет проекта и самостоятельно составляете смету на комплектацию.</p>
+            <p>Знаете, где искать качественные материалы, работаете с поставщиками и шоурумами, подбираете их под концепцию и бюджет и составляете смету.</p>
           </div>
         </div>
       </div>
@@ -305,7 +362,7 @@
   <!-- ============ PAGE 2 — WEEKS 4–6 + NOTICE ============ -->
   <section class="page sheet sheet--bare frame">
     <div class="weeks">
-      <div class="week-row">
+      <div class="week-row week-row--b">
         <div class="week-row__head"><span class="num">04</span><h3>Реализация проекта</h3></div>
         <div class="week-row__body">
           <ul class="study-grid">
@@ -317,7 +374,7 @@
           </ul>
           <div class="result-block">
             <span class="tag">Результат недели</span>
-            <p>Создаёте профессиональный физический мудборд, избегаете дорогостоящих ошибок при комплектации, разбираетесь в изготовлении мебели на заказ и рассчитываете бюджет мебели, взаимодействуя с производством.</p>
+            <p>Создаёте профессиональный мудборд, избегаете дорогостоящих ошибок при комплектации, разбираетесь в изготовлении мебели на заказ и рассчитываете её бюджет.</p>
           </div>
         </div>
       </div>
@@ -335,12 +392,12 @@
           </ul>
           <div class="result-block">
             <span class="tag">Результат недели</span>
-            <p>Уверенно презентуете дизайн-проект клиенту, ведёте объект во время реализации, выстраиваете работу со строителями и поставщиками, избегаете юридических ошибок и увереннее чувствуете себя в переговорах.</p>
+            <p>Уверенно презентуете проект клиенту, ведёте объект на реализации, выстраиваете работу со строителями и поставщиками, увереннее чувствуете себя в переговорах.</p>
           </div>
         </div>
       </div>
 
-      <div class="week-row">
+      <div class="week-row week-row--b">
         <div class="week-row__head"><span class="num">06</span><h3>Запуск карьеры</h3></div>
         <div class="week-row__body">
           <ul class="study-grid">
@@ -353,7 +410,7 @@
           </ul>
           <div class="result-block">
             <span class="tag">Результат недели</span>
-            <p>Завершаете интерьер текстилем, освещением и декором, получаете стратегию продвижения себя как дизайнера, знаете, где искать первых клиентов, и формируете учебный проект для портфолио.</p>
+            <p>Завершаете интерьер текстилем, освещением и декором, получаете стратегию продвижения себя как дизайнера и первых клиентов, собираете проект для портфолио.</p>
           </div>
         </div>
       </div>
