@@ -1,0 +1,513 @@
+<title>Практикум для дизайнеров интерьера — программа курса</title>
+<style>
+  :root {
+    --paper: #f5efe2;
+    --paper-deep: #ece0c7;
+    --card: #fffaf1;
+    --ink: #362619;
+    --ink-soft: #6e5a44;
+    --ink-mute: #9c8a72;
+    --line: #e2d1ae;
+    --gold: #b6874a;
+    --gold-light: #d9b98a;
+    --gold-soft: #f0e2c8;
+    --terracotta: #af5a3b;
+    --terracotta-light: #d99a7c;
+    --terracotta-soft: #f1ddce;
+    --shadow: 220 25% 20%;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --paper: #211710;
+      --paper-deep: #17110b;
+      --card: #2b1f16;
+      --ink: #f3e6d4;
+      --ink-soft: #cbb497;
+      --ink-mute: #8f7c65;
+      --line: #40311f;
+      --gold: #d3a563;
+      --gold-light: #a97d44;
+      --gold-soft: #3a2c1a;
+      --terracotta: #d68361;
+      --terracotta-light: #a85336;
+      --terracotta-soft: #3a2318;
+    }
+  }
+  :root[data-theme="dark"] {
+    --paper: #211710;
+    --paper-deep: #17110b;
+    --card: #2b1f16;
+    --ink: #f3e6d4;
+    --ink-soft: #cbb497;
+    --ink-mute: #8f7c65;
+    --line: #40311f;
+    --gold: #d3a563;
+    --gold-light: #a97d44;
+    --gold-soft: #3a2c1a;
+    --terracotta: #d68361;
+    --terracotta-light: #a85336;
+    --terracotta-soft: #3a2318;
+  }
+
+  * { box-sizing: border-box; }
+  html { background: var(--paper); }
+  body {
+    margin: 0;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: 'Segoe UI', ui-sans-serif, system-ui, -apple-system, Helvetica, Arial, sans-serif;
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+  }
+  h1, h2, h3 {
+    font-family: Georgia, 'Times New Roman', serif;
+    color: var(--ink);
+    text-wrap: balance;
+    margin: 0;
+  }
+  p { margin: 0; }
+  ul { margin: 0; padding: 0; list-style: none; }
+  .tabular { font-variant-numeric: tabular-nums; }
+
+  a:focus-visible, button:focus-visible {
+    outline: 2px solid var(--terracotta);
+    outline-offset: 3px;
+  }
+
+  .wrap { max-width: 760px; margin: 0 auto; padding: 0 24px; }
+
+  /* ---------------- HERO ---------------- */
+  .hero {
+    position: relative;
+    overflow: hidden;
+    padding: 72px 0 56px;
+    background:
+      radial-gradient(ellipse 620px 320px at 12% -10%, color-mix(in srgb, var(--terracotta) 16%, transparent), transparent),
+      radial-gradient(ellipse 520px 360px at 96% 0%, color-mix(in srgb, var(--gold) 20%, transparent), transparent),
+      var(--paper);
+    border-bottom: 1px solid var(--line);
+  }
+  .hero__blob {
+    position: absolute;
+    width: 420px; height: 420px;
+    border-radius: 50%;
+    top: -220px; right: -140px;
+    background: radial-gradient(circle, color-mix(in srgb, var(--gold) 30%, transparent) 0%, transparent 70%);
+    animation: drift 22s ease-in-out infinite alternate;
+  }
+  @media (prefers-reduced-motion: reduce) { .hero__blob { animation: none; } }
+  @keyframes drift {
+    from { transform: translate(0, 0) scale(1); }
+    to { transform: translate(-30px, 30px) scale(1.08); }
+  }
+  .badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: linear-gradient(100deg, var(--terracotta) 0%, var(--gold) 100%);
+    color: #fff8ee;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.09em;
+    text-transform: uppercase;
+    padding: 8px 16px;
+    border-radius: 100px;
+  }
+  .hero h1 {
+    font-size: clamp(32px, 5vw, 44px);
+    line-height: 1.12;
+    font-weight: 700;
+    margin-top: 20px;
+    max-width: 14ch;
+  }
+  .hero__hook {
+    margin-top: 18px;
+    font-size: 17px;
+    line-height: 1.55;
+    color: var(--ink-soft);
+    max-width: 54ch;
+  }
+  .hero__hook b { color: var(--terracotta); font-weight: 700; }
+
+  .stats {
+    margin-top: 30px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+  .stat {
+    display: flex;
+    align-items: baseline;
+    gap: 6px;
+    background: var(--card);
+    border: 1px solid var(--gold-light);
+    border-radius: 100px;
+    padding: 9px 18px;
+    font-size: 14px;
+    color: var(--ink-soft);
+    box-shadow: 0 10px 24px -18px hsl(var(--shadow) / 0.6);
+  }
+  .stat b { color: var(--ink); font-size: 15px; font-weight: 700; }
+
+  /* ---------------- SECTION SCAFFOLD ---------------- */
+  section.block { padding: 56px 0; }
+  .block__head { margin-bottom: 32px; }
+  .eyebrow {
+    display: block;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--terracotta);
+    margin-bottom: 8px;
+  }
+  .block__head h2 { font-size: clamp(24px, 3.4vw, 30px); font-weight: 700; }
+
+  /* ---------------- WEEKS ---------------- */
+  .weeks { display: flex; flex-direction: column; gap: 16px; }
+
+  .week {
+    --accent: var(--gold);
+    --accent-light: var(--gold-light);
+    --accent-soft: var(--gold-soft);
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: 18px;
+    padding: 28px 30px;
+    opacity: 0;
+    transform: translateY(14px);
+    transition: opacity .5s ease, transform .5s ease, box-shadow .25s ease, border-color .25s ease;
+  }
+  .week.is-visible { opacity: 1; transform: translateY(0); }
+  .week:hover {
+    border-color: var(--accent-light);
+    box-shadow: 0 22px 44px -30px hsl(var(--shadow) / 0.55);
+  }
+  .week--b { --accent: var(--terracotta); --accent-light: var(--terracotta-light); --accent-soft: var(--terracotta-soft); }
+
+  .week__head { display: flex; align-items: center; gap: 14px; margin-bottom: 18px; }
+  .week__num {
+    flex: none;
+    width: 40px; height: 40px;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    background: linear-gradient(135deg, var(--accent) 0%, var(--accent-light) 100%);
+    color: #fff9f0;
+    font-family: Georgia, serif;
+    font-weight: 700;
+    font-size: 16px;
+  }
+  .week__head h3 { font-size: 19px; font-weight: 700; }
+
+  .week__body { display: grid; grid-template-columns: 1.3fr 1fr; gap: 26px; }
+  @media (max-width: 640px) { .week__body { grid-template-columns: 1fr; } }
+
+  .topics { display: grid; grid-template-columns: 1fr 1fr; column-gap: 18px; row-gap: 8px; }
+  @media (max-width: 480px) { .topics { grid-template-columns: 1fr; } }
+  .topics li {
+    position: relative;
+    padding-left: 16px;
+    font-size: 14.5px;
+    line-height: 1.45;
+    color: var(--ink-soft);
+  }
+  .topics li::before {
+    content: "";
+    position: absolute;
+    left: 0; top: 7px;
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: var(--accent);
+  }
+
+  .result {
+    background: var(--accent-soft);
+    border-left: 3px solid var(--accent);
+    border-radius: 0 12px 12px 0;
+    padding: 14px 18px;
+  }
+  .result .tag {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #fff9f0;
+    background: var(--accent);
+    padding: 3px 10px;
+    border-radius: 100px;
+    margin-bottom: 8px;
+  }
+  .result p { font-size: 14.5px; line-height: 1.5; color: var(--ink); }
+
+  /* ---------------- PRICING ---------------- */
+  .prices { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+  @media (max-width: 640px) { .prices { grid-template-columns: 1fr; } }
+
+  .price {
+    position: relative;
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: 20px;
+    padding: 30px 28px;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+  .price--featured {
+    border-color: var(--terracotta);
+    box-shadow: 0 26px 48px -30px hsl(var(--shadow) / 0.6);
+  }
+  .price__ribbon {
+    position: absolute;
+    top: -13px; left: 28px;
+    background: var(--terracotta);
+    color: #fff9f0;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 5px 12px;
+    border-radius: 100px;
+  }
+  .price__label { font-size: 13px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: var(--ink-mute); }
+  .price__amount { font-family: Georgia, serif; font-size: 34px; font-weight: 700; color: var(--ink); }
+  .price__amount span { font-size: 18px; font-weight: 400; color: var(--ink-mute); margin-left: 4px; }
+  .price__note { font-size: 14px; color: var(--ink-soft); line-height: 1.5; }
+
+  /* ---------------- NOTICE ---------------- */
+  .notice {
+    display: flex;
+    gap: 18px;
+    align-items: center;
+    background: var(--ink);
+    color: var(--paper);
+    border-radius: 18px;
+    padding: 24px 28px;
+  }
+  :root:not([data-theme="light"]) .notice, :root[data-theme="dark"] .notice { color: var(--paper); }
+  .notice__icon {
+    flex: none;
+    width: 44px; height: 44px;
+    border-radius: 50%;
+    border: 1.5px solid var(--gold-light);
+    display: flex; align-items: center; justify-content: center;
+  }
+  .notice__icon svg { width: 22px; height: 22px; }
+  .notice .label {
+    display: block;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--gold-light);
+    margin-bottom: 6px;
+  }
+  .notice p { font-size: 15px; line-height: 1.5; }
+  .notice p b { color: var(--gold-light); }
+
+  footer.block { padding: 40px 0 64px; text-align: center; }
+  footer.block .brand {
+    font-size: 12px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--ink-mute);
+    font-weight: 600;
+  }
+</style>
+
+<div class="hero">
+  <div class="hero__blob" aria-hidden="true"></div>
+  <div class="wrap">
+    <span class="badge">Без теории — только практика</span>
+    <h1>Практикум для дизайнеров интерьера</h1>
+    <p class="hero__hook">Для тех, кто реально хочет стартовать в профессии — <b>без теории</b>. Именно то, что поможет вам обрести настоящие навыки дизайнера интерьера уже сегодня.</p>
+    <div class="stats">
+      <div class="stat"><b>6 недель</b>&nbsp;длительность практикума</div>
+      <div class="stat"><b>3 занятия</b>&nbsp;в неделю</div>
+      <div class="stat"><b>2,5–3 часа</b>&nbsp;одно занятие</div>
+    </div>
+  </div>
+</div>
+
+<main class="wrap">
+
+  <section class="block" aria-label="Программа по неделям">
+    <div class="block__head">
+      <span class="eyebrow">Программа практикума</span>
+      <h2>Шесть недель, шесть результатов</h2>
+    </div>
+
+    <div class="weeks" id="weeks">
+
+      <article class="week">
+        <div class="week__head"><span class="week__num">01</span><h3>Основа успешного проекта</h3></div>
+        <div class="week__body">
+          <ul class="topics">
+            <li>Оформление социальных сетей дизайнера</li>
+            <li>Этапы работы над дизайн-проектом</li>
+            <li>Составление технического задания</li>
+            <li>Первый выезд на объект</li>
+            <li>Замеры помещения</li>
+            <li>Основные технические нюансы стройки</li>
+            <li>Разработка планировочного решения</li>
+          </ul>
+          <div class="result">
+            <span class="tag">Результат недели</span>
+            <p>Понимаете полный цикл работы дизайнера интерьера, уверенно проводите первую встречу с заказчиком, самостоятельно снимаете профессиональные замеры, составляете грамотное ТЗ и создаёте первую функциональную планировку.</p>
+          </div>
+        </div>
+      </article>
+
+      <article class="week week--b">
+        <div class="week__head"><span class="week__num">02</span><h3>Создание концепции интерьера</h3></div>
+        <div class="week__body">
+          <ul class="topics">
+            <li>Разбор планировочных решений</li>
+            <li>Технические доработки</li>
+            <li>Повторный выезд на стройку</li>
+            <li>Стили интерьера</li>
+            <li>Цветовые сочетания</li>
+            <li>Разработка концепции</li>
+            <li>Презентация идеи заказчику</li>
+          </ul>
+          <div class="result">
+            <span class="tag">Результат недели</span>
+            <p>Создаёте интерьерную концепцию под запрос клиента, понимаете, как сочетать стили, цвета, фактуры и материалы, дорабатываете планировку с учётом технических требований и уверенно презентуете идеи заказчику.</p>
+          </div>
+        </div>
+      </article>
+
+      <article class="week">
+        <div class="week__head"><span class="week__num">03</span><h3>Комплектация проекта</h3></div>
+        <div class="week__body">
+          <ul class="topics">
+            <li>Работа с поставщиками</li>
+            <li>Выезды в шоурумы</li>
+            <li>Подбор материалов</li>
+            <li>Комплектация объекта</li>
+            <li>Составление сметы</li>
+          </ul>
+          <div class="result">
+            <span class="tag">Результат недели</span>
+            <p>Знаете, где искать качественные материалы, умеете работать с поставщиками и шоурумами, подбираете материалы под концепцию и бюджет проекта и самостоятельно составляете смету на комплектацию объекта.</p>
+          </div>
+        </div>
+      </article>
+
+      <article class="week week--b">
+        <div class="week__head"><span class="week__num">04</span><h3>Реализация проекта</h3></div>
+        <div class="week__body">
+          <ul class="topics">
+            <li>Создание живого мудборда</li>
+            <li>Разбор ошибок при подборе материалов</li>
+            <li>Особенности мебельного производства</li>
+            <li>Выезд на мебельное производство</li>
+            <li>Расчёт стоимости мебели</li>
+          </ul>
+          <div class="result">
+            <span class="tag">Результат недели</span>
+            <p>Создаёте профессиональный физический мудборд, понимаете, как избежать дорогостоящих ошибок при комплектации, разбираетесь в процессе изготовления мебели на заказ и умеете рассчитывать бюджет мебели.</p>
+          </div>
+        </div>
+      </article>
+
+      <article class="week">
+        <div class="week__head"><span class="week__num">05</span><h3>Управление проектом</h3></div>
+        <div class="week__body">
+          <ul class="topics">
+            <li>Презентация рендеров</li>
+            <li>Защита проекта</li>
+            <li>Менеджмент стройки</li>
+            <li>Работа с подрядчиками</li>
+            <li>Юридическая безопасность</li>
+            <li>Общение с заказчиками</li>
+          </ul>
+          <div class="result">
+            <span class="tag">Результат недели</span>
+            <p>Уверенно презентуете дизайн-проект клиенту, понимаете, как вести объект во время реализации, выстраиваете работу со строителями и поставщиками и увереннее чувствуете себя в переговорах с заказчиками.</p>
+          </div>
+        </div>
+      </article>
+
+      <article class="week week--b">
+        <div class="week__head"><span class="week__num">06</span><h3>Запуск карьеры</h3></div>
+        <div class="week__body">
+          <ul class="topics">
+            <li>Подбор текстиля</li>
+            <li>Подбор декора и освещения</li>
+            <li>Создание экспертного контента</li>
+            <li>Поиск первых клиентов</li>
+            <li>Каналы продвижения</li>
+            <li>Подведение итогов</li>
+          </ul>
+          <div class="result">
+            <span class="tag">Результат недели</span>
+            <p>Умеете завершать интерьер текстилем, освещением и декором, получаете стратегию продвижения себя как дизайнера, знаете, где искать первых клиентов, и завершаете учебный проект для портфолио.</p>
+          </div>
+        </div>
+      </article>
+
+    </div>
+  </section>
+
+  <section class="block" aria-label="Стоимость">
+    <div class="block__head">
+      <span class="eyebrow">Участие</span>
+      <h2>Стоимость практикума</h2>
+    </div>
+    <div class="prices">
+      <div class="price price--featured">
+        <span class="price__ribbon">Выгоднее на 40 000 ₸</span>
+        <span class="price__label">Полная оплата</span>
+        <div class="price__amount tabular">400&nbsp;000&nbsp;<span>₸</span></div>
+        <p class="price__note">100% оплата сразу при записи на практикум.</p>
+      </div>
+      <div class="price">
+        <span class="price__label">Рассрочка</span>
+        <div class="price__amount tabular">440&nbsp;000&nbsp;<span>₸</span></div>
+        <p class="price__note">Оплата частями на удобных условиях на весь период практикума.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" aria-label="Важно">
+    <div class="notice">
+      <div class="notice__icon">
+        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="12" cy="12" r="9.2" stroke="currentColor" stroke-width="1.6"/>
+          <path d="M12 7V12.3L15.3 14.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </div>
+      <div class="txt">
+        <span class="label">Важно</span>
+        <p>На все занятия практикума необходимо приходить <b>без опозданий</b>. Пунктуальность — часть профессиональной культуры дизайнера, и мы формируем её с первых дней обучения.</p>
+      </div>
+    </div>
+  </section>
+
+  <footer class="block">
+    <span class="brand">Aneli · Школа дизайна интерьера</span>
+  </footer>
+
+</main>
+
+<script>
+  (function () {
+    var items = document.querySelectorAll('.week');
+    var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (reduce || !('IntersectionObserver' in window)) {
+      items.forEach(function (el) { el.classList.add('is-visible'); });
+      return;
+    }
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-visible');
+          io.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+    items.forEach(function (el) { io.observe(el); });
+  })();
+</script>
