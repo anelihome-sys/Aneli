@@ -132,6 +132,21 @@
     color: var(--ink-soft);
     max-width: 56ch;
   }
+  .founder__creds {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px 12px;
+    margin-top: 14px;
+  }
+  .founder__creds span {
+    font-size: 12.5px;
+    font-weight: 700;
+    color: var(--accent);
+    background: var(--accent-soft);
+    padding: 5px 12px;
+    border-radius: 100px;
+    letter-spacing: 0.01em;
+  }
 
   /* ---------------- HERO ---------------- */
   .hero { padding: 12px 0 56px; border-bottom: 1px solid var(--line); }
@@ -321,7 +336,11 @@
       <div>
         <span class="founder__eyebrow">Автор практикума</span>
         <h2 class="founder__name">Анели</h2>
-        <p class="founder__bio">Практикующий дизайнер интерьера и основатель школы Aneli. Я построила эту программу вокруг того, что действительно работает на реальных объектах — без лишней теории, только практические инструменты, которыми пользуюсь в своих проектах каждый день.</p>
+        <p class="founder__bio">Анели — основательница студии Aneli Interiors, работает с частными и коммерческими интерьерами в Турции, ОАЭ и Казахстане и реализовала более 70 проектов. В этом практикуме она делится рабочей системой, которая поможет вам стартовать в профессии быстрее и обойти ошибки, которые совершает почти каждый начинающий дизайнер.</p>
+        <div class="founder__creds">
+          <span>70+ проектов</span>
+          <span>Турция · ОАЭ · Казахстан</span>
+        </div>
       </div>
     </div>
   </section>
@@ -492,7 +511,7 @@
   </section>
 
   <footer class="block">
-    <span class="brand">Aneli · Школа дизайна интерьера</span>
+    <span class="brand">Aneli Interiors</span>
   </footer>
 
 </div>
