@@ -151,7 +151,44 @@
   }
 
   /* ---------- HERO ---------- */
-  .hero { padding-top: clamp(40px, 7vw, 76px); padding-bottom: clamp(48px, 7vw, 84px); }
+  /* ══════════════════════════════════════════════════════════════════
+     ФОНОВОЕ ИЗОБРАЖЕНИЕ ПЕРВОГО ЭКРАНА  (рендер интерьера)
+
+     1. Положите файл рядом с online.html — например  hero.jpg
+     2. Раскомментируйте строку --hero-image ниже и впишите имя файла
+
+     Пока строка закомментирована, показывается тёмный градиент.
+     Поверх изображения всегда лежит тёмный оверлей ~80%,
+     чтобы текст оставался читаемым.
+     ══════════════════════════════════════════════════════════════════ */
+  .hero {
+    /* --hero-image: url("hero.jpg"); */
+
+    /* хиро всегда тёмный — фиксированные цвета поверх фото */
+    --ink: #f7f0e5;
+    --soft: #cbbca7;
+    --mute: #9d8f7b;
+    --line: rgba(247, 240, 229, 0.16);
+    --accent: #e08055;
+
+    position: relative;
+    min-height: 100vh;
+    min-height: 100svh;
+    display: flex;
+    align-items: center;
+    padding: 34px 0;
+    color: var(--ink);
+    background-color: #100d0a;
+    background-image:
+      linear-gradient(180deg, rgba(16,13,10,.76) 0%, rgba(16,13,10,.82) 52%, rgba(16,13,10,.90) 100%),
+      var(--hero-image, none),
+      radial-gradient(ellipse 95% 70% at 72% 18%, #3d3128 0%, transparent 62%),
+      linear-gradient(158deg, #241d17 0%, #100d0a 100%);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+  .hero__inner { width: 100%; }
   .hero__kicker {
     display: inline-flex;
     align-items: center;
@@ -165,6 +202,9 @@
     border-radius: 100px;
     padding: 7px 16px;
   }
+  @media (max-width: 430px) {
+    .hero__kicker { font-size: 9.6px; letter-spacing: 0.1em; padding: 6px 13px; gap: 7px; }
+  }
   .hero__dot {
     width: 6px; height: 6px; border-radius: 50%;
     background: var(--accent);
@@ -175,43 +215,98 @@
 
   .hero h1 {
     font-family: 'Prata', Georgia, serif;
-    font-size: clamp(38px, 7.6vw, 78px);
-    line-height: 1.04;
+    font-size: clamp(28px, 7.2vw, 62px);
+    line-height: 1.09;
     letter-spacing: -0.02em;
-    margin-top: 26px;
-    max-width: 15ch;
+    margin-top: 20px;
+    max-width: 17ch;
   }
-  .hero h1 .accent { color: var(--accent); }
+  .hero h1 .accent { color: var(--accent); display: block; }
   .hero__lede {
-    margin-top: 26px;
-    font-size: clamp(16.5px, 2vw, 19px);
-    line-height: 1.6;
+    margin-top: 16px;
+    font-size: clamp(14.5px, 3.5vw, 18px);
+    line-height: 1.5;
     color: var(--soft);
-    max-width: 48ch;
+    max-width: 46ch;
   }
-  .hero__meta {
-    margin-top: 38px;
+
+  .hero__author {
     display: flex;
-    flex-wrap: wrap;
-    gap: 0;
+    align-items: center;
+    gap: 13px;
+    margin-top: 24px;
+    padding-top: 20px;
     border-top: 1px solid var(--line);
   }
-  .hero__meta div {
-    flex: 1 1 150px;
-    padding: 18px 22px 4px 0;
-    border-right: 1px solid var(--line);
-    padding-right: 22px;
+  .hero__author img {
+    width: 52px; height: 52px;
+    border-radius: 50%;
+    object-fit: cover;
+    flex: none;
   }
-  .hero__meta div:last-child { border-right: none; }
-  .hero__meta b {
-    display: block;
+  @media (max-width: 400px) { .hero__author img { width: 46px; height: 46px; } }
+  .hero__author p {
+    font-size: clamp(12px, 3.1vw, 14px);
+    line-height: 1.45;
+    color: var(--soft);
+  }
+  .hero__author b { color: var(--ink); font-weight: 700; }
+
+  .hero__cta { margin-top: 24px; }
+  .hero .cta { margin-top: 0; }
+  .hero__note {
+    margin-top: 11px;
+    font-size: clamp(11.5px, 2.9vw, 13px);
+    color: var(--mute);
+  }
+
+  /* ---------- FIT / UNFIT ---------- */
+  .fit__list {
+    margin-top: 32px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0 clamp(24px, 4vw, 48px);
+  }
+  @media (max-width: 680px) { .fit__list { grid-template-columns: 1fr; } }
+  .fit__list li {
+    display: flex;
+    gap: 13px;
+    align-items: flex-start;
+    padding: 16px 0;
+    border-bottom: 1px solid var(--line);
+    font-size: clamp(14.5px, 3.6vw, 16px);
+    line-height: 1.5;
+    color: var(--ink);
+  }
+  .fit__list li svg {
+    width: 18px; height: 18px;
+    flex: none;
+    margin-top: 2px;
+    color: var(--accent);
+  }
+
+  .unfit {
+    margin-top: clamp(34px, 5vw, 46px);
+    padding-top: 26px;
+    border-top: 1px solid var(--line);
+  }
+  .unfit h3 {
     font-family: 'Prata', serif;
-    font-weight: 400;
-    font-size: clamp(21px, 2.8vw, 27px);
-    line-height: 1.1;
-    margin-bottom: 5px;
+    font-size: clamp(16.5px, 4vw, 19px);
+    line-height: 1.3;
+    color: var(--mute);
+    margin-bottom: 12px;
   }
-  .hero__meta span { font-size: 13px; color: var(--mute); }
+  .unfit li {
+    display: flex;
+    gap: 11px;
+    align-items: flex-start;
+    padding: 7px 0;
+    font-size: clamp(13px, 3.3vw, 14.5px);
+    line-height: 1.5;
+    color: var(--mute);
+  }
+  .unfit li svg { width: 14px; height: 14px; flex: none; margin-top: 3px; }
 
   /* ---------- FOUNDER ---------- */
   .founder { padding: clamp(44px, 6vw, 68px) 0; }
@@ -471,14 +566,69 @@
 </style>
 
 <section class="room hero">
-  <div class="wrap">
-    <span class="hero__kicker"><span class="hero__dot"></span>Онлайн-практикум</span>
-    <h1>Старт в профессии <span class="accent">дизайнера интерьера</span></h1>
-    <p class="hero__lede">Для тех, кто хочет реально начать работать дизайнером интерьера, но не понимает, с чего начать.</p>
-    <div class="hero__meta">
-      <div><b>2 месяца</b><span>длительность практикума</span></div>
-      <div><b>Онлайн</b><span>из любого города</span></div>
-      <div><b>Практика</b><span>вместо сухой теории</span></div>
+  <div class="wrap hero__inner">
+    <span class="hero__kicker"><span class="hero__dot"></span>Онлайн-практикум · Старт 5 октября</span>
+    <h1>Профессия дизайнера интерьера: <span class="accent">до первого проекта в портфолио за 2 месяца</span></h1>
+    <p class="hero__lede">Для тех, кто уже влюблён в интерьеры — делал ремонт себе, собирал референсы — но не понимает, как превратить это в оплачиваемые проекты.</p>
+
+    <div class="hero__author">
+      <img src="data:image/jpeg;base64,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" alt="Анели Ташбаева">
+      <p><b>Анели Ташбаева</b> · 70+ реализованных проектов · Казахстан, Турция, ОАЭ</p>
+    </div>
+
+    <div class="hero__cta">
+      <a class="cta" href="https://instagram.com/aneli.interiors" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="3" y="3" width="18" height="18" rx="5" ry="5"/>
+          <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
+          <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>
+        </svg>
+        Записаться на поток
+      </a>
+      <p class="hero__note">12 мест в потоке · старт 5 октября</p>
+    </div>
+  </div>
+</section>
+
+<section class="room">
+  <div class="wrap rv">
+    <div class="eyebrow">Для кого</div>
+    <h2 class="title">Кому подходит практикум</h2>
+    <ul class="fit__list">
+      <li>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+        Прошли курсы или учились сами, но так и не взяли ни одного клиента
+      </li>
+      <li>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+        Делаете проекты друзьям бесплатно и стесняетесь назвать цену
+      </li>
+      <li>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+        Работаете в другой сфере и хотите профессию, которую можно вести откуда угодно
+      </li>
+      <li>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+        Уже берёте заказы, но хаотично — без процесса, договора и понятной стоимости
+      </li>
+    </ul>
+
+    <div class="unfit">
+      <h3>Кому не подходит</h3>
+      <ul>
+        <li>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M18 6 6 18M6 6l12 12"/></svg>
+          Тем, кто ищет быстрый доход без работы руками
+        </li>
+        <li>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M18 6 6 18M6 6l12 12"/></svg>
+          Тем, кто не готов выделять 4–6 часов в неделю на практику
+        </li>
+        <li>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M18 6 6 18M6 6l12 12"/></svg>
+          Тем, кому нужен только диплом, а не реальные проекты
+        </li>
+      </ul>
     </div>
   </div>
 </section>
