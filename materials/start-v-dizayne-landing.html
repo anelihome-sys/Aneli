@@ -318,6 +318,27 @@
     text-transform: uppercase; color: var(--clay); margin-bottom: 5px;
   }
 
+  /* format */
+  .fmt { display: grid; grid-template-columns: repeat(3, 1fr); gap: clamp(14px, 2vw, 20px); }
+  @media (max-width: 780px) { .fmt { grid-template-columns: 1fr; } }
+  .fmt article {
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    padding: clamp(22px, 3vw, 30px) clamp(20px, 2.6vw, 26px);
+    display: flex; flex-direction: column; gap: 12px;
+  }
+  section.warm .fmt article { background: var(--paper); }
+  .fmt__ico {
+    width: 38px; height: 38px; border-radius: 50%;
+    background: var(--clay-soft);
+    display: flex; align-items: center; justify-content: center;
+    color: var(--clay); flex: none;
+  }
+  .fmt__ico svg { width: 19px; height: 19px; }
+  .fmt h3 { font-size: clamp(19px, 2.6vw, 23px); line-height: 1.2; font-weight: 600; }
+  .fmt p { font-size: clamp(14px, 3.2vw, 15px); line-height: 1.55; color: var(--ink-soft); }
+
   /* gains */
   .gains { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--line); border: 1px solid var(--line); }
   @media (max-width: 800px) { .gains { grid-template-columns: repeat(2, 1fr); } }
@@ -385,7 +406,7 @@
           </svg>
           Записаться на поток
         </a>
-        <p class="cta-note">12 мест в группе · старт 5 октября</p>
+        <p class="cta-note">Формат онлайн · старт 5 октября</p>
       </div>
     </div>
 
@@ -479,7 +500,7 @@
             <span>Соцсети дизайнера</span><span>Этапы проекта</span><span>Техническое задание</span>
             <span>Нюансы стройки</span><span>Планировочное решение</span>
           </div>
-          <div class="mod__res"><b>Результат</b>Проводите первую встречу с заказчиком, пишете грамотное ТЗ и делаете первую функциональную планировку.</div>
+          <div class="mod__res"><b>Результат</b>Пишете грамотное техническое задание и делаете первую функциональную планировку.</div>
         </div>
       </article>
 
@@ -546,8 +567,48 @@
   </div>
 </section>
 
-<!-- ═══════════ 6. РЕЗУЛЬТАТ ═══════════ -->
+<!-- ═══════════ 6. ФОРМАТ ═══════════ -->
 <section class="blk warm">
+  <div class="wrap rv">
+    <div class="head">
+      <span class="label">Формат</span>
+      <h2>Как проходит обучение</h2>
+      <p>Полностью онлайн — заниматься можно из любого города и в своём темпе.</p>
+    </div>
+    <div class="fmt">
+      <article>
+        <div class="fmt__ico">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="9.2"/><path d="M10.2 8.6 15.4 12l-5.2 3.4z"/>
+          </svg>
+        </div>
+        <h3>Записи занятий</h3>
+        <p>Все уроки остаются у вас в записи — пересматривать можно неограниченное количество раз, в любое время.</p>
+      </article>
+      <article>
+        <div class="fmt__ico">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5"/><path d="M9 13h6M9 17h4"/>
+          </svg>
+        </div>
+        <h3>Шаблоны и материалы</h3>
+        <p>Рабочие шаблоны и материалы практикума вы забираете себе и используете в своих проектах.</p>
+      </article>
+      <article>
+        <div class="fmt__ico">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="2.8" y="6" width="12.4" height="12" rx="2.4"/><path d="m15.2 11 6-3.2v8.4l-6-3.2z"/>
+          </svg>
+        </div>
+        <h3>Созвон раз в неделю</h3>
+        <p>Каждую неделю — видеовстреча примерно на два часа: разбираем ваши работы, ошибки и отвечаем на вопросы.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ 7. РЕЗУЛЬТАТ ═══════════ -->
+<section class="blk">
   <div class="wrap rv">
     <div class="head">
       <span class="label">Результат</span>
@@ -567,8 +628,8 @@
   </div>
 </section>
 
-<!-- ═══════════ 7. ЧЕМУ НЕ УЧУ ═══════════ -->
-<section class="blk">
+<!-- ═══════════ 8. ЧЕМУ НЕ УЧУ ═══════════ -->
+<section class="blk warm">
   <div class="wrap rv">
     <div class="head">
       <span class="label">Важно понимать</span>
@@ -589,7 +650,7 @@
   </div>
 </section>
 
-<!-- ═══════════ 8. ФИНАЛ ═══════════ -->
+<!-- ═══════════ 9. ФИНАЛ ═══════════ -->
 <section class="end">
   <div class="wrap rv">
     <span class="label">И самое главное</span>
@@ -603,7 +664,7 @@
       </svg>
       Записаться на поток
     </a>
-    <p class="cta-note">12 мест в группе · старт 5 октября</p>
+    <p class="cta-note">Формат онлайн · старт 5 октября</p>
   </div>
 </section>
 
