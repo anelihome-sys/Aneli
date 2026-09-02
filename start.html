@@ -265,6 +265,18 @@
     font-size: clamp(13px, 3.2vw, 14.5px); line-height: 1.5; color: var(--ink-mute);
   }
   .unfit li svg { width: 13px; height: 13px; flex: none; margin-top: 4px; }
+  .shout {
+    margin-top: clamp(20px, 3vw, 28px);
+    padding-left: clamp(16px, 2.4vw, 22px);
+    border-left: 3px solid var(--clay);
+    font-family: 'Cormorant', Georgia, serif;
+    font-size: clamp(23px, 4.4vw, 38px);
+    line-height: 1.14;
+    font-weight: 600;
+    color: var(--clay);
+    text-wrap: balance;
+  }
+  @media (max-width: 560px) { .shout br { display: none; } }
 
   /* gaps */
   .gaps { display: grid; grid-template-columns: 1fr 1fr; gap: 0 clamp(24px, 4vw, 46px); }
@@ -453,10 +465,11 @@
     <div class="unfit">
       <h3>Кому не подходит</h3>
       <ul>
-        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M18 6 6 18M6 6l12 12"/></svg>Тем, кто ищет быстрый доход без работы руками</li>
-        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M18 6 6 18M6 6l12 12"/></svg>Тем, кто не готов выделять 4–6 часов в неделю на практику</li>
-        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M18 6 6 18M6 6l12 12"/></svg>Тем, кому нужен только диплом, а не реальные проекты</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M18 6 6 18M6 6l12 12"/></svg>Тем, кто хочет просто научиться работать в программах</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M18 6 6 18M6 6l12 12"/></svg>Тем, кто готов только смотреть видео, но не применять на практике</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M18 6 6 18M6 6l12 12"/></svg>Тем, кому нужен просто диплом, а не настоящие навыки</li>
       </ul>
+      <p class="shout">Я не преподаю на этом практикуме,<br>как пользоваться программами</p>
     </div>
   </div>
 </section>
