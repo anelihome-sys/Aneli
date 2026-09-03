@@ -94,6 +94,25 @@
   }
   .label::before { content: ""; width: 22px; height: 1px; background: var(--clay); flex: none; }
 
+  /* ═══════ NAV ═══════ */
+  .nav {
+    position: sticky; top: 0; z-index: 60;
+    background: var(--paper);
+    border-bottom: 1px solid var(--line);
+  }
+  .nav__in { display: flex; align-items: center; justify-content: space-between; gap: 16px; height: 58px; }
+  .nav__brand { font-family: 'Cormorant', serif; font-size: clamp(17px, 2.2vw, 20px); font-weight: 600; }
+  .nav__right { display: flex; align-items: center; gap: clamp(12px, 2vw, 20px); }
+  .nav__date { font-size: 12.5px; color: var(--ink-mute); white-space: nowrap; }
+  @media (max-width: 520px) { .nav__date { display: none; } }
+  .nav__cta {
+    font-size: 13px; font-weight: 700; white-space: nowrap;
+    padding: 9px 18px; border-radius: 100px;
+    background: var(--clay); color: #fff7f0; text-decoration: none;
+    transition: filter .2s ease;
+  }
+  .nav__cta:hover { filter: brightness(1.09); }
+
   /* ═══════ HERO ═══════ */
   .hero {
     position: relative; overflow: hidden;
@@ -378,6 +397,64 @@
     text-decoration: line-through; text-decoration-color: var(--clay); text-decoration-thickness: 1.5px;
   }
 
+  /* ---------- PRICING ---------- */
+  .prices { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(16px, 2.2vw, 24px); align-items: start; }
+  @media (max-width: 780px) { .prices { grid-template-columns: 1fr; } }
+  .tier {
+    position: relative;
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    padding: clamp(26px, 3.4vw, 38px) clamp(22px, 3vw, 34px);
+    display: flex; flex-direction: column;
+  }
+  section.warm .tier { background: var(--paper); }
+  .tier--full { border-color: var(--clay); box-shadow: 0 30px 60px -44px rgba(80,40,20,.55); }
+  .tier__flag {
+    position: absolute; top: -12px; left: clamp(22px, 3vw, 34px);
+    background: var(--clay); color: #fff7f0;
+    font-size: 10.5px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase;
+    padding: 5px 13px; border-radius: 100px;
+  }
+  .tier h3 { font-size: clamp(22px, 3vw, 28px); line-height: 1.15; font-weight: 600; }
+  .tier__sub { margin-top: 6px; font-size: 13.5px; color: var(--ink-mute); }
+  .tier__price {
+    margin-top: 20px; padding-top: 18px; border-top: 1px solid var(--line);
+    font-family: 'Cormorant', serif; font-weight: 600;
+    font-size: clamp(38px, 5.4vw, 52px); line-height: 1;
+    color: var(--ink); font-variant-numeric: tabular-nums;
+  }
+  .tier--full .tier__price { color: var(--clay); }
+  .tier__price small { font-size: 0.5em; font-weight: 500; margin-left: 4px; }
+  .tier__alt {
+    margin-top: 9px; font-size: 13px; color: var(--ink-mute);
+    font-variant-numeric: tabular-nums; letter-spacing: 0.01em;
+  }
+  .tier__list { margin-top: 20px; display: flex; flex-direction: column; gap: 10px; flex: 1; }
+  .tier__list li {
+    display: flex; gap: 11px; align-items: flex-start;
+    font-size: clamp(14px, 3.2vw, 15px); line-height: 1.5; color: var(--ink-soft);
+  }
+  .tier__list svg { width: 15px; height: 15px; flex: none; margin-top: 3px; color: var(--clay); }
+  .tier .cta { margin-top: 26px; align-self: flex-start; }
+  .cta--ghost { background: transparent; color: var(--clay); border: 1px solid var(--clay); }
+  .cta--ghost:hover { background: var(--clay-soft); }
+  .rate-note { margin-top: 20px; font-size: 12.5px; color: var(--ink-mute); }
+
+  /* ---------- PLEDGE ---------- */
+  .pledge {
+    border-left: 3px solid var(--gold);
+    padding-left: clamp(20px, 3vw, 30px);
+    margin-bottom: clamp(34px, 5vw, 52px);
+  }
+  .pledge p {
+    font-family: 'Cormorant', serif;
+    font-size: clamp(20px, 3.2vw, 30px);
+    line-height: 1.3; color: var(--deep-ink); max-width: 30ch;
+  }
+  .pledge p + p { margin-top: 16px; }
+  .pledge b { color: var(--gold); font-weight: 600; }
+
   /* closing */
   .end { background: var(--deep); color: var(--deep-ink); padding: clamp(52px, 8vw, 96px) 0; }
   .end h2 { color: var(--deep-ink); font-size: clamp(30px, 5.6vw, 58px); line-height: 1.06; font-weight: 600; max-width: 17ch; }
@@ -394,6 +471,16 @@
   .rv { opacity: 0; transform: translateY(15px); transition: opacity .6s ease, transform .6s ease; }
   .rv.on { opacity: 1; transform: none; }
 </style>
+
+<header class="nav">
+  <div class="wrap nav__in">
+    <span class="nav__brand">Старт в дизайне</span>
+    <div class="nav__right">
+      <span class="nav__date">Старт 5 октября · онлайн</span>
+      <a class="nav__cta" href="#price">Стоимость</a>
+    </div>
+  </div>
+</header>
 
 <!-- ═══════════ 1. ПЕРВЫЙ ЭКРАН ═══════════ -->
 <section class="hero">
@@ -663,10 +750,58 @@
   </div>
 </section>
 
-<!-- ═══════════ 9. ФИНАЛ ═══════════ -->
+<!-- ═══════════ 9. СТОИМОСТЬ ═══════════ -->
+<section class="blk" id="price">
+  <div class="wrap rv">
+    <div class="head">
+      <span class="label">Стоимость</span>
+      <h2>Два формата участия</h2>
+    </div>
+
+    <div class="prices">
+      <article class="tier">
+        <h3>Записи</h3>
+        <p class="tier__sub">Без обратной связи</p>
+        <div class="tier__price">100 000<small>₸</small></div>
+        <div class="tier__alt">≈ 18 800 ₽ · ≈ $220</div>
+        <ul class="tier__list">
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Записи всех занятий курса</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Добавление в общий чат</li>
+        </ul>
+        <a class="cta cta--ghost" href="https://instagram.com/aneli.interiors" target="_blank" rel="noopener">Выбрать пакет</a>
+      </article>
+
+      <article class="tier tier--full">
+        <span class="tier__flag">Полный пакет</span>
+        <h3>Практикум целиком</h3>
+        <p class="tier__sub">С обратной связью и созвонами</p>
+        <div class="tier__price">220 000<small>₸</small></div>
+        <div class="tier__alt">≈ 41 300 ₽ · ≈ $485</div>
+        <ul class="tier__list">
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Записи всех занятий курса</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Все шаблоны и материалы</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Поддержка в общем чате</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Обратная связь по вашим работам</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Созвоны с группой: разбираем каждого лично и работаем над ошибками</li>
+        </ul>
+        <a class="cta" href="https://instagram.com/aneli.interiors" target="_blank" rel="noopener">Записаться на поток</a>
+      </article>
+    </div>
+
+    <p class="rate-note">Цены в рублях и долларах указаны справочно по курсу на сентябрь 2026 года и могут отличаться на день оплаты.</p>
+  </div>
+</section>
+
+<!-- ═══════════ 10. ФИНАЛ ═══════════ -->
 <section class="end">
   <div class="wrap rv">
-    <span class="label">И самое главное</span>
+    <span class="label">Перед тем как записаться</span>
+
+    <div class="pledge">
+      <p>Важно осознанно понять, зачем вы покупаете этот практикум. Это, грубо говоря, <b>ваша дорожная карта</b> — как стартовать в профессии дизайнера и наконец начать зарабатывать.</p>
+      <p>Обычно после практикума вложения окупаются сразу. Ваша задача — <b>выполнять все задания</b>, и результат вам будет обеспечен.</p>
+    </div>
+
     <h2>Ваша задача — не готовиться бесконечно, а <em>начать работать</em>.</h2>
     <p>За два месяца вы будете понимать, что делать, где искать клиента, как вести проект и как зарабатывать на своей профессии.</p>
     <a class="cta" href="https://instagram.com/aneli.interiors" target="_blank" rel="noopener">
