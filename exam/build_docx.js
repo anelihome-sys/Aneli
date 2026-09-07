@@ -115,6 +115,8 @@ function key(variant, questions) {
   ];
 }
 
+// Ключ ответов в бланк не попадает. Нужен отдельный лист для преподавателя — node build_docx.js --with-key
+const WITH_KEY = process.argv.includes("--with-key");
 const data = JSON.parse(fs.readFileSync(path.join(__dirname, "variants.json"), "utf8"));
 const outDir = path.join(__dirname, "docx");
 fs.mkdirSync(outDir, { recursive: true });
@@ -131,7 +133,7 @@ fs.mkdirSync(outDir, { recursive: true });
         children: [
           ...head(v.number, eyebrow),
           ...v.questions.flatMap((item, i) => question(i + 1, item)),
-          ...key(v.number, v.questions),
+          ...(WITH_KEY ? key(v.number, v.questions) : []),
         ],
       }],
     });
