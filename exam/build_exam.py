@@ -214,92 +214,14 @@ for v in range(5):
         page.append((q_text, new_opts, new_correct))
     VARIANTS.append(page)
 
-# ------------------------------------------------------------------ вёрстка
-def esc(s):
-    return html.escape(s)
+# ------------------------------------------------------------------- вывод
+import layout
 
-CSS = """
-@page { size: A4; margin: 14mm 15mm 13mm 15mm; }
-* { box-sizing: border-box; }
-body { margin: 0; font-family: "Liberation Sans", Arial, sans-serif;
-       color: #1c1a17; font-size: 9.4pt; line-height: 1.36; }
-.page { page-break-after: always; }
-.page:last-child { page-break-after: auto; }
-.head { display: flex; justify-content: space-between; align-items: baseline;
-        border-bottom: 0.6pt solid #1c1a17; padding-bottom: 5pt; margin-bottom: 4pt; }
-.head .t { font-family: "Liberation Serif", Georgia, serif; font-size: 12pt; letter-spacing: 0.02em; }
-.head .t span { display: block; font-family: "Liberation Sans", Arial, sans-serif;
-                font-size: 6.8pt; letter-spacing: 0.16em; text-transform: uppercase;
-                color: #8a7f6d; margin-bottom: 2.5pt; }
-.head .v { font-family: "Liberation Serif", Georgia, serif; font-size: 10.5pt; white-space: nowrap; }
-.meta { display: flex; justify-content: space-between; font-size: 7pt; color: #6f6a62;
-        letter-spacing: 0.03em; border-bottom: 0.4pt solid #ddd8cf;
-        padding-bottom: 6pt; margin-bottom: 11pt; }
-.q { margin-bottom: 7.6pt; padding-left: 15pt; position: relative; }
-.q .n { position: absolute; left: 0; top: 0; font-family: "Liberation Serif", Georgia, serif;
-        font-size: 9.4pt; color: #8a7f6d; }
-.q .txt { font-weight: bold; }
-.q .opts { margin-top: 1.5pt; color: #2c2926; }
-.q .opts b { font-weight: normal; color: #8a7f6d; }
-.foot { position: fixed; bottom: -8mm; left: 0; right: 0; display: flex;
-        justify-content: space-between; font-size: 6.5pt; letter-spacing: 0.14em;
-        text-transform: uppercase; color: #a09786; }
-.keyhead { font-family: "Liberation Serif", Georgia, serif; font-size: 15pt; margin: 0 0 2pt; }
-.keysub { font-size: 7pt; letter-spacing: 0.14em; text-transform: uppercase;
-          color: #8a7f6d; margin-bottom: 12pt; }
-.keygrid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 9pt; }
-.keycol { border-top: 0.6pt solid #1c1a17; padding-top: 5pt; }
-.keycol h3 { font-family: "Liberation Serif", Georgia, serif; font-weight: normal;
-             font-size: 9.5pt; margin: 0 0 4pt; }
-.keycol table { width: 100%; border-collapse: collapse; font-size: 7.6pt; }
-.keycol td { padding: 1.6pt 0; border-bottom: 0.3pt solid #ece8e0; }
-.keycol td.a { text-align: right; font-weight: bold; }
-.note { margin-top: 14pt; padding-top: 7pt; border-top: 0.4pt solid #ddd8cf;
-        font-size: 7.4pt; color: #6f6a62; line-height: 1.5; }
-"""
-
-def render_variant(v, page):
-    rows = []
-    for i, (q, opts, _) in enumerate(page, 1):
-        o = "&nbsp;&nbsp; ".join(
-            f"<b>{LETTERS[k]})</b> {esc(t)}" for k, t in enumerate(opts))
-        rows.append(
-            f'<div class="q"><span class="n">{i}.</span>'
-            f'<div class="txt">{esc(q)}</div><div class="opts">{o}</div></div>')
-    return f"""<div class="page">
-  <div class="head">
-    <div class="t"><span>Дизайн интерьера · базовый уровень</span>Экзаменационный тест</div>
-    <div class="v">Вариант {v}</div>
-  </div>
-  <div class="meta"><div>Ф. И. О. ________________________________________</div>
-    <div>Дата ______________</div><div>Один правильный ответ · 15 вопросов</div></div>
-  {''.join(rows)}
-</div>"""
-
-def render_key():
-    cols = []
-    for v, page in enumerate(VARIANTS, 1):
-        trs = "".join(
-            f'<tr><td>{i}</td><td class="a">{LETTERS[c]}</td></tr>'
-            for i, (_, _, c) in enumerate(page, 1))
-        cols.append(f'<div class="keycol"><h3>Вариант {v}</h3><table>{trs}</table></div>')
-    return f"""<div class="page">
-  <h1 class="keyhead">Ключ ответов</h1>
-  <div class="keysub">Для преподавателя · не выдаётся вместе с бланком</div>
-  <div class="keygrid">{''.join(cols)}</div>
-  <div class="note">
-    Оценка: 13–15 верных ответов — уровень уверенный, можно допускать к самостоятельному ведению проекта
-    под наблюдением. 10–12 — база есть, слабые места чаще в этапности работ и инженерии.
-    Менее 10 — требуется повторное прохождение блоков «Эргономика», «Этапы проекта» и «Санузлы».
-  </div>
-</div>"""
-
-pages = "".join(render_variant(i + 1, p) for i, p in enumerate(VARIANTS)) + render_key()
-doc = f"""<!doctype html><html lang="ru"><head><meta charset="utf-8">
-<title>Экзаменационный тест · Дизайн интерьера</title><style>{CSS}</style></head>
-<body>{pages}</body></html>"""
-
-out_html = os.path.join(os.path.dirname(os.path.abspath(__file__)), "exam.html")
-with open(out_html, "w", encoding="utf-8") as f:
-    f.write(doc)
-print("html:", out_html)
+here = os.path.dirname(os.path.abspath(__file__))
+out = os.path.join(here, "exam.html")
+with open(out, "w", encoding="utf-8") as f:
+    f.write(layout.build_html(VARIANTS,
+                              "Экзаменационный тест · Дизайн интерьера",
+                              "Дизайн интерьера · базовый уровень",
+                              first_number=1))
+print("html:", out)
