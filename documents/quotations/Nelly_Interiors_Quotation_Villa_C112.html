@@ -1,0 +1,227 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Nelly Interiors — Quotation C112</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=Jost:wght@300;400;500&display=swap">
+<style>
+  @page { size: A4; margin: 0; }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root{
+    --ink:        #1B1A18;
+    --ink-soft:   #46433E;
+    --ink-mute:   #8C877E;
+    --line:       #DCD6CC;
+    --line-soft:  #EAE4DB;
+    --paper:      #FBF9F6;
+    --accent:     #9A7B4F;
+  }
+
+  html { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  body{
+    font-family:'Jost', 'Liberation Sans', sans-serif;
+    font-weight:300;
+    color:var(--ink-soft);
+    background:var(--paper);
+    font-size:12pt;
+    line-height:1.52;
+  }
+
+  .page{
+    width:210mm; height:297mm;
+    padding:16mm 18mm 12mm;
+    background:var(--paper);
+    display:flex; flex-direction:column;
+    overflow:hidden;
+  }
+
+  .serif, .name, .word, .sec h2, .project .ttl, .amt{
+    font-family:'Cormorant Garamond', 'Liberation Serif', serif;
+    font-variant-numeric: lining-nums; font-feature-settings:'lnum' 1,'onum' 0;
+  }
+
+  .label{
+    font-size:7.4pt; letter-spacing:.2em; text-transform:uppercase;
+    color:var(--ink-mute); font-weight:400; line-height:1.3;
+  }
+
+  /* ——— masthead ——— */
+  .mast{ display:flex; justify-content:space-between; align-items:flex-start; }
+  .name{ font-weight:400; font-size:24pt; letter-spacing:.24em; color:var(--ink);
+         line-height:1; text-transform:uppercase; }
+  .mark .sub{ margin-top:7px; font-size:7.4pt; letter-spacing:.3em;
+              text-transform:uppercase; color:var(--ink-mute); }
+  .doc{ text-align:right; }
+  .word{ font-weight:300; font-size:17pt; letter-spacing:.24em; color:var(--accent);
+         text-transform:uppercase; line-height:1; }
+  .doc .no{ margin-top:8px; font-size:8.6pt; letter-spacing:.1em; color:var(--ink-mute); }
+  .mast-rule{ margin-top:13px; height:1px; background:var(--ink); opacity:.75; }
+
+  /* ——— meta ——— */
+  .meta{ display:flex; margin-top:13px; }
+  .meta > div{ flex:1; padding-right:7mm; }
+  .meta .v{ margin-top:3px; font-size:11pt; color:var(--ink); font-weight:400; }
+
+  /* ——— project ——— */
+  .project{ margin-top:7mm; }
+  .project .ttl{ margin-top:5px; font-weight:400; font-size:25pt; color:var(--ink);
+                 line-height:1.12; letter-spacing:.01em; }
+  .project .loc{ margin-top:7px; font-size:9.4pt; letter-spacing:.14em;
+                 text-transform:uppercase; color:var(--ink-mute); }
+
+  /* ——— sections ——— */
+  .sec{ margin-top:7mm; }
+  .sec-head{ display:flex; align-items:baseline; gap:11px; }
+  .sec-head .n{ font-size:7.4pt; letter-spacing:.16em; color:var(--accent); }
+  .sec h2{ font-weight:500; font-size:14.5pt; letter-spacing:.15em;
+           text-transform:uppercase; color:var(--ink); }
+  .sec-head .fill{ flex:1; height:1px; background:var(--line); position:relative; top:-3px; }
+
+  .spaces{ margin-top:4mm; font-size:12pt; color:var(--ink); font-weight:400; line-height:1.75; }
+  .spaces .dot{ color:var(--accent); padding:0 5px; font-weight:300; }
+
+  .deliv{ margin-top:4mm; }
+  .deliv .item{ display:flex; gap:7mm; padding:3.6mm 0; border-bottom:1px solid var(--line-soft); }
+  .deliv .item:last-child{ border-bottom:0; padding-bottom:1mm; }
+  .deliv .idx{ font-family:'Cormorant Garamond',serif; font-size:15pt; font-weight:300;
+               color:var(--accent); line-height:1.15; width:8mm; flex:0 0 8mm; }
+  .deliv .ttl{ font-size:11.4pt; letter-spacing:.07em; text-transform:uppercase;
+               color:var(--ink); font-weight:400; }
+  .deliv .txt{ margin-top:2px; font-size:10.6pt; max-width:162mm; line-height:1.45; }
+
+  .terms{ margin-top:4mm; }
+  .terms li{ list-style:none; position:relative; padding-left:6mm;
+             margin-bottom:3.5px; font-size:10.6pt; line-height:1.45; }
+  .terms li:before{ content:''; position:absolute; left:0; top:8px;
+                    width:3mm; height:1px; background:var(--accent); }
+  .terms li b{ color:var(--ink); font-weight:400; }
+
+  /* ——— total ——— */
+  .total{ margin-top:auto; border-top:1px solid var(--ink); padding-top:4.5mm;
+          display:flex; justify-content:space-between; align-items:flex-end; }
+  .total .cap{ font-size:7.4pt; letter-spacing:.2em; text-transform:uppercase; color:var(--ink-mute); }
+  .total .sub{ margin-top:5px; font-size:10.6pt; max-width:105mm; line-height:1.45; }
+  .total .rhs{ text-align:right; }
+  .total .cur{ font-size:9.6pt; letter-spacing:.22em; color:var(--ink-mute); }
+  .total .amt{ font-weight:400; font-size:33pt; color:var(--ink); line-height:1; letter-spacing:.02em; }
+
+  /* ——— footer ——— */
+  .foot{ margin-top:6mm; padding-top:4mm; border-top:1px solid var(--line);
+         display:flex; justify-content:space-between; align-items:flex-end; }
+  .foot .s{ font-family:'Cormorant Garamond',serif; font-size:12pt; letter-spacing:.22em;
+            text-transform:uppercase; color:var(--ink); }
+  .foot .addr{ margin-top:4px; font-size:9.4pt; color:var(--ink-mute); }
+  .foot .r{ text-align:right; font-size:8.6pt; letter-spacing:.12em;
+            text-transform:uppercase; color:var(--ink-mute); line-height:1.7; }
+</style>
+</head>
+<body>
+
+<div class="page">
+
+  <div class="mast">
+    <div class="mark">
+      <div class="name">Nelly Interiors</div>
+      <div class="sub">Interior Design Studio &nbsp;·&nbsp; Dubai</div>
+    </div>
+    <div class="doc">
+      <div class="word">Quotation</div>
+      <div class="no">NI&nbsp;/&nbsp;DXB&nbsp;/&nbsp;2026&nbsp;/&nbsp;C112</div>
+    </div>
+  </div>
+  <div class="mast-rule"></div>
+
+  <div class="meta">
+    <div>
+      <div class="label">Date</div>
+      <div class="v">14 September 2026</div>
+    </div>
+    <div>
+      <div class="label">Valid Until</div>
+      <div class="v">28 September 2026</div>
+    </div>
+    <div style="padding-right:0">
+      <div class="label">Prepared By</div>
+      <div class="v">Aneli Tashbayeva</div>
+    </div>
+  </div>
+
+  <div class="project">
+    <div class="label">Project</div>
+    <div class="ttl">Private Villa C112 · Palm Jumeirah</div>
+    <div class="loc">Dubai &nbsp;·&nbsp; United Arab Emirates</div>
+  </div>
+
+  <div class="sec">
+    <div class="sec-head"><span class="n">01</span><h2>Scope</h2><span class="fill"></span></div>
+    <div class="spaces">
+      Living Room<span class="dot">·</span>Dining Area<span class="dot">·</span>Kitchen<span class="dot">·</span>Master Bedroom<br>
+      Bedroom 02<span class="dot">·</span>Bedroom 03<span class="dot">·</span>Bedroom 04<span class="dot">·</span>Bedroom 05
+    </div>
+  </div>
+
+  <div class="sec">
+    <div class="sec-head"><span class="n">02</span><h2>Deliverables</h2><span class="fill"></span></div>
+    <div class="deliv">
+      <div class="item">
+        <div class="idx">I</div>
+        <div>
+          <div class="ttl">Photorealistic 3D Visualisations</div>
+          <div class="txt">High-resolution renders of every space — materials, lighting and furniture modelled exactly as they will be executed on site.</div>
+        </div>
+      </div>
+      <div class="item">
+        <div class="idx">II</div>
+        <div>
+          <div class="ttl">Interactive 3D Tour</div>
+          <div class="txt">A navigable walkthrough of the approved interior, delivered as a private link that opens on any device.</div>
+        </div>
+      </div>
+      <div class="item">
+        <div class="idx">III</div>
+        <div>
+          <div class="ttl">Technical Drawings for Implementation</div>
+          <div class="txt">A complete working set for the contractor: layout and partition plans, ceiling, lighting and electrical layouts, floor finishes, wall elevations and key joinery details.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="sec" style="margin-bottom:7mm">
+    <div class="sec-head"><span class="n">03</span><h2>Terms</h2><span class="fill"></span></div>
+    <ul class="terms">
+      <li><b>10 working days</b> from confirmation and receipt of the architectural plan or site measurements.</li>
+      <li><b>Two rounds</b> of revisions per space are included; further rounds are quoted separately.</li>
+      <li>Author supervision, procurement and site works are not included in this quotation.</li>
+    </ul>
+  </div>
+
+  <div class="total">
+    <div class="lhs">
+      <div class="cap">Total — Full Payment</div>
+      <div class="sub">All eight spaces and the three deliverable sets in full.</div>
+    </div>
+    <div class="rhs">
+      <div class="cur">AED</div>
+      <div class="amt">21,000</div>
+    </div>
+  </div>
+
+  <div class="foot">
+    <div class="l">
+      <div class="s">Nelly Interiors</div>
+      <div class="addr">Dubai, United Arab Emirates</div>
+    </div>
+    <div class="r">
+      aneli.home@gmail.com<br>
+      +7 707 332 30 71
+    </div>
+  </div>
+
+</div>
+
+</body>
+</html>
