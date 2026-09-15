@@ -19,7 +19,7 @@ CDN_LINK = (
     'family=Playfair+Display:ital,wght@0,400;0,500;0,700;1,400'
     '&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,400'
     '&family=Montserrat:wght@200;300;400;500'
-    '&family=Pinyon+Script&family=Allura&display=swap" rel="stylesheet">'
+    '&family=Pinyon+Script&family=Marck+Script&display=swap" rel="stylesheet">'
 )
 
 NAME = "Akhan Ayana Sherekhanqyzy"
@@ -29,8 +29,6 @@ COMMON = {
     "SEAL_TOP": "ANELI INTERIORS",
     "SEAL_BOTTOM": "ALMATY · KAZAKHSTAN",
     "SEAL_YEAR": "2026",
-    "SIG_L_INK": "Aneli",
-    "SIG_R_INK": "",          # left blank for a hand signature
 }
 
 DATA = {
@@ -40,13 +38,11 @@ DATA = {
     H1="СЕРТИФИКАТ",
     H2="о прохождении практикума",
     PRESENTED="торжественно вручается",
-    REASON="за успешное прохождение практикума по дизайну интерьера",
-    DURATION=("Обучение длилось <em>полтора месяца</em> — 45 часов практики "
-              "в студии дизайна интерьера."),
-    SIG_L_ROLE="Основатель студии",
-    SIG_R_ROLE="Куратор практикума",
+    REASON="за успешное прохождение практикума по дизайну интерьера длительностью полтора месяца",
+    SIG_INK="Анель Ташбаева",
+    SIG_WHO="Анель Ташбаева",
+    SIG_ROLE="Основатель и куратор практикума",
     PLACE="Алматы, 2026",
-    CERT_NO="сертификат № AI-2026-014",
     file="aneli-certificate-ayana-akhan-ru",
   ),
   "en": dict(COMMON,
@@ -55,13 +51,11 @@ DATA = {
     H1="CERTIFICATE",
     H2="of completion",
     PRESENTED="proudly presented to",
-    REASON="for successfully completing the interior design practicum",
-    DURATION=("The programme ran for <em>six weeks</em> — 45 hours of hands-on practice "
-              "in an interior design studio."),
-    SIG_L_ROLE="Founder",
-    SIG_R_ROLE="Practicum Lead",
+    REASON="for successfully completing the six-week interior design practicum",
+    SIG_INK="Anel Tashbayeva",
+    SIG_WHO="Anel Tashbayeva",
+    SIG_ROLE="Founder & Practicum Lead",
     PLACE="Almaty, 2026",
-    CERT_NO="certificate no. AI-2026-014",
     file="aneli-certificate-ayana-akhan-en",
   ),
 }
@@ -97,7 +91,7 @@ def main():
         subprocess.run(base + ["--no-pdf-header-footer", "--print-to-pdf=" + pdf,
                                "file://" + src], check=True, capture_output=True)
         subprocess.run(base + ["--force-device-scale-factor=2", "--hide-scrollbars",
-                               "--window-size=794,1123", "--screenshot=" + png,
+                               "--window-size=1123,794", "--screenshot=" + png,
                                "file://" + src], check=True, capture_output=True)
         print(pdf, os.path.getsize(pdf), "bytes")
 

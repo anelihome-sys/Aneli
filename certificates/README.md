@@ -1,6 +1,6 @@
 # Certificates — Aneli Interiors
 
-Print-ready A4 certificate for the interior design practicum.
+Print-ready A4 landscape certificate for the interior design practicum.
 
 ```
 certificates/
@@ -13,24 +13,23 @@ certificates/
 ```
 
 **Type:** Playfair Display (title, roles), Montserrat (tracked micro-labels),
-Pinyon Script (recipient name), Allura (signature), Cormorant Garamond (duration line).
+Pinyon Script (recipient name), Marck Script (signature).
 **Palette:** cream paper `#FCFAF4`, near-black ink `#17171A`, bronze gradient frame
 `#8E5A1B → #CE9C55`.
 
 ## Issuing it to someone else
 
-Edit the `DATA` dict in `build.py` — name, certificate number, city, year, duration,
-signature roles — then:
+Edit the `DATA` dict in `build.py` — recipient, copy line, city, year, signatory — then:
 
 ```bash
 python3 build.py --html
 ```
 
 PDFs land in `dist/`. Rendering uses headless Chromium; without it, open the
-`.html` file in a browser and print to PDF at A4, margins **none**,
+`.html` file in a browser and print to PDF at A4 landscape, margins **none**,
 background graphics **on**.
 
 ## Printing
 
-A4, 100% scale, no fit-to-page. On 250–300 g/m² uncoated warm white the
+A4 landscape, 100% scale, no fit-to-page. On 250–300 g/m² uncoated warm white the
 hairline frame and the seal hold up; avoid glossy stock.

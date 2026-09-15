@@ -5,11 +5,11 @@
 <title>Сертификат — практикум по дизайну интерьера</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,700;1,400&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,400&family=Montserrat:wght@200;300;400;500&family=Pinyon+Script&family=Allura&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,700;1,400&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,400&family=Montserrat:wght@200;300;400;500&family=Pinyon+Script&family=Marck+Script&display=swap" rel="stylesheet">
 <style>
-  @page { size: A4 portrait; margin: 0; }
+  @page { size: A4 landscape; margin: 0; }
   * { box-sizing: border-box; margin: 0; padding: 0; }
-  html, body { width: 210mm; height: 297mm; }
+  html, body { width: 297mm; height: 210mm; }
   body {
     -webkit-print-color-adjust: exact; print-color-adjust: exact;
     background: #FCFAF4;
@@ -27,9 +27,8 @@
   .frame { position: absolute; inset: 0; }
 
   .sheet {
-    position: absolute;
-    top: 0; left: 0; right: 0; bottom: 0;
-    padding: 42mm 30mm 26mm;
+    position: absolute; inset: 0;
+    padding: 29mm 34mm 0;
     display: flex; flex-direction: column; align-items: center;
     text-align: center;
   }
@@ -43,108 +42,95 @@
   h1 {
     font-family: "Playfair Display", Georgia, serif;
     font-weight: 700;
-    font-size: 40pt;
+    font-size: 41pt;
     line-height: 1.05;
     letter-spacing: .035em; text-indent: .035em;
     color: #121214;
-    margin-top: 15mm;
+    margin-top: 11mm;
   }
   h2 {
     font-family: "Playfair Display", Georgia, serif;
     font-weight: 400;
     font-size: 13pt;
     letter-spacing: .13em; text-indent: .13em;
-    color: #3A3A3E;
-    margin-top: 5.5mm;
     text-transform: uppercase;
+    color: #3A3A3E;
+    margin-top: 5mm;
   }
 
   .presented {
     font-weight: 300; font-size: 9pt;
     letter-spacing: .20em; text-indent: .20em;
     color: #3A3A3E;
-    margin-top: 24mm;
+    margin-top: 19mm;
   }
 
   .name {
     font-family: "Pinyon Script", "Great Vibes", cursive;
-    font-size: 30pt;
+    font-size: 33pt;
     line-height: 1.2;
     color: #101012;
     margin-top: 9mm;
     white-space: nowrap;
   }
   .name-rule {
-    width: 138mm; height: 0.5pt; background: #2A2A2D;
+    width: 170mm; height: 0.5pt; background: #2A2A2D;
     margin-top: 4mm;
   }
 
   .reason {
-    font-weight: 300; font-size: 9pt;
-    letter-spacing: .16em; text-indent: .16em;
+    font-weight: 300; font-size: 9.4pt;
+    letter-spacing: .13em; text-indent: .13em;
     color: #3A3A3E;
-    margin-top: 12mm;
-    max-width: 150mm;
-    line-height: 1.9;
+    margin-top: 16mm;
+    max-width: 225mm;
+    line-height: 1.95;
   }
-  .duration {
-    font-family: "Cormorant Garamond", Georgia, serif;
-    font-size: 14pt;
-    font-weight: 400;
-    line-height: 1.75;
-    color: #2E2E32;
-    max-width: 132mm;
-    margin-top: 24mm;
-    font-feature-settings: "lnum" 1;
-  }
-  .duration em { font-style: italic; }
 
-  .signrow {
+  .footer {
     position: absolute;
-    left: 28mm; right: 28mm; bottom: 56mm;
+    left: 34mm; right: 34mm; bottom: 32mm;
     display: flex; align-items: flex-end; justify-content: space-between;
   }
-  .sig { width: 58mm; text-align: center; }
-  .sig .ink {
-    font-family: "Allura", "Great Vibes", cursive;
-    font-size: 25pt; line-height: 1;
-    color: #16161A;
-    height: 12mm;
-    display: flex; align-items: flex-end; justify-content: center;
+  .cell { width: 70mm; }
+  .cell.left  { text-align: left; }
+  .cell.right { text-align: center; }
+
+  .place {
+    font-family: "Playfair Display", Georgia, serif;
+    font-weight: 500; font-size: 10pt;
+    letter-spacing: .04em; color: #1B1B1F;
     padding-bottom: 1mm;
   }
+
+  .sig .ink {
+    font-family: "Marck Script", "Allura", cursive;
+    font-size: 23pt; line-height: 1;
+    color: #16161A;
+    height: 13mm;
+    display: flex; align-items: flex-end; justify-content: center;
+    padding-bottom: 1.5mm;
+  }
   .sig .line { height: 0.5pt; background: #2A2A2D; }
-  .sig .role {
+  .sig .who {
     font-family: "Playfair Display", Georgia, serif;
-    font-weight: 500; font-size: 9pt;
-    color: #1B1B1F;
-    margin-top: 2.6mm;
+    font-weight: 500; font-size: 10pt;
+    color: #17171A;
+    margin-top: 2.8mm;
     letter-spacing: .02em;
+  }
+  .sig .role {
+    font-weight: 300; font-size: 6.6pt;
+    letter-spacing: .2em; text-indent: .2em;
+    text-transform: uppercase; color: #5C5A55;
+    margin-top: 1.8mm;
   }
 
   .seal {
     position: absolute;
-    left: 50%; bottom: 58mm;
+    left: 50%; bottom: 33mm;
     transform: translateX(-50%);
     width: 36mm; height: 36mm;
-  }
-
-  .place {
-    position: absolute;
-    left: 0; right: 0; bottom: 38mm;
-    font-family: "Playfair Display", Georgia, serif;
-    font-weight: 500; font-size: 10pt;
-    letter-spacing: .04em;
-    color: #1B1B1F;
-    text-align: center;
-  }
-  .certno {
-    position: absolute;
-    left: 0; right: 0; bottom: 31mm;
-    font-weight: 300; font-size: 6pt;
-    letter-spacing: .24em; text-indent: .24em;
-    text-transform: uppercase; color: #8C8579;
-    text-align: center;
   }
 </style>
 </head>
@@ -152,7 +138,7 @@
   <div class="paper"></div>
 
   <!-- ornamental bronze frame -->
-  <svg class="frame" viewBox="0 0 210 297" width="210mm" height="297mm" xmlns="http://www.w3.org/2000/svg">
+  <svg class="frame" viewBox="0 0 297 210" width="297mm" height="210mm" xmlns="http://www.w3.org/2000/svg">
     <defs>
       <linearGradient id="bronze" x1="0" y1="0" x2="1" y2="1">
         <stop offset="0%"   stop-color="#9A6320"/>
@@ -164,10 +150,10 @@
       </linearGradient>
     </defs>
     <g fill="none" stroke="url(#bronze)" stroke-linecap="square">
-      <rect x="13" y="13" width="184" height="271" stroke-width="1.5"/>
-      <rect x="13" y="13" width="184" height="271" rx="15" ry="15" stroke-width="1.5"/>
-      <rect x="17.4" y="17.4" width="175.2" height="262.2" stroke-width="0.45"/>
-      <rect x="17.4" y="17.4" width="175.2" height="262.2" rx="11.5" ry="11.5" stroke-width="0.45"/>
+      <rect x="13" y="13" width="271" height="184" stroke-width="1.5"/>
+      <rect x="13" y="13" width="271" height="184" rx="15" ry="15" stroke-width="1.5"/>
+      <rect x="17.4" y="17.4" width="262.2" height="175.2" stroke-width="0.45"/>
+      <rect x="17.4" y="17.4" width="262.2" height="175.2" rx="11.5" ry="11.5" stroke-width="0.45"/>
     </g>
   </svg>
 
@@ -180,9 +166,7 @@
     <div class="presented">торжественно вручается</div>
     <div class="name">Akhan Ayana Sherekhanqyzy</div>
     <div class="name-rule"></div>
-    <div class="reason">за успешное прохождение практикума по дизайну интерьера</div>
-
-    <div class="duration">Обучение длилось <em>полтора месяца</em> — 45 часов практики в студии дизайна интерьера.</div>
+    <div class="reason">за успешное прохождение практикума по дизайну интерьера длительностью полтора месяца</div>
   </div>
 
   <!-- studio seal -->
@@ -207,20 +191,16 @@
     <text x="100" y="118" text-anchor="middle" font-family="Montserrat, sans-serif" font-size="7.5" letter-spacing="1.8" fill="#9C8B72">2026</text>
   </svg>
 
-  <div class="signrow">
-    <div class="sig">
-      <div class="ink">Aneli</div>
-      <div class="line"></div>
-      <div class="role">Основатель студии</div>
+  <div class="footer">
+    <div class="cell left">
+      <div class="place">Алматы, 2026</div>
     </div>
-    <div class="sig">
-      <div class="ink"></div>
+    <div class="cell right sig">
+      <div class="ink">Анель Ташбаева</div>
       <div class="line"></div>
-      <div class="role">Куратор практикума</div>
+      <div class="who">Анель Ташбаева</div>
+      <div class="role">Основатель и куратор практикума</div>
     </div>
   </div>
-
-  <div class="place">Алматы, 2026</div>
-  <div class="certno">сертификат № AI-2026-014</div>
 </body>
 </html>
