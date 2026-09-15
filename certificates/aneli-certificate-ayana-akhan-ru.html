@@ -5,268 +5,222 @@
 <title>Сертификат — практикум по дизайну интерьера</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Great+Vibes&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,700;1,400&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,400&family=Montserrat:wght@200;300;400;500&family=Pinyon+Script&family=Allura&display=swap" rel="stylesheet">
 <style>
   @page { size: A4 portrait; margin: 0; }
   * { box-sizing: border-box; margin: 0; padding: 0; }
   html, body { width: 210mm; height: 297mm; }
   body {
     -webkit-print-color-adjust: exact; print-color-adjust: exact;
-    background: #FAF7F2;
-    color: #2B2724;
-    font-family: "Cormorant Garamond", Georgia, serif;
+    background: #FCFAF4;
+    color: #17171A;
+    font-family: "Montserrat", "Helvetica Neue", sans-serif;
     position: relative;
     overflow: hidden;
   }
 
-  /* paper grain + soft vignette */
-  .grain {
+  .paper {
     position: absolute; inset: 0;
-    background:
-      radial-gradient(120% 90% at 50% 0%, rgba(255,255,255,.85) 0%, rgba(255,255,255,0) 55%),
-      radial-gradient(100% 80% at 50% 100%, rgba(155,133,105,.10) 0%, rgba(255,255,255,0) 60%);
+    background-image: url("data:image/png;base64,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");
+    background-size: 26mm 26mm; opacity: .55;
   }
-
-  .frame {
-    position: absolute;
-    top: 12mm; left: 12mm; right: 12mm; bottom: 12mm;
-    border: 0.7pt solid #B9A88E;
-  }
-  .frame::after {
-    content: ""; position: absolute;
-    top: 2.6mm; left: 2.6mm; right: 2.6mm; bottom: 2.6mm;
-    border: 0.35pt solid #D6C9B4;
-  }
-  .corner {
-    position: absolute; width: 9mm; height: 9mm;
-  }
-  .corner span { position: absolute; background: #9C8A6E; }
-  .corner .h { height: 0.7pt; width: 9mm; }
-  .corner .v { width: 0.7pt; height: 9mm; }
-  .c-tl { top: 9.2mm;  left: 9.2mm; }
-  .c-tr { top: 9.2mm;  right: 9.2mm; }
-  .c-bl { bottom: 9.2mm; left: 9.2mm; }
-  .c-br { bottom: 9.2mm; right: 9.2mm; }
-  .c-tl .h, .c-tl .v { top: 0; left: 0; }
-  .c-tr .h { top: 0; right: 0; } .c-tr .v { top: 0; right: 0; }
-  .c-bl .h { bottom: 0; left: 0; } .c-bl .v { bottom: 0; left: 0; }
-  .c-br .h { bottom: 0; right: 0; } .c-br .v { bottom: 0; right: 0; }
+  .frame { position: absolute; inset: 0; }
 
   .sheet {
-    position: absolute; inset: 0;
-    padding: 33mm 26mm 22mm;
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    padding: 42mm 30mm 26mm;
     display: flex; flex-direction: column; align-items: center;
     text-align: center;
   }
 
-  .wordmark {
-    font-family: "Montserrat", "Helvetica Neue", sans-serif;
-    font-weight: 400;
-    font-size: 8.2pt;
-    letter-spacing: .58em;
-    text-indent: .58em;
-    color: #6E6257;
-    text-transform: uppercase;
-  }
-  .wordmark-sub {
-    font-family: "Montserrat", sans-serif;
-    font-weight: 300;
-    font-size: 5.6pt;
-    letter-spacing: .42em;
-    text-indent: .42em;
-    color: #A2947F;
-    text-transform: uppercase;
-    margin-top: 2.2mm;
-  }
-
-  .rule-diamond {
-    display: flex; align-items: center; justify-content: center;
-    gap: 3mm; margin: 6mm 0 0;
-    width: 52mm;
-  }
-  .rule-diamond i { display: block; height: 0.4pt; background: #C9B99F; flex: 1; }
-  .rule-diamond b {
-    width: 2.1mm; height: 2.1mm; background: #A08A66;
-    transform: rotate(45deg); display: block;
+  .studio {
+    font-weight: 400; font-size: 8.6pt;
+    letter-spacing: .34em; text-indent: .34em;
+    text-transform: uppercase; color: #2B2B2E;
   }
 
   h1 {
-    font-weight: 300;
-    font-size: 46pt;
-    line-height: 1;
-    letter-spacing: .20em;
-    text-indent: .20em;
-    margin-top: 12mm;
-    color: #262220;
+    font-family: "Playfair Display", Georgia, serif;
+    font-weight: 700;
+    font-size: 40pt;
+    line-height: 1.05;
+    letter-spacing: .035em; text-indent: .035em;
+    color: #121214;
+    margin-top: 15mm;
   }
-  .kicker {
-    font-family: "Cormorant Garamond", serif;
-    font-style: italic;
+  h2 {
+    font-family: "Playfair Display", Georgia, serif;
     font-weight: 400;
-    font-size: 14.5pt;
-    color: #7A6A57;
-    margin-top: 4.5mm;
-    letter-spacing: .02em;
+    font-size: 13pt;
+    letter-spacing: .13em; text-indent: .13em;
+    color: #3A3A3E;
+    margin-top: 5.5mm;
+    text-transform: uppercase;
   }
 
-  .attest {
-    font-family: "Montserrat", sans-serif;
-    font-weight: 300;
-    font-size: 7pt;
-    letter-spacing: .34em;
-    text-indent: .34em;
-    text-transform: uppercase;
-    color: #8A7D6D;
-    margin-top: 19mm;
+  .presented {
+    font-weight: 300; font-size: 9pt;
+    letter-spacing: .20em; text-indent: .20em;
+    color: #3A3A3E;
+    margin-top: 24mm;
   }
 
   .name {
-    font-weight: 500;
-    font-size: 33pt;
-    line-height: 1.12;
-    letter-spacing: .055em;
-    margin-top: 8mm;
-    font-feature-settings: "lnum" 1;
-    color: #201D1B;
-    max-width: 150mm;
+    font-family: "Pinyon Script", "Great Vibes", cursive;
+    font-size: 30pt;
+    line-height: 1.2;
+    color: #101012;
+    margin-top: 9mm;
+    white-space: nowrap;
   }
   .name-rule {
-    width: 118mm; height: 0.5pt; background: #C4B296;
-    margin-top: 6mm;
+    width: 138mm; height: 0.5pt; background: #2A2A2D;
+    margin-top: 4mm;
   }
 
-  .body {
-    font-size: 13.4pt;
-    line-height: 1.75;
+  .reason {
+    font-weight: 300; font-size: 9pt;
+    letter-spacing: .16em; text-indent: .16em;
+    color: #3A3A3E;
+    margin-top: 12mm;
+    max-width: 150mm;
+    line-height: 1.9;
+  }
+  .duration {
+    font-family: "Cormorant Garamond", Georgia, serif;
+    font-size: 14pt;
     font-weight: 400;
-    color: #4A423A;
-    max-width: 134mm;
-    margin-top: 11mm;
+    line-height: 1.75;
+    color: #2E2E32;
+    max-width: 132mm;
+    margin-top: 24mm;
     font-feature-settings: "lnum" 1;
   }
-  .body em { font-style: italic; color: #332D28; }
+  .duration em { font-style: italic; }
 
-  .stats {
-    display: flex; align-items: stretch; justify-content: center;
-    margin-top: 17mm;
-  }
-  .stat { padding: 0 11mm; }
-  .stat + .stat { border-left: 0.4pt solid #D8CBB6; }
-  .stat .num {
-    font-size: 22pt; font-weight: 400; color: #2B2724; line-height: 1;
-    font-feature-settings: "lnum" 1; letter-spacing: .02em;
-  }
-  .stat .lbl {
-    font-family: "Montserrat", sans-serif;
-    font-weight: 300; font-size: 6pt;
-    letter-spacing: .3em; text-indent: .3em;
-    text-transform: uppercase; color: #8A7D6D;
-    margin-top: 2.6mm;
-  }
-
-  .footer {
+  .signrow {
     position: absolute;
-    left: 26mm; right: 26mm; bottom: 24mm;
+    left: 28mm; right: 28mm; bottom: 56mm;
     display: flex; align-items: flex-end; justify-content: space-between;
   }
-  .foot-col { width: 58mm; text-align: left; }
-  .foot-col.right { text-align: right; }
-  .sig-line { height: 0.5pt; background: #B9A88E; margin-bottom: 3mm; }
-  .signature {
-    font-family: "Great Vibes", "Cormorant Garamond", cursive;
-    font-size: 27pt; line-height: 1;
-    color: #3A3128;
-    margin-bottom: 1.5mm;
-    transform: rotate(-3deg);
-    transform-origin: right bottom;
+  .sig { width: 58mm; text-align: center; }
+  .sig .ink {
+    font-family: "Allura", "Great Vibes", cursive;
+    font-size: 25pt; line-height: 1;
+    color: #16161A;
+    height: 12mm;
+    display: flex; align-items: flex-end; justify-content: center;
+    padding-bottom: 1mm;
   }
-  .foot-label {
-    font-family: "Montserrat", sans-serif;
-    font-weight: 400; font-size: 6.4pt;
-    letter-spacing: .26em; text-indent: .26em;
-    text-transform: uppercase; color: #6E6257;
+  .sig .line { height: 0.5pt; background: #2A2A2D; }
+  .sig .role {
+    font-family: "Playfair Display", Georgia, serif;
+    font-weight: 500; font-size: 9pt;
+    color: #1B1B1F;
+    margin-top: 2.6mm;
+    letter-spacing: .02em;
   }
-  .foot-note {
-    font-family: "Montserrat", sans-serif;
-    font-weight: 300; font-size: 5.8pt;
-    letter-spacing: .18em; text-indent: .18em;
-    text-transform: uppercase; color: #A2947F;
-    margin-top: 1.8mm;
-  }
-  .place { font-size: 12pt; color: #4A423A; letter-spacing: .06em; font-feature-settings: "lnum" 1; }
 
   .seal {
     position: absolute;
-    left: 50%; bottom: 30mm;
-    transform: translateX(-50%) rotate(-7deg);
-    width: 40mm; height: 40mm;
-    opacity: .88;
+    left: 50%; bottom: 58mm;
+    transform: translateX(-50%);
+    width: 36mm; height: 36mm;
+  }
+
+  .place {
+    position: absolute;
+    left: 0; right: 0; bottom: 38mm;
+    font-family: "Playfair Display", Georgia, serif;
+    font-weight: 500; font-size: 10pt;
+    letter-spacing: .04em;
+    color: #1B1B1F;
+    text-align: center;
+  }
+  .certno {
+    position: absolute;
+    left: 0; right: 0; bottom: 31mm;
+    font-weight: 300; font-size: 6pt;
+    letter-spacing: .24em; text-indent: .24em;
+    text-transform: uppercase; color: #8C8579;
+    text-align: center;
   }
 </style>
 </head>
 <body>
-  <div class="grain"></div>
-  <div class="frame"></div>
-  <div class="corner c-tl"><span class="h"></span><span class="v"></span></div>
-  <div class="corner c-tr"><span class="h"></span><span class="v"></span></div>
-  <div class="corner c-bl"><span class="h"></span><span class="v"></span></div>
-  <div class="corner c-br"><span class="h"></span><span class="v"></span></div>
+  <div class="paper"></div>
 
-  <div class="sheet">
-    <div class="wordmark">Aneli Interiors</div>
-    <div class="wordmark-sub">студия дизайна интерьера · Алматы</div>
-    <div class="rule-diamond"><i></i><b></b><i></i></div>
-
-    <h1>СЕРТИФИКАТ</h1>
-    <div class="kicker">о прохождении практикума по дизайну интерьера</div>
-
-    <div class="attest">настоящим удостоверяется, что</div>
-    <div class="name">Akhan Ayana Sherekhanqyzy</div>
-    <div class="name-rule"></div>
-
-    <div class="body">успешно прошла практикум по дизайну интерьера в студии Aneli Interiors продолжительностью <em>шесть недель</em> — занятия три раза в неделю по 2 часа 30 минут, общим объёмом 45 часов практической работы.</div>
-
-    <div class="stats">
-      <div class="stat"><div class="num">6</div><div class="lbl">недель</div></div>
-      <div class="stat"><div class="num">18</div><div class="lbl">занятий</div></div>
-      <div class="stat"><div class="num">45</div><div class="lbl">часов</div></div>
-    </div>
-  </div>
-
-  <svg class="seal" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+  <!-- ornamental bronze frame -->
+  <svg class="frame" viewBox="0 0 210 297" width="210mm" height="297mm" xmlns="http://www.w3.org/2000/svg">
     <defs>
-      <path id="arcTop" d="M 100,100 m -74,0 a 74,74 0 1,1 148,0" fill="none"/>
-      <path id="arcBottom" d="M 100,100 m -66,0 a 66,66 0 1,0 132,0" fill="none"/>
+      <linearGradient id="bronze" x1="0" y1="0" x2="1" y2="1">
+        <stop offset="0%"   stop-color="#9A6320"/>
+        <stop offset="18%"  stop-color="#C79147"/>
+        <stop offset="38%"  stop-color="#8E5A1B"/>
+        <stop offset="58%"  stop-color="#CE9C55"/>
+        <stop offset="78%"  stop-color="#93601F"/>
+        <stop offset="100%" stop-color="#C08A3E"/>
+      </linearGradient>
     </defs>
-    <circle cx="100" cy="100" r="92" fill="none" stroke="#8A6E4B" stroke-width="2.2"/>
-    <circle cx="100" cy="100" r="86" fill="none" stroke="#8A6E4B" stroke-width="0.9"/>
-    <circle cx="100" cy="100" r="58" fill="none" stroke="#8A6E4B" stroke-width="0.9"/>
-    <text font-family="Montserrat, sans-serif" font-size="13" font-weight="500" letter-spacing="3.4" fill="#8A6E4B">
-      <textPath href="#arcTop" startOffset="50%" text-anchor="middle">ANELI INTERIORS</textPath>
-    </text>
-    <text font-family="Montserrat, sans-serif" font-size="8.4" font-weight="400" letter-spacing="2.6" fill="#8A6E4B">
-      <textPath href="#arcBottom" startOffset="50%" text-anchor="middle">ALMATY · KAZAKHSTAN</textPath>
-    </text>
-    <g fill="#8A6E4B">
-      <rect x="27" y="97" width="7" height="7" transform="rotate(45 30.5 100.5)"/>
-      <rect x="166" y="97" width="7" height="7" transform="rotate(45 169.5 100.5)"/>
+    <g fill="none" stroke="url(#bronze)" stroke-linecap="square">
+      <rect x="13" y="13" width="184" height="271" stroke-width="1.5"/>
+      <rect x="13" y="13" width="184" height="271" rx="15" ry="15" stroke-width="1.5"/>
+      <rect x="17.4" y="17.4" width="175.2" height="262.2" stroke-width="0.45"/>
+      <rect x="17.4" y="17.4" width="175.2" height="262.2" rx="11.5" ry="11.5" stroke-width="0.45"/>
     </g>
-    <text x="100" y="101" text-anchor="middle" font-family="Cormorant Garamond, serif" font-size="52" font-weight="500" fill="#8A6E4B">A</text>
-    <line x1="72" y1="116" x2="128" y2="116" stroke="#8A6E4B" stroke-width="0.8"/>
-    <text x="100" y="133" text-anchor="middle" font-family="Montserrat, sans-serif" font-size="8" font-weight="400" letter-spacing="2.2" fill="#8A6E4B">2026</text>
   </svg>
 
-  <div class="footer">
-    <div class="foot-col">
-      <div class="place">г. Алматы · 2026</div>
-      <div class="foot-note">сертификат № AI-2026-014</div>
+  <div class="sheet">
+    <div class="studio">Aneli Interiors</div>
+
+    <h1>СЕРТИФИКАТ</h1>
+    <h2>о прохождении практикума</h2>
+
+    <div class="presented">торжественно вручается</div>
+    <div class="name">Akhan Ayana Sherekhanqyzy</div>
+    <div class="name-rule"></div>
+    <div class="reason">за успешное прохождение практикума по дизайну интерьера</div>
+
+    <div class="duration">Обучение длилось <em>полтора месяца</em> — 45 часов практики в студии дизайна интерьера.</div>
+  </div>
+
+  <!-- studio seal -->
+  <svg class="seal" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <path id="sealTop" d="M 100,100 m -49,0 a 49,49 0 1,1 98,0" fill="none"/>
+      <path id="sealBottom" d="M 100,100 m -43,0 a 43,43 0 1,0 86,0" fill="none"/>
+    </defs>
+    <g fill="#E6DCCD">
+      <circle cx="162.00" cy="100.00" r="11"/><circle cx="159.49" cy="117.47" r="11"/><circle cx="152.16" cy="133.52" r="11"/><circle cx="140.60" cy="146.86" r="11"/><circle cx="125.76" cy="156.40" r="11"/><circle cx="108.82" cy="161.37" r="11"/><circle cx="91.18" cy="161.37" r="11"/><circle cx="74.24" cy="156.40" r="11"/><circle cx="59.40" cy="146.86" r="11"/><circle cx="47.84" cy="133.52" r="11"/><circle cx="40.51" cy="117.47" r="11"/><circle cx="38.00" cy="100.00" r="11"/><circle cx="40.51" cy="82.53" r="11"/><circle cx="47.84" cy="66.48" r="11"/><circle cx="59.40" cy="53.14" r="11"/><circle cx="74.24" cy="43.60" r="11"/><circle cx="91.18" cy="38.63" r="11"/><circle cx="108.82" cy="38.63" r="11"/><circle cx="125.76" cy="43.60" r="11"/><circle cx="140.60" cy="53.14" r="11"/><circle cx="152.16" cy="66.48" r="11"/><circle cx="159.49" cy="82.53" r="11"/>
+      <circle cx="100" cy="100" r="66"/>
+    </g>
+    <circle cx="100" cy="100" r="54" fill="none" stroke="#CFC2AE" stroke-width="0.9"/>
+    <text font-family="Montserrat, sans-serif" font-size="11.5" font-weight="500" letter-spacing="2.6" fill="#8D7E68">
+      <textPath href="#sealTop" startOffset="50%" text-anchor="middle">ANELI INTERIORS</textPath>
+    </text>
+    <text font-family="Montserrat, sans-serif" font-size="8.5" font-weight="400" letter-spacing="2.2" fill="#8D7E68">
+      <textPath href="#sealBottom" startOffset="50%" text-anchor="middle">ALMATY · KAZAKHSTAN</textPath>
+    </text>
+    <text x="100" y="94" text-anchor="middle" font-family="Playfair Display, serif" font-size="30" font-weight="500" fill="#9C8B72">A</text>
+    <line x1="84" y1="104" x2="116" y2="104" stroke="#BEAF98" stroke-width="0.8"/>
+    <text x="100" y="118" text-anchor="middle" font-family="Montserrat, sans-serif" font-size="7.5" letter-spacing="1.8" fill="#9C8B72">2026</text>
+  </svg>
+
+  <div class="signrow">
+    <div class="sig">
+      <div class="ink">Aneli</div>
+      <div class="line"></div>
+      <div class="role">Основатель студии</div>
     </div>
-    <div class="foot-col right">
-      <div class="signature">Aneli</div>
-      <div class="sig-line"></div>
-      <div class="foot-label">Руководитель практикума</div>
-      <div class="foot-note">Aneli Interiors</div>
+    <div class="sig">
+      <div class="ink"></div>
+      <div class="line"></div>
+      <div class="role">Куратор практикума</div>
     </div>
   </div>
+
+  <div class="place">Алматы, 2026</div>
+  <div class="certno">сертификат № AI-2026-014</div>
 </body>
 </html>
