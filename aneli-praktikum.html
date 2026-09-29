@@ -541,6 +541,54 @@
     }
     footer a { text-decoration: none; }
     footer a:hover { color: var(--accent); }
+
+    /* ---------- PRINT / PDF ---------- */
+    @media print {
+      @page { size: A4 portrait; margin: 11mm 10mm 13mm; }
+      * { -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }
+      html, body { background: var(--bg) !important; font-size: 12px; }
+      .progress, .nav, .marquee { display: none !important; }
+
+      .hero { padding: 0 0 18px; }
+      .hero::before, .enroll::before { display: none; }
+      .hero__grid {
+        grid-template-columns: 1fr 0.62fr !important;
+        gap: 26px !important;
+        align-items: start;
+      }
+      .hero__media { order: 0 !important; }
+      .hero h1 { font-size: 40px; margin: 10px 0 6px; }
+      .hero__bio { font-size: 12.5px; }
+      .hero__badge { left: auto; right: 10px; bottom: 10px; box-shadow: none; }
+      .hero__badge b { font-size: 22px; }
+
+      .sec { padding: 22px 0 !important; break-inside: auto; }
+      .sec__head { margin-bottom: 20px; }
+      .sec__head h2, .offer h2, .enroll h2 { font-size: 27px; }
+      .sec__head p, .offer__lead, .enroll p { font-size: 12.5px; }
+
+      .offer__grid, .split, .facts, .fit-grid, .topics, .outcome, .gapq {
+        grid-template-columns: 1fr 1fr !important;
+        gap: 14px !important;
+      }
+      .topics, .outcome, .gapq { gap: 0 26px !important; }
+      .offer__grid { gap: 26px !important; align-items: start; }
+
+      .mod, .fit li, .result, .facts > div, .split > div, .hero__grid { break-inside: avoid; }
+      .mod > summary { padding: 14px 0; cursor: default; }
+      .mod__i { display: none; }
+      .mod__n { font-size: 24px; }
+      .mod__body { padding: 0 0 16px 92px; }
+      .mod__body .topics li, .outcome li, .gapq li, .fit li { font-size: 12px; }
+
+      #programma { break-before: page; }
+      .sec__head, h2, h3 { break-after: avoid; }
+      .sec__head { break-inside: avoid; }
+      .enroll .inner { break-inside: avoid; }
+      .btn { padding: 11px 20px; font-size: 13px; }
+      .btn--ghost { display: none; }
+      footer { padding: 18px 0 0; }
+    }
   </style>
 </head>
 <body id="top">
@@ -869,6 +917,20 @@
   <span>Онлайн-практикум · старт 5 октября</span>
   <a href="https://instagram.com/aneli.interiors" target="_blank" rel="noopener">@aneli.interiors</a>
 </footer>
+
+<script>
+  (function () {
+    function openAll() {
+      var m = document.querySelectorAll('details.mod');
+      for (var i = 0; i < m.length; i++) { m[i].open = true; }
+    }
+    if (window.matchMedia) {
+      var mq = window.matchMedia('print');
+      if (mq.addEventListener) { mq.addEventListener('change', function (e) { if (e.matches) openAll(); }); }
+    }
+    window.addEventListener('beforeprint', openAll);
+  })();
+</script>
 
 <script>
   (function () {
