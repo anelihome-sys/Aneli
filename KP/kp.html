@@ -1,78 +1,100 @@
 <!doctype html><html lang="ru"><head><meta charset="utf-8">
 <style>
-@page{size:A4;margin:10mm 17mm 7mm}
+@page{size:A4;margin:16mm 17mm 14mm}
 *{box-sizing:border-box}
-body{font-family:Inter,sans-serif;font-weight:300;color:#2b2925;font-size:9pt;line-height:1.38;margin:0}
-.head{display:flex;justify-content:space-between;align-items:flex-end;border-bottom:.6pt solid #2b2925;padding-bottom:10pt}
-.brand{font-weight:500;letter-spacing:.32em;font-size:10pt}
+body{font-family:Inter,sans-serif;font-weight:300;color:#2b2925;font-size:9.4pt;line-height:1.45;margin:0}
+.page{height:264mm;display:flex;flex-direction:column;page-break-after:always}
+.page:last-child{page-break-after:auto}
+.head{display:flex;justify-content:space-between;align-items:flex-end;border-bottom:.6pt solid #2b2925;padding-bottom:9pt}
+.brand{font-weight:500;letter-spacing:.24em;font-size:10pt;text-transform:uppercase}
 .meta{text-align:right;font-size:8pt;color:#8a847a;letter-spacing:.04em}
-h1{font-weight:200;font-size:21pt;letter-spacing:-.01em;margin:8pt 0 1pt}
-.sub{color:#8a847a;font-size:9.5pt;margin-bottom:5pt}
+h1{font-weight:200;font-size:23pt;letter-spacing:-.01em;margin:16pt 0 12pt}
 .label{font-size:7.2pt;letter-spacing:.2em;text-transform:uppercase;color:#a39b8e;font-weight:500}
-table{width:100%;border-collapse:collapse}
-td{vertical-align:top;padding:5pt 0;border-bottom:.4pt solid #ddd7cc}
-td.n{width:22pt;min-width:22pt;color:#a39b8e;font-size:8pt;padding-top:7.5pt}
-td.img{width:112pt;padding-left:0;padding-right:14pt}
-td.img img{width:104pt;height:98pt;object-fit:cover;display:block;border-radius:1pt}
-td.p{width:72pt;text-align:right;font-weight:400;white-space:nowrap;font-size:10.5pt}
+.co{display:grid;grid-template-columns:1fr 1fr;gap:14pt 28pt;padding:12pt 0 14pt;border-top:.4pt solid #ddd7cc;border-bottom:.4pt solid #ddd7cc}
+.co dl{margin:0;display:grid;grid-template-columns:96pt 1fr;row-gap:3pt}
+.co dt{color:#8a847a}
+.co dd{margin:0;font-weight:400}
+.intro{margin:12pt 0 4pt;font-size:10pt;line-height:1.55;max-width:440pt}
+.row{display:grid;grid-template-columns:22pt 1fr 124pt 62pt;column-gap:12pt;padding:9pt 0;border-bottom:.4pt solid #ddd7cc;break-inside:avoid}
+.row:first-of-type{border-top:none}
+.n{color:#a39b8e;font-size:8pt;padding-top:2pt}
 .zone{font-size:7.2pt;letter-spacing:.18em;text-transform:uppercase;color:#a39b8e;font-weight:500;margin-bottom:2pt}
-.t{font-weight:500;font-size:10.5pt;margin-bottom:3pt}
+.t{font-weight:500;font-size:10.8pt;margin-bottom:3pt}
 .d{color:#5e5951}
-.d li{margin:0 0 1pt}
 ul{margin:3pt 0 0;padding-left:12pt}
-tr{page-break-inside:avoid}
-.total{display:flex;justify-content:space-between;align-items:baseline;margin-top:4pt;padding:6pt 0;border-top:.8pt solid #2b2925;border-bottom:.8pt solid #2b2925}
-.total .v{font-size:19pt;font-weight:300;letter-spacing:-.01em}
-.notes{margin-top:7pt;display:grid;grid-template-columns:1fr 1fr;gap:4pt 28pt;font-size:8.3pt;color:#5e5951}
-.notes .label{grid-column:1/-1;margin-bottom:4pt}
-.foot{margin-top:10pt;display:flex;justify-content:space-between;font-size:8pt;color:#8a847a}
-.sign{border-top:.4pt solid #8a847a;width:160pt;padding-top:4pt}
-.gift{margin-top:6pt;display:inline-block;white-space:nowrap;padding:3pt 8pt;background:#f4f0e9;font-size:8.4pt;color:#2b2925;font-weight:400}
-.gt{font-size:6.8pt;letter-spacing:.18em;text-transform:uppercase;color:#8a7b62;font-weight:500;margin-right:6pt}
-.wr{display:flex;gap:14pt;justify-content:space-between;align-items:flex-start}
-.wimg{display:flex;flex-shrink:0;gap:4pt;margin-right:14pt}
-.wimg img{height:66pt;object-fit:cover;display:block;border-radius:1pt}
+li{margin:0 0 1pt}
+.imgs{display:flex;gap:4pt;justify-content:flex-end}
+.imgs img{height:80pt;object-fit:cover;display:block;border-radius:1pt}
+.p{text-align:right;font-weight:400;white-space:nowrap;font-size:11pt}
+.gift{margin-top:7pt;display:block;justify-self:start;padding:4pt 9pt;background:#f4f0e9;font-size:8.6pt;font-weight:400}
+.gt{font-size:6.8pt;letter-spacing:.18em;text-transform:uppercase;color:#8a7b62;font-weight:500;margin-right:7pt}
+.total{display:flex;justify-content:space-between;align-items:baseline;margin-top:14pt;padding:12pt 0;border-top:.8pt solid #2b2925;border-bottom:.8pt solid #2b2925}
+.total .v{font-size:22pt;font-weight:300;letter-spacing:-.01em}
+.terms{margin-top:18pt;display:grid;grid-template-columns:1fr 1fr 1fr;gap:16pt}
+.term .k{font-size:7.2pt;letter-spacing:.18em;text-transform:uppercase;color:#a39b8e;font-weight:500;margin-bottom:4pt}
+.term .val{font-size:15pt;font-weight:300;line-height:1.2}
+.term .s{font-size:8.3pt;color:#5e5951;margin-top:3pt}
+.notes{margin-top:18pt;font-size:8.6pt;color:#5e5951}
+.notes ul{padding-left:12pt;margin-top:6pt}
+.notes li{margin-bottom:3pt}
+.foot{margin-top:auto;display:flex;justify-content:space-between;font-size:8.3pt;color:#8a847a}
+.sign{border-top:.4pt solid #8a847a;width:190pt;padding-top:5pt}
+.sign b{display:block;font-weight:400;color:#2b2925;margin-bottom:1pt}
+.pn{font-size:7.5pt;color:#a39b8e;text-align:right;margin-top:8pt}
 </style></head><body>
-<div class="head"><div class="brand">ANELI HOME</div><div class="meta">Мебель по индивидуальному проекту<br>07.10.2026</div></div>
+
+<section class="page">
+<div class="head"><div class="brand">ИП «АртКухни»</div><div class="meta">г. Алматы<br>07.10.2026</div></div>
 <h1>Коммерческое предложение</h1>
-<div class="sub">Изготовление корпусной мебели на заказ по дизайн-проекту</div>
+<div class="co">
+<dl><dt>Организация</dt><dd>ИП «АртКухни»</dd><dt>Адрес</dt><dd>г. Алматы, ул. Куприна, 1а</dd><dt>Директор</dt><dd>Салимов Р. Т.</dd><dt>БИН</dt><dd>830525301431</dd></dl>
+<dl><dt>Контактное лицо</dt><dd>Динара, дизайнер</dd><dt>Телефон</dt><dd>8 747 704 10 35</dd><dt>Дата</dt><dd>07.10.2026</dd></dl>
+</div>
+<p class="intro">Рассмотрев ваш запрос от 06.10.2026, подтверждаем готовность изготовить корпусную мебель для дома в соответствии с вашим дизайн-проектом.</p>
 
-<table>
-<tr><td class="n">01</td><td colspan="2"><div class="wr"><div><div class="zone">Детская комната</div><div class="t">Шкаф большой и рабочий стол</div>
-<div class="d"><ul><li>Фасады и видимые боковины — МДФ крашеный</li><li>Открытые полки — ЛДСП в тон краски</li><li>Стол: столешница, фасад тумбы и ножки — МДФ крашеный</li></ul></div></div><div class="wimg"><img src="kids.jpg" style="width:92pt"></div></div></td><td class="p">1 500 000</td></tr>
+<div class="row"><div class="n">01</div><div><div class="zone">Детская комната</div><div class="t">Шкаф большой и рабочий стол</div><div class="d"><ul><li>Фасады и видимые боковины — МДФ крашеный</li><li>Открытые полки — ЛДСП в тон краски</li><li>Стол: столешница, тумба и ножки — МДФ крашеный</li></ul></div></div><div class="imgs"><img src="kids.jpg" style="width:124pt"></div><div class="p">1 500 000</div></div>
 
-<tr><td class="n">02</td><td colspan="2"><div class="wr"><div><div class="zone">Прихожая</div><div class="t">Шкаф в прихожую</div>
-<div class="d"><ul><li>МДФ крашеный с фрезеровкой</li></ul></div></div><div class="wimg"><img src="hall.jpg" style="width:48pt;height:54pt"></div></div></td><td class="p">825 000</td></tr>
+<div class="row"><div class="n">02</div><div><div class="zone">Прихожая</div><div class="t">Шкаф в прихожую</div><div class="d"><ul><li>МДФ крашеный с фрезеровкой</li></ul></div></div><div class="imgs"><img src="hall.jpg" style="width:60pt"></div><div class="p">825 000</div></div>
 
-<tr><td class="n">03</td><td colspan="2"><div class="wr"><div><div class="zone">Санузел 1</div><div class="t">Тумба и шкаф над инсталляцией</div><div class="d"><ul><li>Тумба со столешницей и литой мойкой</li><li>Шкаф над инсталляцией с открытой нишей</li></ul></div></div><div class="wimg"><img src="bath1.jpg" style="width:48pt;height:54pt"></div></div></td><td class="p">600 000</td></tr>
+<div class="row"><div class="n">03</div><div><div class="zone">Санузел 1</div><div class="t">Тумба и шкаф над инсталляцией</div><div class="d"><ul><li>Тумба со столешницей и литой мойкой</li><li>Шкаф над инсталляцией с открытой нишей</li></ul></div></div><div class="imgs"><img src="bath1.jpg" style="width:66pt"></div><div class="p">600 000</div></div>
 
-<tr><td class="n">04</td><td colspan="2"><div class="wr"><div><div class="zone">Прачечная</div><div class="t">Шкаф для прачечной</div></div><div class="wimg"><img src="laundry.jpg" style="width:48pt;height:54pt"></div></div></td><td class="p">340 000</td></tr>
+<div class="row"><div class="n">04</div><div><div class="zone">Прачечная</div><div class="t">Шкаф для прачечной</div></div><div class="imgs"><img src="laundry.jpg" style="width:48pt"></div><div class="p">340 000</div></div>
 
-<tr><td class="n">05</td><td colspan="2"><div class="wr"><div><div class="zone">Мастер-санузел</div><div class="t">Тумба под раковину</div>
-<div class="d"><ul><li>Шпон с фрезеровкой</li><li>Столешница в стоимость не входит</li></ul></div></div><div class="wimg"><img src="master.jpg" style="width:48pt;height:54pt"></div></div></td><td class="p">480 000</td></tr>
+<div class="row" style="border-bottom:none"><div class="n">05</div><div><div class="zone">Мастер-санузел</div><div class="t">Тумба под раковину</div><div class="d"><ul><li>Шпон с фрезеровкой</li><li>Столешница в стоимость не входит</li></ul></div></div><div class="imgs"><img src="master.jpg" style="width:58pt"></div><div class="p">480 000</div></div>
 
-<tr><td class="n">06</td><td><div class="zone">Кухня</div><div class="t">Кухонный гарнитур с барным островом</div>
-<div class="d"><ul>
+<div class="pn">1 / 2</div>
+</section>
+
+<section class="page">
+<div class="head"><div class="brand">ИП «АртКухни»</div><div class="meta">Коммерческое предложение<br>07.10.2026</div></div>
+
+<div class="row" style="margin-top:6pt"><div class="n">06</div><div><div class="zone">Кухня</div><div class="t">Кухонный гарнитур с барным островом</div><div class="d"><ul>
 <li>Фасады — шпон с фрезеровкой</li>
 <li>Столешница — искусственный камень</li>
-<li>Лицевая часть острова — ЛДСП</li>
+<li>Лицевая часть барного острова — ЛДСП</li>
 <li>Шкаф под вытяжку, радиусные бока — МДФ крашеный</li>
 <li>Петли Häfele, ящики Blum Tandem с Tip-On</li>
 <li>Под барной — сушка посуды нижнего монтажа</li>
 <li>В пенале — вертикальная выдвижная корзина</li>
-</ul></div><div class="gift"><span class="gt">В подарок</span>мойка · органайзер для приборов · подсветка рабочей зоны</div></td><td class="img"><img src="kitchen.jpg"></td><td class="p">4 070 000</td></tr>
-<tr><td class="n">07</td><td colspan="2"><div class="wr"><div><div class="zone">Гардеробная</div><div class="t">Гардеробная система</div>
-<div class="d"><ul><li>Корпус — ЛДСП Egger</li><li>Фурнитура — Häfele</li><li>Ячейка для аксессуаров — направляющие Blum Tandem</li></ul></div></div><div class="wimg"><img src="wardrobe.jpg" style="width:54pt"><img src="accessories.jpg" style="width:96pt"></div></div></td><td class="p">825 000</td></tr>
-</table>
+</ul></div></div><div class="imgs"><img src="kitchen.jpg" style="width:124pt;height:112pt"></div><div class="p">4 070 000</div><div class="gift" style="grid-column:2/4"><span class="gt">В подарок</span>мойка · органайзер для приборов · подсветка рабочей зоны</div></div>
 
-<div class="total"><div class="label">Итого по проекту</div><div class="v">8 640 000</div></div>
+<div class="row"><div class="n">07</div><div><div class="zone">Гардеробная</div><div class="t">Гардеробная система</div><div class="d"><ul><li>Корпус — ЛДСП Egger</li><li>Фурнитура — Häfele</li><li>Ячейка для аксессуаров — Blum Tandem</li></ul></div></div><div class="imgs"><img src="wardrobe.jpg" style="width:44pt"><img src="accessories.jpg" style="width:76pt"></div><div class="p">825 000</div></div>
 
-<div class="notes"><div class="label">Условия</div>
-<div>Конструктив и размеры — по дизайн-проекту и замерам; цвета, шпон и фрезеровка утверждаются по образцам.</div>
-<div>Стоимость может быть скорректирована в обе стороны после детального согласования внутреннего наполнения.</div>
-<div>Сроки изготовления, доставка и монтаж — по договору.</div>
-<div>Предложение действительно 14 дней с даты составления.</div>
+<div class="total"><div class="label">Итого по проекту, тенге</div><div class="v">8 640 000</div></div>
+
+<div class="terms">
+<div class="term"><div class="k">Изготовление</div><div class="val">30–35 дней</div><div class="s">с момента внесения предоплаты</div></div>
+<div class="term"><div class="k">Сборка на объекте</div><div class="val">до 5 дней</div><div class="s">после изготовления</div></div>
+<div class="term"><div class="k">Предоплата</div><div class="val">60%</div><div class="s">остаток — согласно договору</div></div>
 </div>
 
-<div class="foot"><div class="sign">Исполнитель</div><div class="sign">Заказчик</div></div>
+<div class="notes"><div class="label">Условия</div><ul>
+<li>Конструктив и размеры — по согласованному дизайн-проекту и замерам; цвета, шпон и фрезеровка утверждаются по образцам.</li>
+<li>Стоимость может быть скорректирована в обе стороны после детального согласования внутреннего наполнения.</li>
+<li>Предложение действительно 14 дней с даты составления.</li>
+</ul></div>
+
+<div class="foot"><div class="sign"><b>ИП «АртКухни»</b>Директор Салимов Р. Т.</div><div class="sign"><b>Заказчик</b>&nbsp;</div></div>
+<div class="pn">2 / 2</div>
+</section>
 </body></html>
