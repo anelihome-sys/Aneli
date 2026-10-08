@@ -264,6 +264,74 @@
     .rows dt { color: var(--white-3); font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; }
     .cta__note { margin-top: 11mm; font-size: 13.5px; color: var(--white-3); }
 
+    /* ---------- MODULE WITH IMAGE ---------- */
+    .mod { margin-bottom: 11mm; }
+    .mod__row { display: grid; grid-template-columns: 58mm 1fr; gap: 9mm; align-items: start; }
+    .shot {
+      position: relative;
+      width: 58mm;
+      aspect-ratio: 4 / 5;
+      background: var(--surface);
+      border: 1px solid var(--line-2);
+      overflow: hidden;
+    }
+    .shot img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+    .shot__ph {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      gap: 6px;
+      padding: 12px 13px;
+      background:
+        linear-gradient(145deg, rgba(219,171,108,.07), rgba(0,0,0,0) 60%),
+        var(--surface);
+    }
+    .shot__ph svg { width: 22px; height: 22px; color: var(--gold-2); margin-bottom: auto; }
+    .shot__ph b { font-size: 9.5px; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; color: var(--gold-2); }
+    .shot__ph span { font-size: 11px; line-height: 1.35; color: var(--white-3); }
+    .mod__head { display: flex; align-items: baseline; gap: 14px; }
+    .mod__head .mod__n { font-size: 38px; }
+    .mod__head .mod__t { font-size: 23px; }
+    .mod__body { margin-top: 11px; }
+    .mod__body .topics { grid-template-columns: 1fr 1fr; }
+    .mod__body .topics li { font-size: 13.5px; padding: 4px 0 4px 16px; }
+    .mod__body .topics li::before { top: 15px; }
+    .mod__body .res { margin-top: 11px; padding: 11px 15px; }
+    .mod__body .res p { font-size: 13.5px; }
+
+    /* ---------- PRICING ---------- */
+    .tiers { display: grid; grid-template-columns: repeat(3, 1fr); gap: 6mm; }
+    .tier {
+      display: flex;
+      flex-direction: column;
+      background: var(--surface);
+      border: 1px solid var(--line-2);
+      padding: 20px 18px 22px;
+    }
+    .tier--top { border-color: var(--gold); background: var(--surface-2); }
+    .tier__name {
+      font-family: 'Forum', Georgia, serif;
+      font-size: 21px;
+      color: var(--white);
+    }
+    .tier__price {
+      font-family: 'Forum', Georgia, serif;
+      font-size: 31px;
+      color: var(--gold);
+      font-variant-numeric: tabular-nums;
+      margin-top: 10px;
+      line-height: 1.1;
+    }
+    .tier__price small { font-size: 17px; }
+    .tier__rule { height: 1px; background: var(--line-2); margin: 15px 0 14px; }
+    .tier__list { display: flex; flex-direction: column; gap: 9px; }
+    .tier__list li { position: relative; padding-left: 17px; font-size: 13px; line-height: 1.45; color: var(--white-2); }
+    .tier__list li::before { content: ''; position: absolute; left: 0; top: 8px; width: 9px; height: 1px; background: var(--gold-2); }
+    .tier__list li.inc { color: var(--white-3); font-style: italic; }
+    .tier__list li.inc::before { background: var(--line-2); }
+
 </style>
 </head>
 <body>
@@ -312,7 +380,7 @@
     <div><b>6 модулей</b><span>программа</span></div>
     <div><b>4–6 часов</b><span>практики в неделю</span></div>
   </div>
-  <div class="foot"><span>Aneli Interiors · онлайн-практикум</span><span>Старт 19 октября</span><span>2 / 10</span></div>
+  <div class="foot"><span>Aneli Interiors · онлайн-практикум</span><span>Старт 19 октября</span><span>2 / 11</span></div>
 </section>
 <section class="page page--deep">
   <span class="lbl">Для кого</span>
@@ -331,7 +399,7 @@
     <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M18 6 6 18M6 6l12 12"/></svg><span>Тем, кто не готов выделять 4–6 часов в неделю на практику</span></li>
     <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M18 6 6 18M6 6l12 12"/></svg><span>Тем, кому нужен только диплом, а не реальные проекты</span></li>
   </ul>
-  <div class="foot"><span>Aneli Interiors · онлайн-практикум</span><span>Старт 19 октября</span><span>3 / 10</span></div>
+  <div class="foot"><span>Aneli Interiors · онлайн-практикум</span><span>Старт 19 октября</span><span>3 / 11</span></div>
 </section>
 <section class="page">
   <span class="lbl">С чего всё начинается</span>
@@ -350,111 +418,156 @@
   </ul>
   <div style="margin-top:14mm"></div>
   <p class="big">На практикуме мы закрываем каждый из этих вопросов — <em>не лекцией, а работой руками</em>.</p>
-  <div class="foot"><span>Aneli Interiors · онлайн-практикум</span><span>Старт 19 октября</span><span>4 / 10</span></div>
+  <div class="foot"><span>Aneli Interiors · онлайн-практикум</span><span>Старт 19 октября</span><span>4 / 11</span></div>
 </section>
 <section class="page">
   <span class="lbl">Программа · модули 1–2</span>
   <h2 class="h2">Шесть модулей — от первой встречи до первого проекта</h2>
   <div class="rule"></div>
-  
       <div class="mod">
-        <div class="mod__h"><span class="mod__n">01</span><span class="mod__t">Основа успешного проекта</span></div>
-        <div class="mod__in">
-          <ul class="topics">
-          <li>Оформление социальных сетей дизайнера</li>
-          <li>Этапы работы над дизайн-проектом</li>
-          <li>Составление технического задания</li>
-          <li>Первая встреча на объекте</li>
-          <li>Замеры помещения</li>
-          <li>Основные технические нюансы стройки</li>
-          <li>Разработка планировочного решения</li>
-          </ul>
-          <div class="res"><span class="lbl">Результат модуля</span><p>Понимаете полный цикл работы дизайнера, проводите первую встречу с заказчиком, снимаете профессиональные замеры, составляете грамотное ТЗ и создаёте первую функциональную планировку.</p></div>
+        <div class="mod__row">
+          <div class="shot">
+            <div class="shot__ph"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8.5A1.5 1.5 0 0 1 4.5 7h2.2a1.5 1.5 0 0 0 1.25-.67l.6-.9A1.5 1.5 0 0 1 9.8 4.8h4.4a1.5 1.5 0 0 1 1.25.67l.6.9A1.5 1.5 0 0 0 17.3 7h2.2A1.5 1.5 0 0 1 21 8.5v9A1.5 1.5 0 0 1 19.5 19h-15A1.5 1.5 0 0 1 3 17.5z"/><circle cx="12" cy="12.6" r="3.4"/></svg><b>Фото · модуль 01</b><span>Обмерный план и лазерная рулетка на объекте — навык замеров и планировки</span></div>
+            <img src="assets/modules/01.jpg" alt="Обмерный план и лазерная рулетка на объекте — навык замеров и планировки" onerror="this.remove()" />
+          </div>
+          <div>
+            <div class="mod__head"><span class="mod__n">01</span><span class="mod__t">Основа успешного проекта</span></div>
+            <div class="mod__body">
+              <ul class="topics">
+            <li>Оформление социальных сетей дизайнера</li>
+            <li>Этапы работы над дизайн-проектом</li>
+            <li>Составление технического задания</li>
+            <li>Первая встреча на объекте</li>
+            <li>Замеры помещения</li>
+            <li>Основные технические нюансы стройки</li>
+            <li>Разработка планировочного решения</li>
+              </ul>
+              <div class="res"><span class="lbl">Результат модуля</span><p>Понимаете полный цикл работы дизайнера, проводите первую встречу с заказчиком, снимаете профессиональные замеры, составляете грамотное ТЗ и создаёте первую функциональную планировку.</p></div>
+            </div>
+          </div>
         </div>
       </div>
       <div class="mod">
-        <div class="mod__h"><span class="mod__n">02</span><span class="mod__t">Создание концепции интерьера</span></div>
-        <div class="mod__in">
-          <ul class="topics">
-          <li>Разбор планировочных решений</li>
-          <li>Технические доработки</li>
-          <li>Стили интерьера</li>
-          <li>Цветовые сочетания</li>
-          <li>Разработка концепции</li>
-          <li>Презентация идеи заказчику</li>
-          </ul>
-          <div class="res"><span class="lbl">Результат модуля</span><p>Создаёте концепцию под запрос клиента, сочетаете стили, цвета, фактуры и материалы, дорабатываете планировку с учётом технических требований и уверенно презентуете идеи заказчику.</p></div>
+        <div class="mod__row">
+          <div class="shot">
+            <div class="shot__ph"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8.5A1.5 1.5 0 0 1 4.5 7h2.2a1.5 1.5 0 0 0 1.25-.67l.6-.9A1.5 1.5 0 0 1 9.8 4.8h4.4a1.5 1.5 0 0 1 1.25.67l.6.9A1.5 1.5 0 0 0 17.3 7h2.2A1.5 1.5 0 0 1 21 8.5v9A1.5 1.5 0 0 1 19.5 19h-15A1.5 1.5 0 0 1 3 17.5z"/><circle cx="12" cy="12.6" r="3.4"/></svg><b>Фото · модуль 02</b><span>Коллаж концепции: палитра, фактуры, референсы — навык создания концепции</span></div>
+            <img src="assets/modules/02.jpg" alt="Коллаж концепции: палитра, фактуры, референсы — навык создания концепции" onerror="this.remove()" />
+          </div>
+          <div>
+            <div class="mod__head"><span class="mod__n">02</span><span class="mod__t">Создание концепции интерьера</span></div>
+            <div class="mod__body">
+              <ul class="topics">
+            <li>Разбор планировочных решений</li>
+            <li>Технические доработки</li>
+            <li>Стили интерьера</li>
+            <li>Цветовые сочетания</li>
+            <li>Разработка концепции</li>
+            <li>Презентация идеи заказчику</li>
+              </ul>
+              <div class="res"><span class="lbl">Результат модуля</span><p>Создаёте концепцию под запрос клиента, сочетаете стили, цвета, фактуры и материалы, дорабатываете планировку с учётом технических требований и уверенно презентуете идеи заказчику.</p></div>
+            </div>
+          </div>
         </div>
       </div>
-  <div class="foot"><span>Aneli Interiors · онлайн-практикум</span><span>Старт 19 октября</span><span>5 / 10</span></div>
+  <div class="foot"><span>Aneli Interiors · онлайн-практикум</span><span>Старт 19 октября</span><span>5 / 11</span></div>
 </section>
 <section class="page page--deep">
   <span class="lbl">Программа · модули 3–4</span>
   <h2 class="h2">Комплектация и реализация</h2>
   <div class="rule"></div>
-  
       <div class="mod">
-        <div class="mod__h"><span class="mod__n">03</span><span class="mod__t">Комплектация проекта</span></div>
-        <div class="mod__in">
-          <ul class="topics">
-          <li>Работа с поставщиками</li>
-          <li>Работа с шоурумами</li>
-          <li>Подбор материалов</li>
-          <li>Комплектация объекта</li>
-          <li>Составление сметы</li>
-          </ul>
-          <div class="res"><span class="lbl">Результат модуля</span><p>Знаете, где искать качественные материалы, работаете с поставщиками и шоурумами, подбираете материалы под концепцию и бюджет и самостоятельно составляете смету на комплектацию.</p></div>
+        <div class="mod__row">
+          <div class="shot">
+            <div class="shot__ph"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8.5A1.5 1.5 0 0 1 4.5 7h2.2a1.5 1.5 0 0 0 1.25-.67l.6-.9A1.5 1.5 0 0 1 9.8 4.8h4.4a1.5 1.5 0 0 1 1.25.67l.6.9A1.5 1.5 0 0 0 17.3 7h2.2A1.5 1.5 0 0 1 21 8.5v9A1.5 1.5 0 0 1 19.5 19h-15A1.5 1.5 0 0 1 3 17.5z"/><circle cx="12" cy="12.6" r="3.4"/></svg><b>Фото · модуль 03</b><span>Образцы камня, плитки и дерева в шоуруме — навык подбора материалов и сметы</span></div>
+            <img src="assets/modules/03.jpg" alt="Образцы камня, плитки и дерева в шоуруме — навык подбора материалов и сметы" onerror="this.remove()" />
+          </div>
+          <div>
+            <div class="mod__head"><span class="mod__n">03</span><span class="mod__t">Комплектация проекта</span></div>
+            <div class="mod__body">
+              <ul class="topics">
+            <li>Работа с поставщиками</li>
+            <li>Работа с шоурумами</li>
+            <li>Подбор материалов</li>
+            <li>Комплектация объекта</li>
+            <li>Составление сметы</li>
+              </ul>
+              <div class="res"><span class="lbl">Результат модуля</span><p>Знаете, где искать качественные материалы, работаете с поставщиками и шоурумами, подбираете материалы под концепцию и бюджет и самостоятельно составляете смету на комплектацию.</p></div>
+            </div>
+          </div>
         </div>
       </div>
       <div class="mod">
-        <div class="mod__h"><span class="mod__n">04</span><span class="mod__t">Реализация проекта</span></div>
-        <div class="mod__in">
-          <ul class="topics">
-          <li>Создание живого мудборда</li>
-          <li>Разбор ошибок при подборе материалов</li>
-          <li>Особенности мебельного производства</li>
-          <li>Работа с мебельным производством</li>
-          <li>Расчёт стоимости мебели</li>
-          </ul>
-          <div class="res"><span class="lbl">Результат модуля</span><p>Создаёте профессиональный мудборд, избегаете дорогостоящих ошибок при комплектации, разбираетесь в изготовлении мебели на заказ и рассчитываете её бюджет.</p></div>
+        <div class="mod__row">
+          <div class="shot">
+            <div class="shot__ph"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8.5A1.5 1.5 0 0 1 4.5 7h2.2a1.5 1.5 0 0 0 1.25-.67l.6-.9A1.5 1.5 0 0 1 9.8 4.8h4.4a1.5 1.5 0 0 1 1.25.67l.6.9A1.5 1.5 0 0 0 17.3 7h2.2A1.5 1.5 0 0 1 21 8.5v9A1.5 1.5 0 0 1 19.5 19h-15A1.5 1.5 0 0 1 3 17.5z"/><circle cx="12" cy="12.6" r="3.4"/></svg><b>Фото · модуль 04</b><span>Физический мудборд: ткани, фурнитура, образцы фасадов — навык комплектации</span></div>
+            <img src="assets/modules/04.jpg" alt="Физический мудборд: ткани, фурнитура, образцы фасадов — навык комплектации" onerror="this.remove()" />
+          </div>
+          <div>
+            <div class="mod__head"><span class="mod__n">04</span><span class="mod__t">Реализация проекта</span></div>
+            <div class="mod__body">
+              <ul class="topics">
+            <li>Создание живого мудборда</li>
+            <li>Разбор ошибок при подборе материалов</li>
+            <li>Особенности мебельного производства</li>
+            <li>Работа с мебельным производством</li>
+            <li>Расчёт стоимости мебели</li>
+              </ul>
+              <div class="res"><span class="lbl">Результат модуля</span><p>Создаёте профессиональный мудборд, избегаете дорогостоящих ошибок при комплектации, разбираетесь в изготовлении мебели на заказ и рассчитываете её бюджет.</p></div>
+            </div>
+          </div>
         </div>
       </div>
-  <div class="foot"><span>Aneli Interiors · онлайн-практикум</span><span>Старт 19 октября</span><span>6 / 10</span></div>
+  <div class="foot"><span>Aneli Interiors · онлайн-практикум</span><span>Старт 19 октября</span><span>6 / 11</span></div>
 </section>
 <section class="page">
   <span class="lbl">Программа · модули 5–6</span>
   <h2 class="h2">Управление проектом и запуск карьеры</h2>
   <div class="rule"></div>
-  
       <div class="mod">
-        <div class="mod__h"><span class="mod__n">05</span><span class="mod__t">Управление проектом</span></div>
-        <div class="mod__in">
-          <ul class="topics">
-          <li>Презентация рендеров</li>
-          <li>Защита проекта</li>
-          <li>Менеджмент стройки</li>
-          <li>Работа с подрядчиками</li>
-          <li>Юридическая безопасность</li>
-          <li>Общение с заказчиками</li>
-          </ul>
-          <div class="res"><span class="lbl">Результат модуля</span><p>Уверенно презентуете проект клиенту, ведёте объект во время реализации, выстраиваете работу со строителями и поставщиками, избегаете юридических ошибок и увереннее чувствуете себя в переговорах.</p></div>
+        <div class="mod__row">
+          <div class="shot">
+            <div class="shot__ph"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8.5A1.5 1.5 0 0 1 4.5 7h2.2a1.5 1.5 0 0 0 1.25-.67l.6-.9A1.5 1.5 0 0 1 9.8 4.8h4.4a1.5 1.5 0 0 1 1.25.67l.6.9A1.5 1.5 0 0 0 17.3 7h2.2A1.5 1.5 0 0 1 21 8.5v9A1.5 1.5 0 0 1 19.5 19h-15A1.5 1.5 0 0 1 3 17.5z"/><circle cx="12" cy="12.6" r="3.4"/></svg><b>Фото · модуль 05</b><span>Чертежи на объекте в стройке — навык авторского надзора и работы с подрядчиками</span></div>
+            <img src="assets/modules/05.jpg" alt="Чертежи на объекте в стройке — навык авторского надзора и работы с подрядчиками" onerror="this.remove()" />
+          </div>
+          <div>
+            <div class="mod__head"><span class="mod__n">05</span><span class="mod__t">Управление проектом</span></div>
+            <div class="mod__body">
+              <ul class="topics">
+            <li>Презентация рендеров</li>
+            <li>Защита проекта</li>
+            <li>Менеджмент стройки</li>
+            <li>Работа с подрядчиками</li>
+            <li>Юридическая безопасность</li>
+            <li>Общение с заказчиками</li>
+              </ul>
+              <div class="res"><span class="lbl">Результат модуля</span><p>Уверенно презентуете проект клиенту, ведёте объект во время реализации, выстраиваете работу со строителями и поставщиками, избегаете юридических ошибок и увереннее чувствуете себя в переговорах.</p></div>
+            </div>
+          </div>
         </div>
       </div>
       <div class="mod">
-        <div class="mod__h"><span class="mod__n">06</span><span class="mod__t">Запуск карьеры</span></div>
-        <div class="mod__in">
-          <ul class="topics">
-          <li>Подбор текстиля</li>
-          <li>Подбор декора и освещения</li>
-          <li>Создание экспертного контента</li>
-          <li>Поиск первых клиентов</li>
-          <li>Каналы продвижения</li>
-          <li>Подведение итогов</li>
-          </ul>
-          <div class="res"><span class="lbl">Результат модуля</span><p>Завершаете интерьер текстилем, освещением и декором, получаете стратегию продвижения себя как дизайнера, знаете, где искать первых клиентов, и собираете проект для портфолио.</p></div>
+        <div class="mod__row">
+          <div class="shot">
+            <div class="shot__ph"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8.5A1.5 1.5 0 0 1 4.5 7h2.2a1.5 1.5 0 0 0 1.25-.67l.6-.9A1.5 1.5 0 0 1 9.8 4.8h4.4a1.5 1.5 0 0 1 1.25.67l.6.9A1.5 1.5 0 0 0 17.3 7h2.2A1.5 1.5 0 0 1 21 8.5v9A1.5 1.5 0 0 1 19.5 19h-15A1.5 1.5 0 0 1 3 17.5z"/><circle cx="12" cy="12.6" r="3.4"/></svg><b>Фото · модуль 06</b><span>Готовый интерьер в финальной съёмке — навык завершения проекта и портфолио</span></div>
+            <img src="assets/modules/06.jpg" alt="Готовый интерьер в финальной съёмке — навык завершения проекта и портфолио" onerror="this.remove()" />
+          </div>
+          <div>
+            <div class="mod__head"><span class="mod__n">06</span><span class="mod__t">Запуск карьеры</span></div>
+            <div class="mod__body">
+              <ul class="topics">
+            <li>Подбор текстиля</li>
+            <li>Подбор декора и освещения</li>
+            <li>Создание экспертного контента</li>
+            <li>Поиск первых клиентов</li>
+            <li>Каналы продвижения</li>
+            <li>Подведение итогов</li>
+              </ul>
+              <div class="res"><span class="lbl">Результат модуля</span><p>Завершаете интерьер текстилем, освещением и декором, получаете стратегию продвижения себя как дизайнера, знаете, где искать первых клиентов, и собираете проект для портфолио.</p></div>
+            </div>
+          </div>
         </div>
       </div>
-  <div class="foot"><span>Aneli Interiors · онлайн-практикум</span><span>Старт 19 октября</span><span>7 / 10</span></div>
+  <div class="foot"><span>Aneli Interiors · онлайн-практикум</span><span>Старт 19 октября</span><span>7 / 11</span></div>
 </section>
 <section class="page">
   <span class="lbl">Результат</span>
@@ -476,7 +589,7 @@
     <span class="lbl">Главное</span>
     <p style="font-size:15.5px">Ваша задача после обучения — не готовиться бесконечно, а начать работать. К концу второго месяца у вас есть собранный проект и понимание, где искать первого клиента.</p>
   </div>
-  <div class="foot"><span>Aneli Interiors · онлайн-практикум</span><span>Старт 19 октября</span><span>8 / 10</span></div>
+  <div class="foot"><span>Aneli Interiors · онлайн-практикум</span><span>Старт 19 октября</span><span>8 / 11</span></div>
 </section>
 <section class="page page--deep">
   <span class="lbl">Важно понимать</span>
@@ -495,13 +608,62 @@
     <span class="lbl">Коротко</span>
     <p style="font-size:15.5px">Это не курс «посмотрите 50 уроков и получите сертификат». Это практикум для дизайнеров, которые собираются работать.</p>
   </div>
-  <div class="foot"><span>Aneli Interiors · онлайн-практикум</span><span>Старт 19 октября</span><span>9 / 10</span></div>
+  <div class="foot"><span>Aneli Interiors · онлайн-практикум</span><span>Старт 19 октября</span><span>9 / 11</span></div>
+</section>
+<section class="page">
+  <span class="lbl">Стоимость обучения</span>
+  <h2 class="h2">Три формата участия</h2>
+  <div class="rule"></div>
+  <p class="lead">Программа во всех пакетах одна и та же — разная глубина моего участия в вашей работе.</p>
+  <div class="tiers" style="margin-top:12mm">
+
+    <div class="tier">
+      <div class="tier__name">Онлайн-группа</div>
+      <div class="tier__price">100&nbsp;000&nbsp;<small>₸</small></div>
+      <div class="tier__rule"></div>
+      <ul class="tier__list">
+        <li>Записи всех уроков практикума</li>
+        <li>Доступ в общий чат потока</li>
+        <li>Обмен опытом с единомышленниками и куратором</li>
+      </ul>
+    </div>
+
+    <div class="tier">
+      <div class="tier__name">Стандартный</div>
+      <div class="tier__price">185&nbsp;000&nbsp;<small>₸</small></div>
+      <div class="tier__rule"></div>
+      <ul class="tier__list">
+        <li class="inc">Всё из пакета «Онлайн-группа»</li>
+        <li>Еженедельные созвоны со мной</li>
+        <li>Разбор домашних заданий</li>
+        <li>Личная обратная связь по вашим работам</li>
+      </ul>
+    </div>
+
+    <div class="tier tier--top">
+      <div class="tier__name">Премиум</div>
+      <div class="tier__price">250&nbsp;000&nbsp;<small>₸</small></div>
+      <div class="tier__rule"></div>
+      <ul class="tier__list">
+        <li class="inc">Всё из пакета «Стандартный»</li>
+        <li>3 личные консультации по 1 часу</li>
+        <li>План продвижения, составленный под вас</li>
+        <li>Система выхода на доход в профессии</li>
+      </ul>
+    </div>
+
+  </div>
+  <div class="res" style="margin-top:14mm">
+    <span class="lbl">Как выбрать</span>
+    <p style="font-size:15px">Если вы умеете учиться самостоятельно и вам нужна система — берите «Онлайн-группу». Если важно, чтобы я смотрела ваши работы и поправляла по ходу, — «Стандартный». «Премиум» — когда нужен не только навык, но и личный план выхода на доход.</p>
+  </div>
+  <div class="foot"><span>Aneli Interiors · онлайн-практикум</span><span>Старт 19 октября</span><span>10 / 11</span></div>
 </section>
 <section class="page">
   <div class="cta">
     <span class="lbl">Запись в поток</span>
     <h2>Не готовиться бесконечно, а <em>начать работать</em></h2>
-    <p class="lead">Группа небольшая — чтобы я могла уделить время каждому лично. Напишите мне: расскажу про расписание, условия оплаты и помогу забронировать место.</p>
+    <p class="lead">Группа небольшая — чтобы уделить время каждому лично. Напишите мне: помогу выбрать пакет и забронировать место.</p>
     <div class="cta__box">
       <b>19 октября</b>
       <span>старт ближайшего потока</span>
@@ -509,12 +671,12 @@
         <div><dt>WhatsApp</dt><dd>+7 707 332 30 71</dd></div>
         <div><dt>Instagram</dt><dd>@aneli.interiors</dd></div>
         <div><dt>Почта</dt><dd>aneli.home@gmail.com</dd></div>
-        <div><dt>Формат</dt><dd>Онлайн · 2 месяца · небольшая группа</dd></div>
+        <div><dt>Пакеты</dt><dd>100 000 · 185 000 · 250 000 ₸</dd></div>
       </dl>
     </div>
     <p class="cta__note">Отвечаю лично. Обычно в течение дня.</p>
   </div>
-  <div class="foot"><span>Aneli Interiors · онлайн-практикум</span><span>Старт 19 октября</span><span>10 / 10</span></div>
+  <div class="foot"><span>Aneli Interiors · онлайн-практикум</span><span>Старт 19 октября</span><span>11 / 11</span></div>
 </section>
 </body>
 </html>
