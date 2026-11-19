@@ -14,12 +14,13 @@ LINE = (214, 210, 204)
 F = "/usr/share/fonts/opentype/inter/Inter-{}.otf"
 font = lambda w, s: ImageFont.truetype(F.format(w), s)
 
-SCALE = 9.6        # px per cm
+SCALE = 8.4        # px per cm
 BASELINE = 1430    # y where every item stands
-GAP = 420          # horizontal gap between items
+GAP = 360          # default horizontal gap between items (override per item: gap)
 MARGIN = 180
 
 # span_cm = real-world size of the cut-out's full width (usually the item's length)
+# or height_cm = real-world height of the cut-out (when width is unknown / perspective)
 ITEMS = [
     dict(no="01", file="01-coffee-table.png", span_cm=120,
          name="Журнальный столик",
@@ -31,6 +32,11 @@ ITEMS = [
          spec=[("Длина", "120 см"), ("Ширина", "60 см"), ("Высота", "до 116 см"), ("Вес", "21 кг")],
          notes=["Регулируемая высота — сидя / стоя", "Столешница — дерево, тёмный тон",
                 "Опоры — металл, чёрный; пульт под столешницей"]),
+    dict(no="03", file="03-office-chair.png", height_cm=125, gap=110, cap_w=560,
+         name="Офисное кресло",
+         spec=[("Размеры", "уточнить")],
+         notes=["Спинка — сетка, чёрная", "Подголовник, 3D-подлокотники",
+                "Крестовина — хром, на колёсах"]),
 ]
 
 
@@ -42,6 +48,7 @@ def shadow(w, h):
 
 
 def caption(d, it, x, y):
+    cw = it.get("cap_w", 780)
     d.text((x, y), it["no"], font=font("Light", 40), fill=MUTED)
     if tag := it.get("tag"):
         f = font("Medium", 26)
@@ -50,14 +57,14 @@ def caption(d, it, x, y):
         d.text((x + 112, y + 12), tag, font=f, fill=INK)
     d.text((x, y + 66), it["name"], font=font("Regular", 58), fill=INK)
     y += 170
-    d.line([x, y, x + 780, y], fill=LINE, width=3)
+    d.line([x, y, x + cw, y], fill=LINE, width=3)
     y += 36
     for k, v in it["spec"]:
         d.text((x, y + 6), k.upper(), font=font("Regular", 28), fill=MUTED)
         d.text((x + 300, y), v, font=font("Light", 40), fill=INK)
         y += 62
     y += 14
-    d.line([x, y, x + 780, y], fill=LINE, width=3)
+    d.line([x, y, x + cw, y], fill=LINE, width=3)
     y += 36
     for n in it.get("notes", []):
         d.text((x, y), n, font=font("Light", 30), fill=MUTED)
@@ -77,16 +84,22 @@ def build():
     imgs = []
     for it in ITEMS:
         img = Image.open(HERE / "items" / it["file"]).convert("RGBA")
-        w = round(it["span_cm"] * SCALE); h = round(img.height * w / img.width)
+        if "height_cm" in it:
+            h = round(it["height_cm"] * SCALE); w = round(img.width * h / img.height)
+        else:
+            w = round(it["span_cm"] * SCALE); h = round(img.height * w / img.width)
         imgs.append(img.resize((w, h), Image.LANCZOS))
-    col_w = [max(i.width, 780) for i in imgs]
-    x = (W - sum(col_w) - GAP * (len(imgs) - 1)) // 2
-    for it, img, cw in zip(ITEMS, imgs, col_w):
+    col_w = [max(i.width, it.get("cap_w", 780)) for it, i in zip(ITEMS, imgs)]
+    gaps = [it.get("gap", GAP) for it in ITEMS[1:]]
+    x = (W - sum(col_w) - sum(gaps)) // 2
+    for n, (it, img, cw) in enumerate(zip(ITEMS, imgs, col_w)):
+        if n:
+            x += it.get("gap", GAP)
         ix, iy = x + (cw - img.width) // 2, BASELINE - img.height
         sheet.paste((120, 116, 110), (ix, iy), shadow(img.width, img.height))
         sheet.paste(img, (ix, iy), img)
         caption(d, it, x, BASELINE + 110)
-        x += cw + GAP
+        x += cw
 
     sheet.save(HERE / "moodboard.png", dpi=(300, 300))
     sheet.save(HERE / "moodboard.pdf", resolution=300)
