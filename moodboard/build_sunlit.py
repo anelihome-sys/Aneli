@@ -113,6 +113,39 @@ def rug_floor_sun(sheet, quad):
     sheet.paste(plane, (0, 0), plane)
 
 
+# ---------------------------------------------------------------- swatches
+def swatch_sun(sheet, d, src, box, cx, cy, r, label, gloss=1.0):
+    from PIL import ImageOps
+    im = Image.open(IT / src).convert("RGB")
+    if box: im = im.crop(box)
+    im = ImageOps.fit(im, (2 * r, 2 * r), Image.LANCZOS).convert("RGBA")
+    im = ImageEnhance.Contrast(ImageEnhance.Color(im.convert("RGB")).enhance(1.08)).enhance(1.15).convert("RGBA")
+    # sun glint: soft hotspot upper-left + faint diagonal window streak
+    g = Image.new("L", im.size, 0)
+    gd = ImageDraw.Draw(g)
+    gd.ellipse([r * .28, r * .22, r * .98, r * .78], fill=int(105 * gloss))
+    g = g.filter(ImageFilter.GaussianBlur(r * .2))
+    st = Image.new("L", im.size, 0)
+    ImageDraw.Draw(st).polygon([(r * .55, 0), (r * .95, 0), (r * .15, 2 * r), (-r * .25, 2 * r)],
+                               fill=int(38 * gloss))
+    g = Image.composite(Image.new("L", im.size, 255), g, st.filter(ImageFilter.GaussianBlur(r * .12))) \
+        if False else Image.fromarray(__import__("numpy").clip(
+            __import__("numpy").array(g, int) + __import__("numpy").array(
+                st.filter(ImageFilter.GaussianBlur(r * .12)), int), 0, 255).astype("uint8"))
+    im.paste((255, 247, 228), (0, 0), g)
+    # circle mask + shadow
+    m = Image.new("L", (8 * r, 8 * r), 0)
+    ImageDraw.Draw(m).ellipse([0, 0, 8 * r - 1, 8 * r - 1], fill=255)
+    m = m.resize((2 * r, 2 * r), Image.LANCZOS)
+    sh = Image.new("L", (2 * r + 160, 2 * r + 160), 0)
+    sh.paste(m.point(lambda v: v * 75 // 255), (95, 100))
+    sheet.paste(SHADE, (cx - r - 80, cy - r - 80), sh.filter(ImageFilter.GaussianBlur(22)))
+    sheet.paste(im.convert("RGB"), (cx - r, cy - r), m)
+    f = sans("Regular", 24)
+    tw = sum(d.textlength(c, font=f) + 24 * .2 for c in label)
+    tracked(d, (cx - tw / 2, cy + r + 36), label, f, SOFT, .2)
+
+
 # ---------------------------------------------------------------- brand
 def brand(d, x, y):
     s = 58
@@ -151,9 +184,9 @@ def build():
     cx, cy = place_sun(sheet, chair, 2400, 1850)
 
     # swatches
-    swatch(sheet, d, "05-sofa-texture.jpg", (230, 40, 690, 500), 2330, 760, 165, "LEATHER")
-    swatch(sheet, d, "01-coffee-table-detail.jpg", (230, 110, 560, 380), 2730, 760, 165, "BLACK ASH")
-    swatch(sheet, d, "04-rug-texture.jpg", (0, 0, 380, 380), 3130, 760, 165, "SHAG PILE")
+    swatch_sun(sheet, d, "05-sofa-texture.jpg", (230, 40, 690, 500), 2170, 740, 205, "LEATHER", 1.0)
+    swatch_sun(sheet, d, "01-coffee-table-detail.jpg", (300, 130, 520, 350), 2635, 740, 205, "BLACK ASH", .7)
+    swatch_sun(sheet, d, "04-rug-texture.jpg", (0, 0, 380, 380), 3100, 740, 205, "SHAG PILE", .3)
 
     # palette
     tracked(d, (200, 470), "PALETTE", sans("Regular", 22), SOFT, .28)
