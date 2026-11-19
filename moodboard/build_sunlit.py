@@ -119,7 +119,7 @@ def brand(d, x, y):
     d.rounded_rectangle([x, y, x + s, y + s], radius=17, outline=BROWN, width=4)
     d.ellipse([x + s / 2 - 14, y + s / 2 - 14, x + s / 2 + 14, y + s / 2 + 14], outline=BROWN, width=4)
     d.ellipse([x + s - 15, y + 9, x + s - 8, y + 16], fill=BROWN)
-    d.text((x + s + 26, y + 2), "aneli.interiors", font=sans("Regular", 40), fill=BROWN)
+    d.text((x + s + 26, y + 2), "aneli.interiors.dubai", font=sans("Regular", 40), fill=BROWN)
 
 
 def build():
