@@ -1,10 +1,10 @@
 """Furniture moodboard on a clean white sheet.
 Add items to ITEMS (cut-out PNG in items/) and rerun:  python3 build.py
-All items are drawn at one common scale (SCALE px per cm of `span_cm`)
-and stand on one baseline, so relative sizes read honestly.
+Furniture is drawn at one common scale (SCALE px per cm) on one baseline,
+so relative sizes read honestly. The rug sits in its own band at the bottom.
 """
 from pathlib import Path
-from PIL import Image, ImageDraw, ImageFilter, ImageFont
+from PIL import Image, ImageDraw, ImageFilter, ImageFont, ImageOps
 
 HERE = Path(__file__).parent
 W, H = 3508, 2480            # A4 landscape @300dpi (A3 @150dpi)
@@ -14,30 +14,33 @@ LINE = (214, 210, 204)
 F = "/usr/share/fonts/opentype/inter/Inter-{}.otf"
 font = lambda w, s: ImageFont.truetype(F.format(w), s)
 
-SCALE = 8.4        # px per cm
-BASELINE = 1430    # y where every item stands
-GAP = 360          # default horizontal gap between items (override per item: gap)
 MARGIN = 180
+SCALE = 6.9        # px per cm (furniture)
+BASELINE = 1215    # y where every furniture item stands
+GAP = 380          # default horizontal gap between items (override per item: gap)
+CAP_W = 700
 
-# span_cm = real-world size of the cut-out's full width (usually the item's length)
-# or height_cm = real-world height of the cut-out (when width is unknown / perspective)
+# span_cm = real-world width of the cut-out, or height_cm = its real-world height
 ITEMS = [
     dict(no="01", file="01-coffee-table.png", span_cm=120,
          name="Журнальный столик",
-         spec=[("Длина", "120 см"), ("Ширина", "60 см"), ("Высота", "40 см"), ("Вес", "9 кг")],
-         notes=["Столешница — чёрный шпон, текстура ясеня", "Каркас — металл, чёрный матовый",
-                "Форма — овал / стадион, X-царга"]),
+         spec=[("Д × Ш × В", "120 × 60 × 40 см"), ("Вес", "9 кг")],
+         notes=["Столешница — чёрный шпон, текстура ясеня", "Каркас — металл, чёрный матовый"]),
     dict(no="02", file="02-desk.png", span_cm=120, tag="ADJUSTABLE",
          name="Рабочий стол",
-         spec=[("Длина", "120 см"), ("Ширина", "60 см"), ("Высота", "до 116 см"), ("Вес", "21 кг")],
-         notes=["Регулируемая высота — сидя / стоя", "Столешница — дерево, тёмный тон",
-                "Опоры — металл, чёрный; пульт под столешницей"]),
-    dict(no="03", file="03-office-chair.png", height_cm=125, gap=110, cap_w=560,
+         spec=[("Д × Ш × В", "120 × 60 × до 116 см"), ("Вес", "21 кг")],
+         notes=["Регулируемая высота — сидя / стоя", "Дерево / металл, пульт под столешницей"]),
+    dict(no="03", file="03-office-chair.png", height_cm=125, gap=110, cap_w=520,
          name="Офисное кресло",
          spec=[("Размеры", "уточнить")],
-         notes=["Спинка — сетка, чёрная", "Подголовник, 3D-подлокотники",
-                "Крестовина — хром, на колёсах"]),
+         notes=["Сетка, подголовник, 3D-подлокотники", "Крестовина — хром, на колёсах"]),
 ]
+
+RUG = dict(no="04", file="04-rug.png", texture="04-rug-texture.jpg",
+           name="Ковёр",
+           spec=[("Д × Ш", "400 × 300 см"), ("Высота", "1 см"), ("Вес", "59 кг")],
+           notes=["Длинный ворс (шегги), молочный / айвори",
+                  "Основа — тканая, серая; окантовка «ёлочкой»"])
 
 
 def shadow(w, h):
@@ -47,40 +50,30 @@ def shadow(w, h):
     return sh.filter(ImageFilter.GaussianBlur(h * 0.03))
 
 
-def caption(d, it, x, y):
-    cw = it.get("cap_w", 780)
-    d.text((x, y), it["no"], font=font("Light", 40), fill=MUTED)
+def caption(d, it, x, y, cw=CAP_W):
+    d.text((x, y), it["no"], font=font("Light", 36), fill=MUTED)
     if tag := it.get("tag"):
-        f = font("Medium", 26)
+        f = font("Medium", 24)
         tw = d.textlength(tag, font=f)
-        d.rounded_rectangle([x + 90, y + 2, x + 90 + tw + 44, y + 50], radius=24, outline=INK, width=2)
-        d.text((x + 112, y + 12), tag, font=f, fill=INK)
-    d.text((x, y + 66), it["name"], font=font("Regular", 58), fill=INK)
-    y += 170
+        d.rounded_rectangle([x + 82, y, x + 82 + tw + 40, y + 46], radius=23, outline=INK, width=2)
+        d.text((x + 102, y + 11), tag, font=f, fill=INK)
+    d.text((x, y + 58), it["name"], font=font("Regular", 52), fill=INK)
+    y += 150
     d.line([x, y, x + cw, y], fill=LINE, width=3)
-    y += 36
+    y += 30
     for k, v in it["spec"]:
-        d.text((x, y + 6), k.upper(), font=font("Regular", 28), fill=MUTED)
-        d.text((x + 300, y), v, font=font("Light", 40), fill=INK)
-        y += 62
-    y += 14
+        d.text((x, y + 6), k.upper(), font=font("Regular", 26), fill=MUTED)
+        d.text((x + 230, y), v, font=font("Light", 38), fill=INK)
+        y += 58
+    y += 10
     d.line([x, y, x + cw, y], fill=LINE, width=3)
-    y += 36
+    y += 30
     for n in it.get("notes", []):
-        d.text((x, y), n, font=font("Light", 30), fill=MUTED)
-        y += 48
+        d.text((x, y), n, font=font("Light", 28), fill=MUTED)
+        y += 44
 
 
-def build():
-    sheet = Image.new("RGB", (W, H), "white")
-    d = ImageDraw.Draw(sheet)
-    d.text((MARGIN, 150), "MOODBOARD", font=font("Light", 40), fill=INK)
-    d.text((MARGIN, 210), "Подбор мебели", font=font("Light", 34), fill=MUTED)
-    d.line([MARGIN, 300, W - MARGIN, 300], fill=LINE, width=3)
-    d.line([MARGIN, H - 170, W - MARGIN, H - 170], fill=LINE, width=3)
-    d.text((MARGIN, H - 130), f"{len(ITEMS):02d} позиц.  ·  предметы показаны в едином масштабе",
-           font=font("Light", 30), fill=MUTED)
-
+def furniture(sheet, d):
     imgs = []
     for it in ITEMS:
         img = Image.open(HERE / "items" / it["file"]).convert("RGBA")
@@ -89,7 +82,7 @@ def build():
         else:
             w = round(it["span_cm"] * SCALE); h = round(img.height * w / img.width)
         imgs.append(img.resize((w, h), Image.LANCZOS))
-    col_w = [max(i.width, it.get("cap_w", 780)) for it, i in zip(ITEMS, imgs)]
+    col_w = [max(i.width, it.get("cap_w", CAP_W)) for it, i in zip(ITEMS, imgs)]
     gaps = [it.get("gap", GAP) for it in ITEMS[1:]]
     x = (W - sum(col_w) - sum(gaps)) // 2
     for n, (it, img, cw) in enumerate(zip(ITEMS, imgs, col_w)):
@@ -98,8 +91,49 @@ def build():
         ix, iy = x + (cw - img.width) // 2, BASELINE - img.height
         sheet.paste((120, 116, 110), (ix, iy), shadow(img.width, img.height))
         sheet.paste(img, (ix, iy), img)
-        caption(d, it, x, BASELINE + 110)
+        caption(d, it, x, BASELINE + 70, it.get("cap_w", CAP_W))
         x += cw
+
+
+def rug_band(sheet, d, top, bottom):
+    """Rug: top-down product view + close-up texture swatch + specs."""
+    h = bottom - top
+    rug = Image.open(HERE / "items" / RUG["file"]).convert("RGBA")
+    rw = round(rug.width * h / rug.height)
+    rug = rug.resize((rw, h), Image.LANCZOS)
+    x = MARGIN + 80
+    # soft lift shadow so an ivory rug still reads on white
+    pad = 60
+    sh = Image.new("L", (rw + 2 * pad, h + 2 * pad), 0)
+    sh.paste(rug.split()[3].point(lambda v: v * 60 // 255), (pad, pad + 14))
+    sh = sh.filter(ImageFilter.GaussianBlur(26))
+    sheet.paste((110, 104, 96), (x - pad, top - pad), sh)
+    sheet.paste(rug, (x, top), rug)
+    # texture swatch
+    tx = x + rw + 70
+    tw = round(h * 1.5)
+    tex = ImageOps.fit(Image.open(HERE / "items" / RUG["texture"]).convert("RGB"), (tw, h),
+                       Image.LANCZOS, centering=(0.5, 0.62))
+    sheet.paste(tex, (tx, top))
+    d.text((tx, bottom + 22), "ТЕКСТУРА ВОРСА И ОСНОВА", font=font("Regular", 24), fill=MUTED)
+    caption(d, RUG, tx + tw + 140, top + 10, 760)
+
+
+def build():
+    sheet = Image.new("RGB", (W, H), "white")
+    d = ImageDraw.Draw(sheet)
+    d.text((MARGIN, 150), "MOODBOARD", font=font("Light", 40), fill=INK)
+    d.text((MARGIN, 210), "Подбор мебели", font=font("Light", 34), fill=MUTED)
+    d.line([MARGIN, 300, W - MARGIN, 300], fill=LINE, width=3)
+
+    furniture(sheet, d)
+
+    d.line([MARGIN, 1740, W - MARGIN, 1740], fill=LINE, width=3)
+    rug_band(sheet, d, 1820, 2250)
+
+    d.line([MARGIN, H - 150, W - MARGIN, H - 150], fill=LINE, width=3)
+    d.text((MARGIN, H - 112), f"{len(ITEMS) + 1:02d} позиц.  ·  мебель показана в едином масштабе",
+           font=font("Light", 28), fill=MUTED)
 
     sheet.save(HERE / "moodboard.png", dpi=(300, 300))
     sheet.save(HERE / "moodboard.pdf", resolution=300)
