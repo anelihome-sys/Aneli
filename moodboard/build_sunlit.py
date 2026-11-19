@@ -157,9 +157,7 @@ def build():
 
     # palette
     tracked(d, (200, 470), "PALETTE", sans("Regular", 22), SOFT, .28)
-    pal = [((60, 42, 34), "CHOCOLATE"), ((30, 29, 28), "BLACK"), ((240, 233, 220), "IVORY"),
-           ((205, 178, 140), "SAND"), ((214, 160, 104), "SUNLIT OAK"), ((104, 116, 78), "PALM"),
-           ((168, 168, 166), "CHROME")]
+    pal = [((60, 42, 34), "CHOCOLATE"), ((30, 29, 28), "BLACK"), ((240, 233, 220), "IVORY")]
     for i, (c, n) in enumerate(pal):
         x = 200 + i * 190
         d.rectangle([x, 530, x + 150, 680], fill=c, outline=HAIR, width=1)
