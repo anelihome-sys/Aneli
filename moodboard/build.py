@@ -15,28 +15,33 @@ F = "/usr/share/fonts/opentype/inter/Inter-{}.otf"
 font = lambda w, s: ImageFont.truetype(F.format(w), s)
 
 MARGIN = 180
-SCALE = 6.9        # px per cm (furniture)
-BASELINE = 1215    # y where every furniture item stands
+SCALE = 4.8        # px per cm (furniture)
+BASELINE = 1050    # y where every furniture item stands
 GAP = 380          # default horizontal gap between items (override per item: gap)
 CAP_W = 700
 
 # span_cm = real-world width of the cut-out, or height_cm = its real-world height
 ITEMS = [
-    dict(no="01", file="01-coffee-table.png", span_cm=120,
+    dict(no="01", file="01-coffee-table.png", span_cm=120, cap_w=600,
          name="Журнальный столик",
          spec=[("Д × Ш × В", "120 × 60 × 40 см"), ("Вес", "9 кг")],
          notes=["Столешница — чёрный шпон, текстура ясеня", "Каркас — металл, чёрный матовый"]),
-    dict(no="02", file="02-desk.png", span_cm=120, tag="ADJUSTABLE",
+    dict(no="02", file="05-sofa.png", span_cm=210, gap=70, cap_w=540,
+         texture="05-sofa-texture.jpg", texture_crop=(200, 40, 700, 540), texture_label="ТЕКСТУРА КОЖИ",
+         name="Диван",
+         spec=[("Размеры", "уточнить")],
+         notes=["Кожа, тёмный шоколад, кант", "Ножки — металл, чёрные"]),
+    dict(no="03", file="02-desk.png", span_cm=120, tag="ADJUSTABLE", gap=260, cap_w=600,
          name="Рабочий стол",
          spec=[("Д × Ш × В", "120 × 60 × до 116 см"), ("Вес", "21 кг")],
          notes=["Регулируемая высота — сидя / стоя", "Дерево / металл, пульт под столешницей"]),
-    dict(no="03", file="03-office-chair.png", height_cm=125, gap=110, cap_w=520,
+    dict(no="04", file="03-office-chair.png", height_cm=125, gap=70, cap_w=520,
          name="Офисное кресло",
          spec=[("Размеры", "уточнить")],
          notes=["Сетка, подголовник, 3D-подлокотники", "Крестовина — хром, на колёсах"]),
 ]
 
-RUG = dict(no="04", file="04-rug.png", texture="04-rug-texture.jpg",
+RUG = dict(no="05", file="04-rug.png", texture="04-rug-texture.jpg",
            name="Ковёр",
            spec=[("Д × Ш", "400 × 300 см"), ("Высота", "1 см"), ("Вес", "59 кг")],
            notes=["Длинный ворс (шегги), молочный / айвори",
@@ -92,6 +97,15 @@ def furniture(sheet, d):
         sheet.paste((120, 116, 110), (ix, iy), shadow(img.width, img.height))
         sheet.paste(img, (ix, iy), img)
         caption(d, it, x, BASELINE + 70, it.get("cap_w", CAP_W))
+        if t := it.get("texture"):
+            sw = min(cw - it["cap_w"] - 50, 400)
+            src = Image.open(HERE / "items" / t).convert("RGB")
+            if box := it.get("texture_crop"):
+                src = src.crop(box)
+            tex = ImageOps.fit(src, (sw, sw), Image.LANCZOS)
+            sheet.paste(tex, (x + cw - sw, BASELINE + 80))
+            d.text((x + cw - sw, BASELINE + 80 + sw + 18), it["texture_label"],
+                   font=font("Regular", 24), fill=MUTED)
         x += cw
 
 
@@ -128,8 +142,8 @@ def build():
 
     furniture(sheet, d)
 
-    d.line([MARGIN, 1740, W - MARGIN, 1740], fill=LINE, width=3)
-    rug_band(sheet, d, 1820, 2250)
+    d.line([MARGIN, 1640, W - MARGIN, 1640], fill=LINE, width=3)
+    rug_band(sheet, d, 1720, 2250)
 
     d.line([MARGIN, H - 150, W - MARGIN, H - 150], fill=LINE, width=3)
     d.text((MARGIN, H - 112), f"{len(ITEMS) + 1:02d} позиц.  ·  мебель показана в едином масштабе",
