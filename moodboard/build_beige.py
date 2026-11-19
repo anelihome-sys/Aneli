@@ -95,10 +95,10 @@ def marker(d, x, y, n):
 
 
 LEGEND = [
-    ("01", "SOFA", ["212 × 95 × 90 cm", "64 kg"], ["Leather, dark chocolate", "Piped seams · black metal legs"]),
-    ("02", "COFFEE TABLE", ["120 × 60 × 40 cm", "9 kg"], ["Black ash veneer top", "Matte black steel frame"]),
-    ("03", "SHAG RUG", ["400 × 300 × 1 cm", "59 kg"], ["Long pile, ivory", "Woven grey backing"]),
-    ("04", "ADJUSTABLE DESK", ["120 × 60 × up to 116 cm", "21 kg"], ["Height adjustable · sit / stand", "Wood top · black steel frame"]),
+    ("01", "SOFA", ["L 212 × W 95 × H 90 cm", "Weight 64 kg"], ["Leather, dark chocolate", "Piped seams · black metal legs"]),
+    ("02", "COFFEE TABLE", ["L 120 × W 60 × H 40 cm", "Weight 9 kg"], ["Black ash veneer top", "Matte black steel frame"]),
+    ("03", "SHAG RUG", ["L 400 × W 300 × H 1 cm", "Weight 59 kg"], ["Long pile, ivory", "Woven grey backing"]),
+    ("04", "ADJUSTABLE DESK", ["L 120 × W 60 × H up to 116 cm", "Weight 21 kg"], ["Height adjustable · sit / stand", "Wood top · black steel frame"]),
     ("05", "OFFICE CHAIR", ["Dimensions TBC", ""], ["Mesh back · adjustable headrest", "3D armrests · chrome base"]),
 ]
 
@@ -127,11 +127,13 @@ def build():
     d = ImageDraw.Draw(sheet)
 
     # ---- header
-    d.text((200, 120), "Living & Workspace", font=serif(118, b"Light"), fill=BROWN)
-    tracked(d, (206, 285), "FURNITURE SELECTION  —  MOODBOARD", sans("Regular", 24), SOFT, .28)
-    f = sans("Regular", 24); txt = "ALL DIMENSIONS L × W × H"
-    tw = sum(d.textlength(c, font=f) + 24 * .28 for c in txt)
-    tracked(d, (W - 200 - tw, 285), txt, f, SOFT, .28)
+    t1 = "Mood Board for Ground Floor Bedroom"
+    f1 = serif(104, b"Light")
+    d.text(((W - d.textlength(t1, font=f1)) / 2, 110), t1, font=f1, fill=BROWN)
+    t2 = "(Home Office)"
+    f2 = serif(64, b"Light Italic", italic=True)
+    d.text(((W - d.textlength(t2, font=f2)) / 2, 248), t2, font=f2, fill=SOFT)
+    d.line([W / 2 - 60, 360, W / 2 + 60, 360], fill=HAIR, width=2)
 
     # ---- living group: rug floor, sofa, coffee table
     rug_floor(sheet, [(520, 1420), (2060, 1420), (2300, 1850), (260, 1850)])
