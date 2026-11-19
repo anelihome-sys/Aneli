@@ -3,6 +3,7 @@ shadows, long cast shadows, brand mark.   python3 build_sunlit.py
 """
 import math
 from PIL import Image, ImageDraw, ImageEnhance, ImageFilter
+import build_beige as bb
 from build_beige import (HERE, W, H, S, BROWN, SOFT, HAIR, sans, serif, tracked, load,
                          perspective_coeffs, swatch, marker, legend, IT)
 
@@ -170,18 +171,22 @@ def build():
     d.text(((W - d.textlength(t2, font=f2)) / 2, 240), t2, font=f2, fill=SOFT)
     d.line([W / 2 - 60, 352, W / 2 + 60, 352], fill=HAIR, width=2)
 
-    # living group
-    rug_floor_sun(sheet, [(520, 1420), (2060, 1420), (2300, 1850), (260, 1850)])
-    sofa = sun_grade(load("05-sofa.png", w=round(212 * S)))
-    sx, sy = place_sun(sheet, sofa, 640, 1560)
-    table = sun_grade(load("01-coffee-table.png", w=round(120 * S)))
-    tx, ty = place_sun(sheet, table, 1280, 1790)
+    S2 = 6.0   # larger common scale (px per cm)
 
-    # workspace
-    desk = sun_grade(load("02-desk.png", w=round(120 * S)))
-    dx, dy = place_sun(sheet, desk, 2640, 1730)
-    chair = sun_grade(load("03-office-chair.png", h=round(125 * S)))
-    cx, cy = place_sun(sheet, chair, 2400, 1850)
+    # living group
+    rug_floor_sun(sheet, [(350, 1500), (1450, 1500), (1610, 1950), (150, 1950)])
+    sofa = sun_grade(load("05-sofa.png", w=round(212 * S2)))
+    sx, sy = place_sun(sheet, sofa, 260, 1650)
+    table = sun_grade(load("01-coffee-table.png", w=round(120 * S2)))
+    tx, ty = place_sun(sheet, table, 780, 1905)
+
+    # workspace: two identical desks side by side, a chair at each
+    desk = sun_grade(load("02-desk.png", w=round(120 * S2)))
+    d1x, d1y = place_sun(sheet, desk, 1900, 1820)
+    d2x, d2y = place_sun(sheet, desk, 1900 + desk.width - 10, 1820)
+    chair = sun_grade(load("03-office-chair.png", h=round(125 * S2)))
+    c1x, c1y = place_sun(sheet, chair, 1690, 1975)
+    c2x, c2y = place_sun(sheet, chair, 1690 + desk.width - 10, 1975)
 
     # swatches
     swatch_sun(sheet, d, "05-sofa-texture.jpg", (230, 40, 690, 500), 2170, 740, 205, "LEATHER", 1.0)
@@ -196,13 +201,15 @@ def build():
         d.rectangle([x, 530, x + 150, 680], fill=c, outline=HAIR, width=1)
         tracked(d, (x, 702), n, sans("Regular", 18), SOFT, .2)
 
-    marker(d, sx + 40, sy - 30, "01")
-    marker(d, tx + table.width - 30, ty + 170, "02")
-    marker(d, 300, 1730, "03")
-    marker(d, dx + desk.width - 10, dy + 30, "04")
-    marker(d, cx + 30, cy + 60, "05")
+    marker(d, sx + 30, sy - 40, "01")
+    marker(d, tx + table.width + 40, ty + round(table.height * .62), "02")
+    marker(d, 200, 1840, "03")
+    marker(d, d2x + desk.width - 30, d2y + round(desk.height * .37) - 70, "04")
+    marker(d, c1x - 10, c1y + 60, "05")
 
-    legend(d, 2000)
+    bb.LEGEND = [row if row[0] not in ("04", "05") else
+                 (row[0], row[1] + "  × 2", row[2], row[3]) for row in bb.LEGEND]
+    legend(d, 2060)
     sheet.save(HERE / "moodboard-sunlit.png", dpi=(300, 300))
     sheet.save(HERE / "moodboard-sunlit.pdf", resolution=300)
 
